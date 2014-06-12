@@ -1,0 +1,58 @@
+<div id="scriptexecutor-info-panel-<#=id#>" style="display:none"></div>
+<div id="scriptexecutor-tabs-<#=id#>" style="border-style: none;">
+    <ul>
+        <li><a href="#scriptexecutor-preexecution-handler-tab-<#=id#>">PreExecution</a></li>
+        <li><a href="#scriptexecutor-execution-handler-tab-<#=id#>">Execution</a></li>
+        <li><a href="#scriptexecutor-postexecution-handler-tab-<#=id#>">PostExecution</a></li>
+        <li><a href="#scriptexecutor-security-tab-<#=id#>">Security</a></li>
+        <li style="display:none"><a href="#scriptexecutor-info-panel-bar-<#=id#>"></a><a href="" onclick="return false;" title="Staled references" id="scriptexecutor-info-panel-trigger-<#=id#>" style="display:none;padding: 3px;padding-left: 5px;padding-right: 5px;background-color: #d03838;color:#f69e40;cursor: pointer"></a></li>
+    </ul>
+
+    <div id="scriptexecutor-execution-handler-tab-<#=id#>" style="border-style: none;padding:0;border-top:0"> 
+        <ul>                        
+            <li><a href="#scriptexecutor-code-tab-<#=id#>">Code</a></li>
+            <li><a href="#scriptexecutor-execution-parameter-tab-<#=id#>">Parameters & Validation</a></li>
+        </ul>
+
+        <div id="scriptexecutor-code-tab-<#=id#>">
+
+            <div id="scriptexecutor-jexl-<#=id#>">
+                <span style="color:silver"><span id="scriptexecutor-type-label-<#=id#>" style="color:blue;font-weight: normal">jexl</span> {</span>
+                <div>
+                    <textarea id="scriptexecutor-code-editor-<#=id#>"></textarea>
+                </div><div style="clear:both"></div>
+                <span style="color:silver">}</span>
+            </div>
+            <div id="scriptexecutor-crudzilla-<#=id#>">
+                <div id="scriptexecutor-statement-tree-<#=id#>"></div>                        
+            </div>
+        </div>
+
+      <div id="scriptexecutor-execution-parameter-tab-<#=id#>"   style="border-style:none;height:100%;padding:0;border-top:0;">
+            <div id="scriptexecutor-execution-parameter-definition-tabs-<#=id#>" style="border-style:none;height:100%;padding:0;border-top:0"> 
+                <ul>                        
+                    <li><a href="#scriptexecutor-execution-parameter-definition-tab-<#=id#>">Definitions</a></li>
+                </ul>
+                <div id="scriptexecutor-execution-parameter-definition-tab-<#=id#>"  style="padding-left: 5px;padding-right:10px">
+                  <div class="parameter-view">
+                    <table id="scriptexecutor-execution-parameter-table-<#=id#>"></table>
+                  </div>
+                </div>
+            </div>
+        </div>                 
+    </div> 
+
+    <div id="scriptexecutor-preexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+
+        <table id="scriptexecutor-preexecution-handler-table-<#=id#>"></table>
+    </div>                 
+    <div id="scriptexecutor-postexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+        
+        <table id="scriptexecutor-postexecution-handler-table-<#=id#>"></table>
+    </div>    
+    <div id="scriptexecutor-security-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+        <input type="checkbox" id="scriptexecutor-security-serverside-<#=id#>" /> Server side only.
+        <input type="checkbox" id="scriptexecutor-security-requireallidentities-<#=id#>" /> Require All Roles.
+        <table id="scriptexecutor-security-table-<#=id#>"></table>
+    </div>
+</div>

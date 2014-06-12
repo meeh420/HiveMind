@@ -1,0 +1,130 @@
+Sat Aug 10 10:08:40 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.08.31.sql/crudzilla.
+Sat Aug 10 10:08:51 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.08.31.sql/crudzilla/seg0 completed. 
+Sat Aug 10 10:08:52 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.08.31.sql/crudzilla/log
+Sat Aug 10 10:08:52 EDT 2013:Backup completed, log instant at (45,817311) 
+
+Sat Aug 10 10:38:00 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.37.51.derby/crudzilla.
+Sat Aug 10 10:38:09 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.37.51.derby/crudzilla/seg0 completed. 
+Sat Aug 10 10:38:10 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.37.51.derby/crudzilla/log
+Sat Aug 10 10:38:10 EDT 2013:Backup completed, log instant at (45,857871) 
+
+Sat Aug 10 10:39:25 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.39.15.derby/crudzilla.
+Sat Aug 10 10:39:35 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.39.15.derby/crudzilla/seg0 completed. 
+Sat Aug 10 10:39:35 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-10.39.15.derby/crudzilla/log
+Sat Aug 10 10:39:35 EDT 2013:Backup completed, log instant at (45,858095) 
+
+Sat Aug 10 11:00:30 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.00.25.derby/crudzilla.
+Sat Aug 10 11:00:41 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.00.25.derby/crudzilla/seg0 completed. 
+Sat Aug 10 11:00:41 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.00.25.derby/crudzilla/log
+Sat Aug 10 11:00:41 EDT 2013:Backup completed, log instant at (45,864020) 
+
+Sat Aug 10 11:01:53 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.01.45.derby/crudzilla.
+Sat Aug 10 11:02:03 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.01.45.derby/crudzilla/seg0 completed. 
+Sat Aug 10 11:02:03 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.01.45.derby/crudzilla/log
+Sat Aug 10 11:02:03 EDT 2013:Backup completed, log instant at (45,864244) 
+
+Sat Aug 10 11:09:18 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.08.55.derby/crudzilla.
+Sat Aug 10 11:09:29 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.08.55.derby/crudzilla/seg0 completed. 
+Sat Aug 10 11:09:29 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.08.55.derby/crudzilla/log
+Sat Aug 10 11:09:29 EDT 2013:Backup completed, log instant at (45,869202) 
+
+Sat Aug 10 11:16:23 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.16.13.derby/crudzilla.
+Sat Aug 10 11:16:31 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.16.13.derby/crudzilla/seg0 completed. 
+Sat Aug 10 11:16:31 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.16.13.derby/crudzilla/log
+Sat Aug 10 11:16:31 EDT 2013:Backup completed, log instant at (45,891663) 
+
+Sat Aug 10 11:18:52 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.18.42.derby/crudzilla.
+Sat Aug 10 11:19:03 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.18.42.derby/crudzilla/seg0 completed. 
+Sat Aug 10 11:19:03 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/current/2013.08.10-11.18.42.derby/crudzilla/log
+Sat Aug 10 11:19:03 EDT 2013:Backup completed, log instant at (45,896973) 
+
+Sat Aug 10 11:20:11 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/2013.08.10-11.20.03/2013.08.10-11.20.03.derby/crudzilla.
+Sat Aug 10 11:20:22 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/2013.08.10-11.20.03/2013.08.10-11.20.03.derby/crudzilla/seg0 completed. 
+Sat Aug 10 11:20:22 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/2013.08.10-11.20.03/2013.08.10-11.20.03.derby/crudzilla/log
+Sat Aug 10 11:20:22 EDT 2013:Backup completed, log instant at (45,897398) 
+
+Sat Aug 10 11:21:09 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/2013.08.10-11.21.00/2013.08.10-11.21.00.derby/crudzilla.
+Sat Aug 10 11:21:19 EDT 2013:Backup of data segment to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/2013.08.10-11.21.00/2013.08.10-11.21.00.derby/crudzilla/seg0 completed. 
+Sat Aug 10 11:21:20 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/crudzilla/crudzilla-backup-snapshots/2013.08.10-11.21.00/2013.08.10-11.21.00.derby/crudzilla/log
+Sat Aug 10 11:21:20 EDT 2013:Backup completed, log instant at (45,897622) 
+
+Thu Aug 15 09:21:15 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-09.20.30/2013.08.15-09.20.30.derby/crudzilla.
+Thu Aug 15 09:21:26 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-09.20.30/2013.08.15-09.20.30.derby/crudzilla/seg0 completed. 
+Thu Aug 15 09:21:26 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-09.20.30/2013.08.15-09.20.30.derby/crudzilla/log
+Thu Aug 15 09:21:26 EDT 2013:Backup completed, log instant at (51,480351) 
+
+Thu Aug 15 11:44:54 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-11.44.23/2013.08.15-11.44.23.derby/crudzilla.
+Thu Aug 15 11:45:05 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-11.44.23/2013.08.15-11.44.23.derby/crudzilla/seg0 completed. 
+Thu Aug 15 11:45:05 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-11.44.23/2013.08.15-11.44.23.derby/crudzilla/log
+Thu Aug 15 11:45:05 EDT 2013:Backup completed, log instant at (53,703679) 
+
+Thu Aug 15 23:42:45 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-23.42.22/2013.08.15-23.42.22.derby/crudzilla.
+Thu Aug 15 23:42:54 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-23.42.22/2013.08.15-23.42.22.derby/crudzilla/seg0 completed. 
+Thu Aug 15 23:42:54 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.15-23.42.22/2013.08.15-23.42.22.derby/crudzilla/log
+Thu Aug 15 23:42:54 EDT 2013:Backup completed, log instant at (56,680641) 
+
+Sun Aug 25 12:40:45 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.25-12.40.17/2013.08.25-12.40.17.derby/crudzilla.
+Sun Aug 25 12:41:01 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.25-12.40.17/2013.08.25-12.40.17.derby/crudzilla/seg0 completed. 
+Sun Aug 25 12:41:01 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.25-12.40.17/2013.08.25-12.40.17.derby/crudzilla/log
+Sun Aug 25 12:41:01 EDT 2013:Backup completed, log instant at (61,685631) 
+
+Mon Aug 26 19:59:38 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.26-19.59.27/2013.08.26-19.59.27.derby/crudzilla.
+Mon Aug 26 19:59:54 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.26-19.59.27/2013.08.26-19.59.27.derby/crudzilla/seg0 completed. 
+Mon Aug 26 19:59:54 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.26-19.59.27/2013.08.26-19.59.27.derby/crudzilla/log
+Mon Aug 26 19:59:54 EDT 2013:Backup completed, log instant at (62,9304) 
+
+Tue Aug 27 14:36:38 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.27-14.36.37/2013.08.27-14.36.37.derby/crudzilla.
+Tue Aug 27 14:36:48 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.27-14.36.37/2013.08.27-14.36.37.derby/crudzilla/seg0 completed. 
+Tue Aug 27 14:36:48 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.27-14.36.37/2013.08.27-14.36.37.derby/crudzilla/log
+Tue Aug 27 14:36:48 EDT 2013:Backup completed, log instant at (64,96486) 
+
+Tue Aug 27 14:44:49 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.27-14.44.27/2013.08.27-14.44.27.derby/crudzilla.
+Tue Aug 27 14:44:58 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.27-14.44.27/2013.08.27-14.44.27.derby/crudzilla/seg0 completed. 
+Tue Aug 27 14:44:58 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.27-14.44.27/2013.08.27-14.44.27.derby/crudzilla/log
+Tue Aug 27 14:44:58 EDT 2013:Backup completed, log instant at (64,97617) 
+
+Wed Aug 28 16:35:01 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.28-16.34.22/2013.08.28-16.34.22.derby/crudzilla.
+Wed Aug 28 16:35:14 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.28-16.34.22/2013.08.28-16.34.22.derby/crudzilla/seg0 completed. 
+Wed Aug 28 16:35:14 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.08.28-16.34.22/2013.08.28-16.34.22.derby/crudzilla/log
+Wed Aug 28 16:35:14 EDT 2013:Backup completed, log instant at (65,946831) 
+
+Wed Sep 04 20:17:45 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.04-20.16.51/2013.09.04-20.16.51.derby/crudzilla.
+Wed Sep 04 20:17:55 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.04-20.16.51/2013.09.04-20.16.51.derby/crudzilla/seg0 completed. 
+Wed Sep 04 20:17:55 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.04-20.16.51/2013.09.04-20.16.51.derby/crudzilla/log
+Wed Sep 04 20:17:55 EDT 2013:Backup completed, log instant at (74,1015937) 
+
+Wed Sep 04 22:22:12 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.04-22.22.05/2013.09.04-22.22.05.derby/crudzilla.
+Wed Sep 04 22:22:27 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.04-22.22.05/2013.09.04-22.22.05.derby/crudzilla/seg0 completed. 
+Wed Sep 04 22:22:27 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.04-22.22.05/2013.09.04-22.22.05.derby/crudzilla/log
+Wed Sep 04 22:22:27 EDT 2013:Backup completed, log instant at (75,141481) 
+
+Mon Sep 09 22:21:14 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.09-22.20.36/2013.09.09-22.20.36.derby/crudzilla.
+Mon Sep 09 22:21:26 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.09-22.20.36/2013.09.09-22.20.36.derby/crudzilla/seg0 completed. 
+Mon Sep 09 22:21:26 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.09-22.20.36/2013.09.09-22.20.36.derby/crudzilla/log
+Mon Sep 09 22:21:26 EDT 2013:Backup completed, log instant at (84,464113) 
+
+Sat Sep 14 21:06:26 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.14-21.05.34/2013.09.14-21.05.34.derby/crudzilla.
+Sat Sep 14 21:06:37 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.14-21.05.34/2013.09.14-21.05.34.derby/crudzilla/seg0 completed. 
+Sat Sep 14 21:06:37 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.14-21.05.34/2013.09.14-21.05.34.derby/crudzilla/log
+Sat Sep 14 21:06:37 EDT 2013:Backup completed, log instant at (89,762210) 
+
+Tue Sep 24 11:59:02 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.24-11.57.44/2013.09.24-11.57.44.derby/crudzilla.
+Tue Sep 24 11:59:14 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.24-11.57.44/2013.09.24-11.57.44.derby/crudzilla/seg0 completed. 
+Tue Sep 24 11:59:14 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.24-11.57.44/2013.09.24-11.57.44.derby/crudzilla/log
+Tue Sep 24 11:59:14 EDT 2013:Backup completed, log instant at (112,943373) 
+
+Wed Sep 25 10:45:43 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.25-10.44.45/2013.09.25-10.44.45.derby/crudzilla.
+Wed Sep 25 10:45:54 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.25-10.44.45/2013.09.25-10.44.45.derby/crudzilla/seg0 completed. 
+Wed Sep 25 10:45:55 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.09.25-10.44.45/2013.09.25-10.44.45.derby/crudzilla/log
+Wed Sep 25 10:45:55 EDT 2013:Backup completed, log instant at (115,509812) 
+
+Tue Oct 01 21:26:22 EDT 2013:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.10.01-21.25.33/2013.10.01-21.25.33.derby/crudzilla.
+Tue Oct 01 21:26:34 EDT 2013:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.10.01-21.25.33/2013.10.01-21.25.33.derby/crudzilla/seg0 completed. 
+Tue Oct 01 21:26:34 EDT 2013:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2013.10.01-21.25.33/2013.10.01-21.25.33.derby/crudzilla/log
+Tue Oct 01 21:26:34 EDT 2013:Backup completed, log instant at (119,221626) 
+
+Wed Jan 15 11:49:15 EST 2014:Backup started for database located at /home/bitlooter/cwab-dist/derby/crudzilla to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2014.01.15-11.22.47/2014.01.15-11.22.47.derby/crudzilla.
+Wed Jan 15 11:49:39 EST 2014:Backup of data segment to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2014.01.15-11.22.47/2014.01.15-11.22.47.derby/crudzilla/seg0 completed. 
+Wed Jan 15 11:49:39 EST 2014:Copied log directory from /home/bitlooter/cwab-dist/derby/crudzilla/log to /home/bitlooter/cwab-dist/crudzilla-apps/crudzilla/crudzilla-backup-snapshots/2014.01.15-11.22.47/2014.01.15-11.22.47.derby/crudzilla/log
+Wed Jan 15 11:49:39 EST 2014:Backup completed, log instant at (295,990261) 
+

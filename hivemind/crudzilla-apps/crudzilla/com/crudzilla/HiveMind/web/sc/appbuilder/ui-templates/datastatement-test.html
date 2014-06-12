@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DataStatement Invocation Console</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/smoothness/jquery-ui.css" type="text/css" media="all" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>        
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+        <script src="/js/jquery-plugins/jquery.jqGrid-4.4.0/js/jquery.jqGrid.min.js"></script>
+        <script src="/js/jquery-plugins/blockui/jquery.blockUI.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                  var table_created     = false;
+                  var resultset         = null;
+                  var parameters        = [];
+                  var param_html        = [];
+                  var param;
+                  var request_parameters = [];
+                  
+                  param_html.push('<tr><td colspan="2"><div>PreExecution Parameters</div></td></tr>');
+                  for(var i=0;i<parameters.preexecution_parameters.length;i++){
+                      param = parameters.preexecution_parameters[i];
+                      param_html.push('<tr><td>'+param.name+'</td><td><input type="text" id="'+param.name+'"/></tr>');
+                      request_parameters.push(param);
+                  }
+                  for(i=0;i<parameters.ref_preexecution_parameters.length;i++){
+                      param = parameters.ref_preexecution_parameters[i];
+                      param_html.push('<tr><td>'+param.name+'</td><td><input type="text" id="'+param.name+'"/></tr>');
+                      request_parameters.push(param);
+                  }                  
+                  
+                  param_html.push('<tr><td colspan="2"><div>Execution Parameters</div></td></tr>');
+                  for(var i=0;i<parameters.execution_parameters.length;i++){
+                      param = parameters.execution_parameters[i];
+                      param_html.push('<tr><td>'+param.name+'</td><td><input type="text" id="'+param.name+'"/></tr>');
+                      request_parameters.push(param);
+                  }
+                  for(i=0;i<parameters.ref_preexecution_parameters.length;i++){
+                      param = parameters.ref_preexecution_parameters[i];
+                      param_html.push('<tr><td>'+param.name+'</td><td><input type="text" id="'+param.name+'"/></tr>');
+                      request_parameters.push(param);
+                  }                  
+                  
+                  
+                  param_html.push('<tr><td colspan="2"><div>PostExecution Parameters</div></td></tr>');
+                  for(var i=0;i<parameters.postexecution_parameters.length;i++){
+                      param = parameters.postexecution_parameters[i];
+                      param_html.push('<tr><td>'+param.name+'</td><td><input type="text" id="'+param.name+'"/></tr>');
+                      request_parameters.push(param);
+                  }
+                  for(i=0;i<parameters.ref_postexecution_parameters.length;i++){
+                      param = parameters.ref_ppostexecution_parameters[i];
+                      param_html.push('<tr><td>'+param.name+'</td><td><input type="text" id="'+param.name+'"/></tr>');
+                      request_parameters.push(param);
+                  }
+                  param_html.push('<tr><td colspan="2"><button id="invoke-btn">Run</button></tr>');
+                  
+                  $('#parameters').append(param_html.join());                  
+                  $('#invoke-btn').button().click(function(){
+                        var request_params;
+                        for(var p=0;p<request_parameters.length;p++){
+                            var prm = request_parameters[p];
+                            request_params[prm.name] = $('#'+prm.name).val();
+                        }
+                        $.blockUI();
+                        $.ajax({
+                                type:'POST',
+                                data:request_params,
+                                url:'./',
+                                success:function(data){  $.unblockUI();
+                                    resultset = eval('('+data+')');
+                                    if(resultset.rows){
+                                        var column_model = [];
+                                        for(var i=0;i<resultset.columns.length;i++){
+                                            column_model.push({name:resultset.columns[i],index:resultset.columns[i]});
+                                        }
+                                        if(!table_created){
+                                            $('#resultset').jqGrid({ url:'../', datatype: "json", colNames:resultset.columns, colModel:column_model, rowNum:-1, pager: '#resultsetpager', viewrecords: true, caption:"ResultSet" }); $("#resultset").jqGrid('navGrid','#resultsetpager',{edit:false,add:false,del:false});
+                                            table_created = true;
+                                        }
+                                        for(i=0;i<resultset.rows.length;i++)
+                                            $('#resultset').addRowData(i+1,resultset.rows[i]);
+                                    }
+                                }
+                        });                      
+                  });
+            });            
+        </script>
+    </head>
+    <body>
+        <table id="parameters"></table>
+        <table id="resultset"></table>
+        <div id="resultsetpager"></div>
+    </body>
+</html>

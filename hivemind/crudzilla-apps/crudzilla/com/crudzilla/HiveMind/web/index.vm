@@ -1,0 +1,782 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>HiveMind</title>
+
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <!--<script type="text/javascript" src="js/require.js"></script>-->
+
+    	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    	<link href='http://fonts.googleapis.com/css?family=Gravitas+One|Varela' rel='stylesheet' type='text/css'>  
+      
+      
+      	<!--<link type="text/css" href="jquery-themes/eggplant/jquery-ui-1.10.3.custom.css" rel="stylesheet" />-->
+        <link type="text/css" href="js/jquery-ui-1.10.3.custom/css/todo-list/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" />
+        <link type="text/css" href="js/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+        
+        
+ 
+        
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+		
+        <!--<script src="http://code.jquery.com/ui/jquery-ui-git.js"></script>-->
+         
+		
+        <link rel="stylesheet" type="text/css" media="screen" href="js/jquery-plugins/jquery.jqGrid-4.5.2/css/ui.jqgrid.css" />
+        <script src="js/jquery-plugins/jquery.jqGrid-4.5.2/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+        <script src="js/jquery-plugins/jquery.jqGrid-4.5.2/js/jquery.jqGrid.src.js" type="text/javascript"></script>
+		
+        <!--<script src="js/jquery-plugins/jquery.scrollabletab/jquery.scrollabletab.js" type="text/javascript"></script>-->
+        <!--
+        <link rel="stylesheet" type="text/css" media="screen" href="js/jquery-plugins/jquery.scrollabletab/jquery.scrollable-tab.css" />
+        <script src="js/jquery-plugins/jquery.scrollabletab/jquery.scrollable-tab.js" type="text/javascript"></script>
+        -->
+      
+        <!--JQ blockui -->
+        <script type="text/javascript" src="js/jquery-plugins/blockui/jquery.blockUI-2.63.js"></script>      
+      
+        <!--JQ Dynatree -->
+        <link href='sc/appbuilder/js/dynatree-1.2.4/src/skin/ui.dynatree.css' rel='stylesheet' type='text/css'>
+        <script src='sc/appbuilder/js/dynatree-1.2.4/dist/jquery.dynatree-1.2.4.js' type='text/javascript'></script>
+      	<script src='sc/appbuilder/js/dynatree-1.2.4/jquery/jquery.cookie.js' type='text/javascript'></script>  
+      
+      	<link href='sc/appbuilder/js/contextMenu/src/jquery.contextMenu.css' rel='stylesheet' type='text/css'>
+        <script src='sc/appbuilder/js/contextMenu/src/jquery.contextMenu.js' type='text/javascript'></script>
+
+        <link type="text/css" rel="stylesheet" href="sc/appbuilder/js/codemirror/lib/codemirror.css" />
+        <script src="sc/appbuilder/js/codemirror/lib/codemirror.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/codemirror/addon/mode/loadmode.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/codemirror/addon/edit/matchbrackets.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/codemirror/addon/fold/foldcode.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/codemirror/addon/fold/brace-fold.js"></script>
+        <script src="sc/appbuilder/js/codemirror/addon/fold/xml-fold.js"></script>      
+
+        <!--<script src="js/codemirror/mode/javascript/javascript.js" type="text/javascript"></script>-->
+        <!--<script src="js/codemirror/mode/css/css.js" type="text/javascript"></script>-->
+        <!--<script src="js/codemirror/mode/htmlmixed/htmlmixed.js" type="text/javascript"></script>-->
+        <!--<script src="js/codemirror/mode/xml/xml.js" type="text/javascript"></script>-->
+      	<!--
+      	<script src="js/codemirror-3.1/mode/sql/sql.js" type="text/javascript"></script>
+        <script src="js/codemirror-3.1/mode/velocity/velocity.js" type="text/javascript"></script>
+      
+        <script src="js/codemirror-3.1/mode/groovy/groovy.js" type="text/javascript"></script>
+        -->
+        
+        <link rel="stylesheet" type="text/css" href="sc/appbuilder/js/jsoneditor-2.0.0/jsoneditor.css">
+        <script type="text/javascript" src="sc/appbuilder/js/jsoneditor-2.0.0/jsoneditor.js"></script>        
+        
+        
+        <script type="text/javascript" src="sc/appbuilder/js/layout/splitter.js"></script> 
+        <link rel="stylesheet" type="text/css" href="sc/appbuilder/js/layout/layout.css">
+        <script type="text/javascript" src="sc/appbuilder/js/layout/layout.js"></script>        
+        <script type="text/javascript" src="sc/appbuilder/js/layout/util.js"></script>
+        
+        <script src="sc/appbuilder/js/codemirror-ui/js/codemirror-ui.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="sc/appbuilder/js/codemirror-ui/css/codemirror-ui.css" type="text/css" media="screen" />        
+        <script src="sc/appbuilder/js/codemirror/addon/search/searchcursor.js" type="text/javascript"></script>
+        
+        <link rel="stylesheet" href="sc/appbuilder/js/searchbox/searchbox.css" type="text/css" media="screen" />        
+        <script src="sc/appbuilder/js/searchbox/searchbox.js" type="text/javascript"></script>
+        
+        <!--
+        <link rel="stylesheet" href="js/qtip/jquery.qtip.min.css" type="text/css" media="screen" />        
+        <script type="text/javascript" src="js/qtip/jquery.qtip.min.js"></script>        
+        -->
+        
+        <!--<link rel="stylesheet" href="js/qtip/jquery.qtip.min.css" type="text/css" media="screen" />        -->
+        <!--<script type="text/javascript" src="js/jquery.qtip-1.0.0-rc3.custom/jquery.qtip-1.0.0-rc3.min.js"></script>-->
+        
+        
+        <link rel="stylesheet" href="sc/appbuilder/js/jquery.qtip-2.0.1/jquery.qtip.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="sc/appbuilder/js/jquery.qtip-2.0.1/jquery.qtip.js"></script>
+        
+        <!--
+      	<link rel="stylesheet" href="todo-list-manager/alohaeditor-0.23.12/aloha/css/aloha.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="todo-list-manager/alohaeditor-0.23.12/aloha/lib/aloha.js"></script>
+        -->
+        <script type="text/javascript" src="todo-list-manager/tinymce_4.0.2_jquery/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
+        
+        <script src="js/ckeditor_4.2_full/ckeditor/ckeditor.js"></script>
+      	<script src="js/ckeditor_4.2_full/ckeditor/adapters/jquery.js"></script>
+      
+        <link rel="stylesheet" href="sc/appbuilder/js/jquery.timepicker/jquery-ui-timepicker-addon.css" type="text/css" media="screen" />
+        <script src="sc/appbuilder/js/jquery.timepicker/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+
+        <script src="sc/appbuilder/js/core/util.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/core.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/common_core.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/usermanagement.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/datatable.js" type="text/javascript"></script>
+        
+        <script src="sc/appbuilder/js/core/datastatement.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/connector.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/emailsender.js" type="text/javascript"></script>        
+        <script src="sc/appbuilder/js/core/scriptexecutor.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/fileuploader.js" type="text/javascript"></script> 
+        <script src="sc/appbuilder/js/core/instantiator.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/sysadmin.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/sysadmin_apptaxonomy.js" type="text/javascript"></script>
+
+      
+      	<script src="js/jquery-plugins/jquery.colorPicker/jquery.colorPicker.js"></script>
+      	<link rel="stylesheet" type="text/css" href="js/jquery-plugins/jquery.colorPicker/jquery.colorPicker.css"/>      
+
+	    <link rel="stylesheet" href="sc/appbuilder/js/colorbox/example4/colorbox.css" />
+        <script src="sc/appbuilder/js/colorbox/jquery.colorbox.js"></script> 
+      
+        <script src="sc/appbuilder/js/core/runtime_resources.js" type="text/javascript"></script>
+        <script src="sc/appbuilder/js/core/crud_test.js" type="text/javascript"></script>
+      	<script src="todo-list-manager/todo-list.js" type="text/javascript"></script>
+      
+        
+      
+        <script src="sc/appbuilder/js/core/html-layout.js" type="text/javascript"></script>
+      	<script src="sc/appbuilder/js/core/mutation-observer.js" type="text/javascript"></script>
+        <!--<script src="sc/appbuilder/js/jquery.dnd_page_scroll/jquery.dnd_page_scroll.js" type="text/javascript"></script>-->
+        <!--<script src="sc/appbuilder/js/html2canvas/html2canvas.js"></script>--> 
+        <!--<script src="sc/appbuilder/js/jquery.jresizer/resizer.js" type="text/javascript"></script>-->
+        <link rel="stylesheet" href="sc/appbuilder/js/jquery.jresizer/viewport-resizer.css" />
+      
+        <style type="text/css">
+           body{ /*font: 62.5% ; margin: 10px;*/font-family:Droid Sans, Arial,"Trebuchet MS", sans-serif; line-height: 1.5;margin-top:0;padding-top:0}
+           .CodeMirror {
+               font-size:2em;
+               border: 1px solid #eee;
+               background: white;
+              z-index: 0 !important;
+            /*height:100%;*/
+           }
+            .CodeMirror-foldmarker {
+              color: blue;
+              text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
+              font-family: arial;
+              line-height: .3;
+              cursor: pointer;
+            }
+          /*
+           .CodeMirror-scroll {
+            	height:100%;
+                overflow-y: hidden;
+                overflow-x: auto;
+        }*/
+            
+           a:focus { outline: none; } 
+
+           table.jqgrid-column-table {border-style:none;border-top-style:none;border-bottom-style:none;border-left-style:none;border-right-style:none;border-collapse:collapse;}
+           table.jqgrid-column-table td,tr {border-style:none;border-top-style:none;border-bottom-style:none;border-left-style:none;border-right-style:none;}
+            
+           .crudzilla-dnd-bookmark-tooltip {
+            z-index: 0 !important;
+            width:320px
+           }
+           .crudzilla-dnd-viewport-resizer-tooltip {
+            z-index: 0 !important;
+            width:320px
+           }
+          
+           .crudzilla-find-replace-tooltip {
+            z-index: 0 !important;
+           
+           }          
+          
+           .context-menu-item.icon-new-file
+           {background-image: url("img/silk/page_white_star.png");}          
+          
+           .context-menu-item.icon-add-file
+           {background-image: url("img/silk/page_add.png");}           
+          
+           .context-menu-item.icon-generate-update-package
+           {background-image: url("img/mime/system-software-update.png");}            
+          
+           .context-menu-item.icon-zip-file
+           {background-image: url("img/silk/compress.png");}           
+
+           .context-menu-item.icon-unzip-file
+           {background-image: url("img/silk/folder_table.png");}           
+                   
+          
+           .context-menu-item.icon-copy-file
+           {background-image: url("img/silk/page_copy.png");}           
+          
+           .context-menu-item.icon-delete-file
+           {background-image: url("img/silk/page_delete.png");}           
+          
+           .context-menu-item.icon-paste-file
+           {background-image: url("img/silk/page_paste.png");}   
+          
+           .context-menu-item.icon-find-in-folder
+           {background-image: url("img/silk/folder_find.png");}            
+          
+           .context-menu-item.icon-find-in-file
+           {background-image: url("img/silk/page_find.png");}            
+          
+           .context-menu-item.icon-reload-folder
+           {background-image: url("img/silk/arrow_refresh_small.png");}
+          
+          
+           .context-menu-item.icon-datamodel
+           {background-image: url("img/silk/database_table.png");}          
+          
+          
+           .context-menu-item.icon-datamodel-edit
+           {background-image: url("img/silk/table_edit.png");}            
+          
+          
+           .context-menu-item.icon-crud-httpconnector
+          {background-image: url("img/mime/connector.png");}  
+          
+           .context-menu-item.icon-crud-emailsender
+          {background-image: url("img/mime/internet-mail.png");}
+
+           .context-menu-item.icon-crud-scriptexecutor
+          {background-image: url("img/mime/text-java.png");}
+
+           .context-menu-item.icon-crud-datastatement
+          {background-image: url("img/mime/text-sql.png");}
+
+           .context-menu-item.icon-crud-instantiator
+          {background-image: url("img/mime/text-x-patch.png");}   
+          
+           .context-menu-item.icon-crud-fileuploader
+          {background-image: url("img/mime/upload.png");}  
+          
+           .context-menu-item.icon-file-css
+          {background-image: url("img/mime/css-nb.png");}
+
+           .context-menu-item.icon-file-java
+          {background-image: url("img/mime/java-nb.png");}
+
+           .context-menu-item.icon-file-ruby
+          {background-image: url("img/mime/application-x-ruby.png");}
+
+           .context-menu-item.icon-file-python
+          {background-image: url("img/mime/text-x-python.png");}          
+          
+           .context-menu-item.icon-file-javascript
+          {background-image: url("img/mime/javascript-nb.png");}
+
+           .context-menu-item.icon-file-html
+          {background-image: url("img/mime/text-html.png");}           
+          
+          
+           .context-menu-item.icon-file-xml
+          {background-image: url("img/mime/xml-nb.png");}          
+          
+          
+           .context-menu-item.icon-file-folder
+          {background-image: url("img/mime/folder-brave.png");}           
+          
+          
+           .context-menu-item.icon-file-webapp
+          {background-image: url("img/mime/webapp-brave.png");}           
+          
+          
+           .context-menu-item.icon-file-action-layout
+          {background-image: url("img/silk/layout.png");}           
+          
+           .context-menu-item.icon-file-action-uipart
+          {background-image: url("img/nav/document-properties.png");}  
+          
+          
+           .context-menu-item.icon-file-action-openbrowser
+          {background-image: url("img/silk/page_world.png");}           
+          
+           .context-menu-item.icon-file-action-wysiwyg
+          {background-image: url("img/fugue-icons-3.5.6/icons/document-word-text.png");}           
+          
+          
+          
+           span.appresource-dir-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder-brave.png");
+           }
+           span.appresource-dir-treenode.dynatree-ico-ef span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder-open-brave.png");
+           }
+           
+           span.apptaxonomy-root-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder_home-brave.png");
+           }
+           span.apptaxonomy-root-treenode.dynatree-ico-ef span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder_home-brave.png");
+           }           
+           
+           span.apptaxonomy-category-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder-brave.png");
+           }
+           span.apptaxonomy-category-treenode.dynatree-ico-ef span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder-open-brave.png");
+           }           
+           
+           span.apptaxonomy-category-link-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder-remote-brave-link.png");
+           }           
+           
+           
+           span.appresource-root-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder_home-brave.png");
+           }
+           span.appresource-root-treenode.dynatree-ico-ef span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder_home-brave.png");
+           }
+
+
+           
+           span.datastatement-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/text-sql.png");
+           }
+        
+           span.scriptexecutor-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/text-java.png");
+           }           
+           
+           span.emailsender-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/internet-mail.png");
+           }           
+           
+           span.fileuploader-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/upload.png");
+           }           
+           
+           span.connector-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/connector.png");
+           }           
+           
+           span.instantiator-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/text-x-patch.png");
+           }           
+           
+           
+           
+           span.appresource-stm-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/text-sql.png");
+           }
+        
+           span.appresource-ste-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/text-java.png");
+           } 
+           
+           
+           span.appresource-svc-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/connector.png");
+           } 
+           
+           span.appresource-upl-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/upload.png");
+           } 
+           
+           
+           span.appresource-esd-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/internet-mail.png");
+           }            
+           
+           span.appresource-ins-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/text-x-patch.png");
+           }            
+           
+           span.usermanagement-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/user_auth.png");
+           }   
+           
+           span.datasource-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/datasource.png");
+           }            
+           
+           
+           span.definition-search-root-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("sc/appbuilder/img/folder-saved-search.png");
+           }
+          
+          
+          
+           span.appresource-css-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/css-nb.png");
+           }
+                  
+          
+           span.appresource-html-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/text-html.png");
+           }
+          
+          
+           span.appresource-xml-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/xml-nb.png");
+           }
+                
+          
+           span.appresource-java-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/java-nb.png");
+           }
+        
+          
+          
+           span.appresource-js-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/javascript-nb.png");
+           }           
+          
+           span.appresource-compress-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/compress.png");
+           }
+        
+           span.appresource-compress-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/compress.png");
+           }  
+          
+           span.appresource-image-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/image-x-generic.png");
+           }
+        
+           span.appresource-image-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/image-x-generic.png");
+           }  
+          
+           span.appresource-svg-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/svg-nb.png");
+           }
+
+           span.crud-executable-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+            	background-image: url("img/mime/application-x-executable.png");
+           }          
+            
+           span.corrupt-crud-executable-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+            	background-image: url("img/mime/software-update-urgent.png");
+           }
+
+          
+           span.appresource-vm-treenode span.dynatree-icon
+           {
+                background-position: 0 0;
+            	background-image: url("img/mime/application-x-perl.png");
+           }          
+          
+          
+           span.appresource-webapp-folder-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/webapp-brave.png");
+           }
+           span.appresource-webapp-folder-treenode.dynatree-ico-ef span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/webapp-open-brave.png");
+
+           }          
+                 
+           span.appresource-webapp-folder-treenode a
+           {
+              font-weight: bold;
+              color: #204a87;
+           }          
+          
+           span.appresource-webapp-public-folder-treenode a
+           {
+              font-weight: bold;
+              color: #5c3566;
+           }
+          
+           span.appresource-root-treenode a
+           {
+              font-weight: bold;
+              color: #204a87;
+           }          
+          
+          /*span.appresource-dir-treenode a
+           {
+              font-weight: bold;
+              color: #729fcf;
+        }          */
+          
+           span.appresource-webapp-public-folder-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/webapp-public-brave.png");
+           }
+           span.appresource-webapp-public-folder-treenode.dynatree-ico-ef span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/webapp-public-open-brave.png");
+           }      
+          
+          
+           span.appresource-crudzilla-backup-folder-treenode.dynatree-ico-cf span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/folder-backup-brave.png");
+           }
+           span.appresource-crudzilla-backup-folder-treenode.dynatree-ico-ef span.dynatree-icon
+           {
+                background-position: 0 0;
+                background-image: url("img/folder-backup-open-brave.png");
+           }          
+        </style>
+
+        <style>
+          .scroll-pane { overflow: auto; width: 99%; float:left; }
+          .scroll-content { width: 2440px; float: left; }
+          .scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
+          .scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
+          .scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto; }
+          .scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
+          .scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
+          .scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }
+          .card-project-title {font-family: 'Ubuntu Condensed', sans-serif;text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);}
+          .card-project-toolbar-button {font-weight:'bold'}
+          .main-card-project-header {text-shadow: 0 4px 0 rgba(204, 204, 204, 0.8);font-family: 'Ubuntu Condensed', cursive;}
+          
+          
+          .ubuntu-font {font-family: 'Ubuntu Condensed', sans-serif;text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);}
+          
+          .gray-background {background: linear-gradient(#F9F9F9, #EEEEEE) repeat scroll 0 0 #F9F9F9;}
+          
+          .crudzilla-dnd-active {border-style:dotted;border-width:1px;}
+          
+          .crudzilla-dnd-pane-resizer-on {height:5px;border-style:dashed;width:100%;cursor:row-resize}
+          .crudzilla-dnd-pane-resizer-off {height:5px;border-style:solid;width:100%;cursor:row-resize}
+        </style>
+      
+         <script type="text/javascript">
+                                                        //MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+            var uninitialized_editors = [];
+           //$('body').hide();
+            $(document).ready(function(){
+                $.blockUI();
+                crudlayout.load();
+                $('body,html').css({"visibility":"visible"});
+                $(document).tooltip();
+                appBuilder.jqInit(function(){
+                  crudlayout.resize();
+                  //$('#main-frame').css({"visibility":"visible"});
+                  $('#main-toolbar-holder,#auto').css({"visibility":"visible"});
+                });
+            });
+
+
+        </script>      
+
+    <style type="text/css">
+        html, body {
+                margin: 0;			/* Remove body margin/padding */
+                padding: 0;
+                overflow: hidden;	/* Remove scroll bars on browser window */
+                font-size: 75%;
+        	    visibility:hidden;
+        }
+        body {
+        /*background-color:#46a4d8;*/
+        background-image: url("sc/appbuilder/img/stripey.png");
+        		
+        background-repeat:repeat;
+        }        
+        /*Splitter style */
+
+    .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    }
+        /*.ui-tabs-nav li {position: relative;}*/
+        /*.ui-tabs-selected a span {padding-right: 10px;}*/
+        /*.ui-tabs-close {display: none;position: absolute;top: 3px;right: 0px;z-index: 800;width: 16px;height: 14px;font-size: 10px; font-style: normal;cursor: pointer;}*/
+        /*.ui-tabs-selected .ui-tabs-close {display: block;}*/
+        /*.ui-layout-west .ui-jqgrid tr.jqgrow td {padding:0px; border-bottom: 0px none;}*/
+        .rotate
+            {
+                /* for Safari */
+                -webkit-transform: rotate(-90deg);
+
+                /* for Firefox */
+                -moz-transform: rotate(-90deg);
+
+                /* for Internet Explorer */
+                filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            }
+         #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+         .closable-tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+         /*ul.dynatree-container {border:none}*/
+         #left-panel {width:25%;float:left;}
+         #right-panel {width:74%;float:right}
+         #home-content-tab {}
+         .qtip-container {padding:2px}
+         .ui-icon-close-right { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+         .ui-icon-clipboard-right {float: right;  margin: 0.0em 0.0em 0 0; cursor: pointer; }
+      
+        .card-group-column { width: 170px; float: left; padding-bottom: 0px; }
+        .portlet { margin: 0 1em 1em 0; }
+        .portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+        .portlet-header .ui-icon { float: right; }
+        .portlet-content { padding: 0.4em; }
+        .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+        .ui-sortable-placeholder * { visibility: hidden; }
+      
+    </style>
+
+    	<link type="text/css" href="css/searchbox-style.css" rel="stylesheet" />
+      
+      
+    <style type="text/css">
+    /* Badger
+------------------------- */
+
+[class*="badger"] {
+    position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+[class*="badger"]:after {
+    content: attr(data-badger);
+    position: absolute;
+    top: 0;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #999;
+    color: #fff;
+}
+
+.badger-left:after {
+    left: 0;
+    border-radius: 6px 0 6px 0;
+}
+
+.badger-right:after {
+    right: 0;
+    border-radius: 0 6px 0 6px;
+}
+
+.badger-danger:after {
+    background: #d9534f;
+}
+
+.badger-warning:after {
+    background: #f0ad4e;
+}
+
+.badger-success:after {
+    background: #5cb85c;
+}
+
+.badger-info:after {
+    background: #5bc0de;
+}
+
+.badger-inverse:after {
+    background: #222;
+}    </style>
+      
+      
+    </head>
+    <body>
+          
+          
+        <div class="todo-list ui-widget-content ui-widget-header crudlayout" id="main-toolbar-holder" style="visibility:hidden;padding:1px;font-size:2em;"></div>
+        <div id="auto" style="visibility:hidden">
+            <div id="contents">
+
+                <div id="layout-left-panel">
+                     #parse( "ui-left.vm" )
+                </div>
+
+                <div id="splitter" class="ui-widget-content ui-state-default" style="border-top:0" ></div>
+
+                <div id="layout-right-panel" >
+                    #parse( "ui-center.vm" )                   
+                </div>                
+                <script type="text/javascript">
+                    crudlayout.load();
+                    crudlayout.resize();
+                </script>
+            </div>
+        </div>
+
+        
+      
+        <script type="text/javascript">
+            //crudlayout.resize();
+        </script>        
+      
+        <!---THIS IS ONLY FOR USAGE TRACKING, SO WE KNOW WHEN PEOPLE ARE USING THE PRODUCT AND WHERE -->
+        <iframe width="0" height="0" style="width:0;height:0;position:absolute;left:-100000px" src="http://www.crudzilla.com/usage-tracker.html"></iframe> 
+    </body>
+</html>

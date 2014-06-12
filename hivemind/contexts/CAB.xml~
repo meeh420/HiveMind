@@ -1,0 +1,25 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure id="crudzillaApp" class="org.eclipse.jetty.webapp.WebAppContext">  
+  
+  <Set name="contextPath">/</Set>
+  <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/crudzilla.war</Set>
+  
+  <Set name="maxFormContentSize" type="int">600000</Set>
+  <Get name="securityHandler">
+    <Set name="loginService">
+     <New class="org.eclipse.jetty.security.JDBCLoginService">
+	    <Set name="name">Crudzilla</Set>
+	    <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/crudzilla.jdbc.realm.properties</Set>
+            <!-- To enable reload of realm when properties change, uncomment the following lines -->
+            <!-- changing refreshInterval (in seconds) as desired                                -->
+            <!--
+            <Set name="refreshInterval">5</Set>
+            <Call name="start"></Call>
+            -->
+      </New>
+    </Set>
+    <Set name="checkWelcomeFiles">true</Set>
+  </Get>
+
+</Configure>

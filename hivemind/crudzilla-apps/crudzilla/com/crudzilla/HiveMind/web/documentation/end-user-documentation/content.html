@@ -1,0 +1,2472 @@
+    
+      <div id="documenter_cover" class="tab-pane active">
+        <h1 style="font-family: 'Ubuntu Condensed', sans-serif;text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);">Crudzilla Web Application Builder (HiveMind)</h1>
+        <h2 style="font-family: 'Ubuntu Condensed', sans-serif;text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);">User Guide</h2><hr>
+        <h3>What is HiveMind?</h3>
+            <p>
+				HiveMind is a fully integrated platform that combines an application container (jetty), 
+				a middle-ware and a developer environment to provide a one stop solution
+				for deliverying web applications.
+            </p>        
+        <ul>
+          
+          <li>
+        <p style="font-weight:500">
+          The HiveMind platform significantly reduces the complexity and time to market required to build web applications, thus 
+          a quicker ROI.
+        </p>
+          </li>
+          <li>
+            <p style="font-weight:500">
+              HiveMind is designed for both moderately skilled and experienced developers. 
+              </p>
+          </li>
+
+          <li>
+        
+        <p style="font-weight:500">
+          Built on the JVM, thus giving you access to the vast JVM platform and technology base
+          including all the available libraries. 
+        </p>
+          </li>
+          <li>
+            <p style="font-weight:500">
+              HiveMind is polygot, allowing developers skilled in different
+          programming languages to benefit from a single platform.
+            </p>
+          </li>
+          
+          <li>
+            <p style="font-weight:500">
+              HiveMind is a native web platform, meaning the entire platform is built on web technology including
+              the front-end which is browser based.
+            </p>
+          </li>          
+        </ul>
+        <p>
+          <span class="point-to-note">Note</span>, you'll see the word <span class="list-item-header">crud</span> referenced in the docs, cruds are
+          the executable constructs that make up the applications built on the HiveMind platform. The word <span class="list-item-header">crud</span> and <span class="list-item-header">executable</span> are used interchangealy.
+          There are various types of cruds and they are described in the docs.
+        </p>
+        
+        <p>
+          You'll also see reference to argument map, this is a map (<span class="list-item-header">java.util.HashMap&lt;String,Object&gt;</span>) that is used to propagate
+          runtime values across your application. In code it can be referenced as <code>arguments</code>.
+        </p>
+        
+  		<p style="font-weight:bold">
+          For architectual insight into the HiveMind platform and its design you may read the <a href="../" target="_blank">HiveMind technical document</a> .
+        </p>        
+      </div>
+      
+      
+      <section  class="tab-pane" id="create-new-app">
+          <h2>Creating a new web App.</h2>
+        <p>
+          To create a new application, right-click on target folder and do <span class="list-item-header">New==>Web App</span>.
+        </p>
+        <img src="img/new-app.png"/>
+        
+          <ul>
+            
+            <li>
+              <span class="list-item-header">Create Authentication Tables</span>
+              <p>
+              If you want authentication tables to be generated for this app then check the box.              
+              Checking this box will enable authentication for your new app. The folder <code>secure</code> in your new
+              app folder is the default secure directory of your application. You can edit your
+              <code>web.xml</code> file to chose different security settings.<br/><br/>
+              
+              The default login is <code>developer/developer</code>
+              </p>
+            </li>
+            
+            <li>
+              <h6>Database Connection</h6>
+              <p>You have two database choices when setting up authentication</p>
+              <ul>
+                <li>
+                	You may specify a datasource for an already existing database.
+                  
+                    <p>
+                        If you want to use a database such as mysql, oracle..etc, you'll need to first define a 
+                      <a href="#datastatement" data-toggle="tab">DataSource</a> object.                      
+                    </p>
+                    <p>
+                        To create a DataSource object for your application, right-click on target folder and do <span class="list-item-header">New==>Application Object==>Data Source</span>.
+                        
+                    </p>
+                    <p>
+              			If you have created a DataSource object for your new application, then drag-n-drop
+              			it on the form above. <span class="point-to-note">Note</span> that this Database must already exist.
+                    </p>
+                </li>
+                <li>
+                    You may choose to have HiveMind create a Database for you, this is however not recommended.
+         			If you choose to create a database, then an embeded derby database is created,
+                	this database would not require authentication. See derby documentation for details.
+                  <span class="point-to-note">Note</span> the embeded derby database is for the HiveMind product and really shouldn't be
+                  used for other applications.
+                 </li>
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              If you only specify a name and no DataSource, the App would be generated without authentication enabled.
+              You'll then need to manually enable authentication via edit of <code>web.xml</code> and <code>cwab-dist/etc/&lt;APP-NAME&gt;.jdbc.properties</code>
+            </li>
+          </ul>
+       
+        
+          <p>
+            If you are new to HiveMind, your first application is a good place to start exploring the capabilities of the platform.
+            New applications have boilerplate executables that cover all the key concepts of the platform.
+          </p>
+        
+       	  <p>
+            <span class="point-to-note">Note:</span> Creating a new app currently can be a bit slugish so don't be alarmed. This is because taxonomy
+            operations that include generating boilerplate artifacts are inherently inefficient. Future improvements will make this process
+            faster. This should however not be a problem given that creating new apps is not a frequent occurence.
+          </p>        
+          
+          <p><a class='youtube' href="http://www.youtube.com/embed/__YaE84JGu8?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>
+      
+      <section  class="tab-pane" id="nvp-processing">
+        <h2>Request Parameters</h2>
+        <p>
+          The HiveMind platform provides a simple and powerful mechanism for managing request 
+          parameters in an application. Parameter type and validation are handled by the user
+          simply stating what constraints the parameter must adhere to. 
+          
+        </p>
+        <p>
+          For instance to ensure a given parameter is an integer, simply declare the parameter on the <span class="list-item-header">Parameters & Validation</span>
+          tab and specify any additional validation. The user does't have to write any code or do
+          any additional configuration in an external file. 
+        </p>
+        <p>
+          More importantly, parameters are contextual, in other words the parameter is added to the executable contruct it applies to. 
+          Every executable has a <span class="list-item-header">Parameters & Validation</span> tab for declaring parameters.
+        </p>
+        <p>
+          Parameters also have a number of powerful capabalities that are described below.
+        </p>
+        <img src="img/nvp.png"/>
+        <ul>
+          <li>
+            <span class="list-item-header">Name</span> - The name of the parameter.
+          </li>
+          <li>
+            <span class="list-item-header">Required</span> - If checked, this parameter would be required on the argument map during execution. If it is missing, an error would be returned and execution terminated.
+          </li>
+          <li>
+            <span class="list-item-header">Final</span> - If checked, this paramater's default value cannot be overwriten by a supplied
+            value. This is good for holding configuration that you don't want users to alter.
+          </li>
+          <li>
+            <span class="list-item-header">Type</span> - This represents the parameter type. If default value doesn't conform to the format
+            of this type, an error may be returned.
+            <ul>
+              <li><span class="list-item-header">crud</span> - if you choose to evaluate a crud type, the value should be a path that is either 
+                relative to the current execution or an absolute path in relation to the application 
+                crud home directory. In other words an absolute path isn't an absolute file system path
+                but rather a path that starts with <code>/</code> relative to the application's crud home
+                directory, specifically the directory pointed to by the servlet init parameter <span class="list-item-header">app-home</span>.
+              </li>
+              <li><span class="list-item-header">json</span> - if you choose to evaluate a json value, you may parameterize fields by 
+                 prefixing them with <code>:crudzilla_param&lt;PARAMETER-NAME&gt;</code> where 
+                  <code>&lt;PARAMETER-NAME&gt;</code> is the name of the parameter whose value should be
+                  used to initialize the given json field. <code>&lt;PARAMETER-NAME&gt;</code> doesn't need to be declared, it only needs to be on the argument map.
+              </li>
+              
+              <li><span class="list-item-header">plain-text</span> - if you choose to evaluate a plain text value,
+                string interpolation would be performed. ie HiveMind would look for and evaluate occurences of <code>#{&lt;EXPRESSION&gt;}</code> where 
+                  <code>&lt;EXPRESSION&gt;</code> is any Java style expression, including variable access.
+              </li>              
+              
+            </ul>
+          </li>
+          <li>
+            <span class="list-item-header">Validation</span> - Click on this to reveal the various validation options. The validation options
+            are dependent on the type. Validation error codes are defined in <code>crudzilla-app-settings/validation-error-definitions</code>.
+            To see the error message structure simply run a test with the test console.
+          </li>
+          <li>
+            <span class="list-item-header">Default Value</span> - This is the default value for the parameter. Depending on the type, the edit button
+            may be used to edit the data.
+          </li>
+          <li>
+            <span class="list-item-header">Eval (l/r)</span> - This option controls evaluation of the parameter name/value pair. If the first
+            checkbox is checked, the Name field is assumed to be an assignment expression to be evaluated, for
+            instance to assign the value to an array index. If the second checkbox is checked, the Default Value is 
+            assumed to be an expression to be evaluated.             
+            <p>
+            Expression evaluation includes crud invocations, in other words to invoke a crud and use the result as
+            the value of a parameter, you must specify a type of "crud" and check the second box.
+            </p>
+            
+            <p>
+            Similarly, to allow for json evaluation, a type of "json" must be specified and second box
+            checked.
+            </p>
+            <p>
+              In general you can specify any Java style expression to be evaluated.
+            </p>
+          </li>
+        </ul>
+        
+        <h5>Generative Parameter Values</h5>
+        <p>
+          These are built-in generative constructs. When you use them as a value for a parameter
+          and evaluate them, their values would be generated.
+        </p>
+        <ul>
+          <li><span class="list-item-header">crudzilla_next_insert_id</span> - when used as a parameter expression or in a DataStatement,generates a uuid, this would be used mostly in DataStatements to generate ids.</li>
+          <li><span class="list-item-header">crudzilla_last_insert_id</span> - this has the value of the most recently generated uuid and can be accessed from the argument map.</li>
+          <li><span class="list-item-header">crudzilla_generate_uuid</span> - generates a uuid.</li>          
+          <li><span class="list-item-header">crudzilla_current_timestamp</span> - when used as a parameter expression or in a DataStatement, generates current time stamp in utc.</li>
+          <li><span class="list-item-header">crudzilla_current_timestamp_seconds</span> - when used as a parameter expression or in a DataStatement, generates current time stamp in utc in seconds.</li>
+          <li><span class="list-item-header">crudzilla_current_timestamp_minutes</span> - when used as a parameter expression or in a DataStatement, generates current time stamp in utc in minutes.</li>
+          <li><span class="list-item-header">crudzilla_empty_string</span> - generate an empty string, by default if a value isn't specified for a parameter, its value is null.</li>
+          <li><span class="list-item-header">crudzilla_user</span> - returns the user name of currently logged-in user, can be accessed from argument map.</li>
+        </ul>
+        
+        <h5>Variable Selection</h5>
+        <p>
+          Variable selection is a mechnism that allows a parameter to get its value from another parameter
+          selected based on a switch value. An example of a variable switch value would be the value <code>qa</code> to indicate
+          that the parameter should get its value for the QA environment.
+        </p>        
+        <p>
+          Variable selection can be setup globally via <code>crudzilla-app-settings/system-settings</code> with
+          an entry for parameter <code>crudzilla_variable_selector_switches</code>, or locally.
+        </p>
+        <p>
+          To setup variable selection.
+        </p>
+        <ul>
+          <li>
+            <p>
+              By default your <code>crudzilla-app-settings/system-settings</code> should have a global
+              switch setup.
+            </p>
+            <p>
+            	<img src="img/variable-switch-sys-setting.png"/>
+            </p>
+            
+            <p>
+              <code>crudzilla_variable_selector_switches</code> points to the global application-wide switches
+              <code>crudzilla-app-settings/variable-switches</code> and typically would look something like this.              
+            </p>
+            <p>
+              <img src="img/app-variable-switches.png"/>
+            </p>
+            <p>
+              Each entry represents a switch whose value would determine the value of selector parameters whose
+              value depend on this switch. So for instance a parameter's value may depend on whether the language
+              is English or French..etc
+            </p>
+          </li>
+          <li>
+            Set the value of the parameter whose value you wish to set based on a switch to 
+            <code>crudzilla_selector_&lt;SWITCH-PARAMETER-NAME&gt;</code> 
+            where 
+            <code>&lt;SWITCH-PARAMETER-NAME&gt;</code> is a parameter that holds the switch value, in other
+            words this parameter is the switch variable.
+            For instance <code>&lt;SWITCH-PARAMETER-NAME&gt;</code> could contain one of the following values:
+            <ul>
+                <li>dev</li>
+                <li>qa</li>
+                <li>uat</li>
+                <li>prod</li>
+            </ul>
+            <p>
+              <span class="point-to-note">Note</span> that this parameter is an expression thus you should check the right expression box.
+            </p>
+            <p>
+              HiveMind would first look on the current argument map for <code>&lt;SWITCH-PARAMETER-NAME&gt;</code>,
+              if it isn't found, then it will look at the application settings for the object
+              <code>crudzilla_variable_selector_switches</code>. This object should have the application
+              level switches.
+            </p>
+          </li>
+          <li>
+            <p>
+            After obtaining a switch value, HiveMind uses a prefix pattern to get the parameter's correct value.
+            </p>
+            <p>
+            What this means is that HiveMind would look at the argument map for the value of a parameter
+            called <code>&lt;SWITCH-VALUE&gt;_&lt;CURRENT-PARAMETER-NAME&gt;</code>.
+            </p>
+            <p>
+              <code>&lt;SWITCH-VALUE&gt;</code> is the value obtained from the parameter with name <code>&lt;SWITCH-PARAMETER-NAME&gt;</code>.
+              <code>&lt;CURRENT-PARAMETER-NAME&gt;</code> is the name of the current parameter being evaluated.
+            </p>
+          </li>
+          <li>
+            <p>
+              Variable selection may be setup locally, meaning without using the <code>crudzilla-app-settings/system-settings</code>
+              <code>crudzilla_variable_selector_switches</code> entry.
+            </p>
+            <p>
+               Local setup is similar to global setup except the <code>&lt;SWITCH-PARAMETER-NAME&gt;</code> would be
+              on the current argument map.
+            </p>
+            <p>
+            	<img src="img/variable-switch-local.png"/>
+            </p>
+            <p>
+              Above, the parameter <code>databaseUrl</code> at run time would be set to the value of the parameter <code>qa_databaseUrl</code>, which
+              is the value <code>localhost:3306/db1</code>.
+            </p>
+            <p>
+              If the switch variable parameter <code>environment</code> had been set to the value <code>dev</code> then the resulting value would have been
+              <code>localhost/derby</code> which is the value of the selected parameter <code>dev_databaseUrl</code>.
+            </p>
+          </li>
+        </ul>
+        
+        
+        <h5>Assigning Parameters to other Parameters</h5>
+        <p>
+        To assign a parameter to another, set the value of the parameter to 
+        <code>:&lt;SOURCE-PARAMETER-NAME&gt;</code> and enable expression evaluation.
+        </p>
+        <p>
+          <span class="point-to-note">Note</span> that the <code>&lt;SOURCE-PARAMETER-NAME&gt;</code> must be already on
+          the argument map, meaning it must be listed before the current parameter.
+        </p>
+        
+        <p>
+        <span class="point-to-note">Note:</span> Parameters are processed in the order they are listed (ie sequentially) so parameters that depend on the
+        value of other parameters must be listed below those depended upon parameters.
+        </p>
+        
+        <p>
+        <span class="point-to-note">Note</span> that all parameters that are expressions must be final by default in order
+        for parameter expressions to be evaluated. This is for security reasons, it prevents user
+        supplied values from being evaluated. To override this behaviour see the configuration section.
+        </p>
+      </section>    
+      
+      <section  class="tab-pane" id="scriptexecutor">
+        <h2>Writing Code</h2>
+        <p>
+          HiveMind is a polyglot platform, meaning it allows the user to write code in a number of programming
+          languages. The HiveMind construct that supports code execution is called a ScriptExecutor. You create
+          ScriptExecutors by right-clicking on the folder you want to save them in and do <span class="list-item-header">New==>Crud==>ScriptExecutor</span>,
+          then choose the type of language you want to code in.
+        </p>
+        <img src="img/scriptexecutor.png"/>
+        <p>
+          Above shows the code editor, the code editor depends on the language of the ScriptExecutor.
+          When creating a ScriptExecutor, depending on the type you may have the choice to create a
+          file on the disk. For instance velocity templates can be loaded from file sytem or the template
+          may be provided dynamically.          
+        </p>
+        <p>
+          When code is loaded from file, cruds are still the entry point to the code, in other words
+          you can't invoke a velocity template directly, you must invoke the corresponding ScriptExecutor.
+        </p>
+        
+        <p>
+			ScriptExecutor have a number of native objects available to scripts.
+        </p>
+        <ul>
+          <li><span class="list-item-header">crud</span> - 
+            This object is used for invoking other executables. It has the following methods:
+            <ul>
+              <li><span class="list-item-header">add</span></li>
+              <li><span class="list-item-header">using</span></li>
+              <li><span class="list-item-header">call</span></li>
+              <li><span class="list-item-header">logger</span> - see section on logging</li>
+              <li><span class="list-item-header">appBaseDir</span> - returns the file system path of application's <code>web</code> folder.</li>
+            </ul>
+            <p>
+              The usage syntax of the <span class="list-item-header">crud</span> object when calling other executables is as follows: <code style="display:block">crud.[add(&lt;parameter-name&gt;,&lt;parameter-value&gt;).]*[using(&lt;module-name | module-path&gt;).]<br/>call(&lt;crud-path&gt;[,&lt;arguments-map&gt;][,&lt;run-as-from-serverside&gt;]);</code>
+            </p>
+            <ul>
+              <li>
+                <span class="list-item-header">crud-path:</span> This is either a relative or absolute path of an executable. Both relative and absolute paths are resolved relative to the application <code>web</code> directory.
+              </li>
+              <li>
+                <span class="list-item-header">arguments-map:</span> This is a <span class="list-item-header">java.util.HashMap</span> object to be passed as an <code>arguments</code> map for the call. 
+                If this argument is supplied, the parameters added via an <span class="list-item-header">add</span> call will be ignored.
+              </li>
+              <li>
+                <span class="list-item-header">run-as-from-serverside:</span> Set this to <code>false</code> so the call is treated as if it came directly from browser thus enforcing server-side access restriction, the default is <code>true</code>.
+                This is generally useful if your application uses an interceptor.
+              </li>              
+              <li>
+              	<span class="list-item-header">module-path:</span> this is either a relative or absolute file system path of a module. If the path is relative, it will be resolved against
+                the system setting property <code>crudzilla_module_base</code>, if <code>crudzilla_module_base</code> is not set then it is resolved against the asset directory.
+              </li>              
+              <li>
+              	<span class="list-item-header">module-name:</span> It will be resolved against the system setting property <code>crudzilla_module_base</code>. If <code>crudzilla_module_base</code> is not set then it is resolved against the 
+                default module locations <code>crudzilla-modules</code> in the HiveMind installation directory. <span class="point-to-note">Note</span> the module name is the app name, which is the same as the folder name.
+              </li>              
+            </ul>
+
+          </li>
+          <li>
+            <span class="list-item-header">crudzilla</span> - 
+            This is an object that represents the current instance of the HiveMind execution engine. 
+            In general it should not be used by a developer. However it does have the method
+            <code>sysSetting</code> which contains <code>crudzilla-app-settings/system-setting</code>.
+            The object returned by this method has <code>get</code> and <code>set</code> methods for
+            accessing the properties.
+          </li>
+          <li>
+            <span class="list-item-header">httpRequest</span> - 
+            HttpServletRequest object
+          </li>
+          <li>
+            <span class="list-item-header">httpResponse</span> - 
+            HttpServletResponse object
+          </li>
+          <li>
+            <span class="list-item-header">arguments</span> - 
+            Argument map as described above
+          </li>
+          <li>
+            <span class="list-item-header">crudzilla_user</span> - 
+            currently logged in user, if any
+          </li>
+        </ul>    
+        <h5>Modules</h5>
+        <p>
+          Modules are a way to make applications dependent on other applications. Modules are just depended
+          upon applications. Of course the application could just be a set of functionality to be
+          used by other applications, in other words not a standalone application.
+        </p>
+        <p>
+          The <code>using</code> method decribed above is what you use to invoke a call to a module.
+        </p>
+        
+        <p>
+          The file extension of ScriptExecutor is "ste".
+        </p>
+        
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/AqeOS2hqtMg?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>
+      
+      <section   class="tab-pane" id="datastatement">
+        <h2>Database Interaction</h2>
+        <p>
+          Perhaps the most powerful feature of the HiveMind platform is it Database interaction capability.
+          The HiveMind platform reduces the work required to interact with a database to simply specifing the
+          necessary SQL. The user doesn't have to write any additional code to interact with data.
+        </p>
+        <p>
+          Besides SQL, the user doesn't need to know any other programming concepts to do database interactions.
+          The executable construct that supports Database interactions is called a DataStatement. To create a DataStatement
+          the user simply decides where to put it, right click on the folder and do <span class="list-item-header">New==>Crud==>DataStatement</span>.
+        </p>
+        
+        <h5 id="datasource">The DataSource Object</h5>
+        <p>
+          Of course before you can interact with a relational database, you need to be able to connect to it.
+          A DataSource object is a configuration object for specifying a database connection. To
+          create a DataSource object right-click on the target folder and do
+          <span class="list-item-header">New==>Application Object==>Data Source</span>.
+        </p>
+        
+        <ul>
+          <li>
+          <span class="list-item-header">name</span> - Database name.
+          </li>           
+          
+          <li>
+            <span class="list-item-header">type</span> - The datasource type, can be one of the following
+            values <code>jndi</code>,<code>jdbc-driver</code>,<code>datasource-bean</code>.
+            When <code>datasource-bean</code> is specified then it is assumed that this object contains
+            the properties for the resulting datasource object and also the property <code>className</code>
+            must be present and must be the qualified Java class name for the DataSource implemenation.            
+          </li>
+          <li>
+            <span class="list-item-header">url</span> - The url for the database connection. This is required
+            when type is <code>jdbc-driver</code>
+          </li>          
+           
+          
+          <li>
+          <span class="list-item-header">user</span> - login user name for authenticating to database.
+            This is required when type is <code>jdbc-driver</code>.
+          </li>
+          
+          <li>
+          <span class="list-item-header">password</span> - login password for authenticating to database.
+            This is required when type is <code>jdbc-driver</code>.
+          </li>
+
+
+          <li>
+          <span class="list-item-header">driverClassName</span> - Fully qualified Java class name for the
+            jdbc driver to use. This is required when type is <code>jdbc-driver</code>.
+          </li>
+
+
+          <li>
+          <span class="list-item-header">jndiPath</span> - For JNDI datasources. 
+            This is required when type is <code>jndi</code>.
+          </li>          
+          
+          <li>
+          <span class="list-item-header">userName</span> - login user name for authenticating to database.
+            This is optional when type is <code>jdbc-driver</code>. You may use this in place of <code>user</code>.
+          </li>
+          
+          <li>
+          <span class="list-item-header">passWord</span> - login password for authenticating to database.
+            This is optional when type is <code>jdbc-driver</code>. You may use this in place of <code>password</code>.
+          </li>          
+          
+          
+        </ul>                
+        
+        <h5>Template</h5>
+        <p>
+        HiveMind gives the user a nice interface for specifying SQL.
+        This tab contains the sql editor for entering an sql template. This template can include parameter
+        specifications. 
+        </p>        
+        <img src="img/datastatement.png"/><br/>
+
+        <ul>
+          <li>
+            <span class="list-item-header">DataSource</span> - Drop DataSource definition object reference here. You can create a DataSource
+            object from the DataSource menu. The DataSource types are <code>jndi</code>,<code>jdbc-driver</code>,<code>datasource</code>.
+            If the <code>datasource</code> type is specified, then it is assumed to represent a <code>javax.sql.DataSource</code>
+            instance.
+            
+            <p>
+            You may also pass <code>crudzilla_datastatement_datasource_config</code> as the datasource dynamically.
+            </p>
+          </li>
+          <li>
+            <span class="list-item-header">DataModel Reference</span> - This is a list of DataModel References to be used by the sql in this
+            DataStatement. Please see section on DataModeling for a detailed 
+            description of this technology.
+          </li>
+          <li>
+            <span class="list-item-header">Transaction</span> - An object that represents a JDBC transaction. 
+            You can create a Transaction object by right-click on target folder then do 
+            <span class="list-item-header">New==>Application Object==>JDBC Transaction</span>
+            
+            <ul>
+              <li><span class="list-item-header">none</span> - do nothing</li>
+              <li><span class="list-item-header">start</span> - when selected, this DataStament would start a new transaction identified by the
+                transaction object.
+              </li>
+              <li><span class="list-item-header">start_only</span> - when selected, this DataStament would start a new transaction identified by the
+                transaction object, but would not execute this DataStatement.
+              </li>
+              <li>
+                <span class="list-item-header">join</span> - when selected, this DataStatement looks for the specified transaction and joins it.  
+              </li>
+              <li>
+                <span class="list-item-header">commit</span> - when selected this DataStatement joins the specified transaction and commits the
+                transaction after execution.
+              </li>
+              <li>
+                <span class="list-item-header">commit_only</span> - when selected this DataStatement joins the specified transaction and commits the
+                transaction without executing the DataStatement.
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <span class="list-item-header">Dynamic Sql</span> - A <a href="http://velocity.apache.org/" target="_blank">Velocity</a> template that contains the dynamic sql. When this is specified, the
+            sql in the editor of this DataStatement is will not be executed directly.
+            
+            
+			<p>
+              When using dynamic sql, the parameter <code>crudzilla_dynamic_sql_resultset_template</code> 
+            must be set, this should follow the format of the "Compiled" sql...see the "Compiled"
+            tab of a non-dynamic sql DataStatement for an example of what a resultset template 
+            must look like.
+            </p>
+            <p>
+    		If SQL is entered in the editor for a DataStatement, it will be available as 
+              a parameter <code>crudzilla_prepared_dynamic_sql_statement</code>, meaning it can then be used
+              in JDBC code that executes the actual database operations.
+            </p>
+            
+            <p>
+              You can also pass <code>crudzilla_dynamic_sql_statement</code> as the sql to execute. This provides
+              flexible means to use DataStatements.
+            </p>
+          </li>
+          <li>
+            <span class="list-item-header">ResultSet Processor</span> - A ScriptExecutor that processes the JDBC ResultSet object that result
+            from running this DataStatement.
+            
+			<p>
+            This is an advanced capability which gives the developer full control 
+            over the processing of the resultset from an executed query. The resultset is 
+            available on the argument map as <code>crudzilla_datastatement_resultset</code>, 
+            this is a JDBC resultset object type.   
+            </p>
+          </li>
+          
+        </ul>
+        
+        
+        <h5>Compile</h5>
+        
+        <p>
+        This tab shows the compiled sql in the Template tab. The template is compiled whenever a user saves changes to the template.
+        All parameters are extracted and replaced with
+        placeholders (?).
+        This tab shows the Parameter List expected by this DataStatement and the ResultSet Template if
+        this DataStatement returns values.
+        </p>
+        The platform parameter <code>crudzillaResultSetFormat</code> is available for use with DataStatements. The value 
+        can be one of the following:
+        <ul>
+          <li><span class="list-item-header">bean</span> - to return the result as a single object</li>
+          <li><span class="list-item-header">list</span> - return result as a list. This is the default</li>
+          <li><span class="list-item-header">decorated</span> - return the result with column information. The resulting object has the form
+            <code>{"columns":[{"name","type"}],"rows":[{}]}</code>.
+          </li>
+        </ul>
+        
+        <p>
+        	<img src="img/datastatement-1.png"/>
+        </p>
+        
+        
+		<p>
+          DataStatements also support the platform parameter <code>crudzillaJavaLangClass</code>. 
+          Set this to the fully qualified Java class name if you want the resulting 
+          data to be converted to a Java bean of the specified class type.
+        </p>
+        <p>
+          The platform parameter <code>crudzilla_default_datasource</code> should be set as part 
+          of <code>crudzilla-app-settings/system-settings</code> to specify a default data source for 
+          newly created DataStatements. This would be automatically filled in whenever a
+          new DataStatement is created. Most business applications only have a single
+          data source, so this would save the developer a few extra clicks.
+        </p>
+        
+        <!--
+        <h5>Optional Parameters</h5>
+        <ul>
+          <li><span class="list-item-header">crudzilla_datastatement_type</span>-optionally,set this to one of these values <code>insert,update,select,delete</code>.
+            When this is set to <code>insert</code> then the arguments map would contain <code>crudzilla_datastatement_last_insert_id</code>
+            as the last auto-generated key value after execution.
+          
+          </li>
+          <li><span class="list-item-header">crudzilla_datastatement_update_count</span>- for update statements, this contains the number of rows updated after execution.</li>
+          
+        </ul>
+        -->
+        
+        <h5>Parameter Type Hinting</h5>
+        <p>
+          DataStatements support type hinting, this is useful for RDMSs that have strict type 
+          requirements for prepared statement parameters. To specify a type simply enclose the 
+          type in parenthesis following the parameter name. 
+          The syntax is as follows: <code>:&lt;PARAMETER-NAME&gt;(&lt;SQL/Java-Type&gt;)</code>
+        
+            When a type hint is supplied with a specified parameter, 
+          the following additional parameters may be supplied.
+        </p>
+  
+       <ul>
+         <li>For types: BINARY, VARBINARY, LONGVARBINARY,CLOB,BLOB
+        <ul>
+          <li>
+            Base64
+            <ul>
+              <li>
+                crudzilla_base64_format_&lt;PARAMETER-NAME&gt;_linelength
+              </li>
+              <li>
+                crudzilla_base64_format_&lt;PARAMETER-NAME&gt;_lineseparator
+              </li>
+              <li>
+                crudzilla_base64_format_&lt;PARAMETER-NAME&gt;_urlsafe
+              </li>
+            </ul>
+          </li>
+          <li>
+            Base32
+            <ul>
+              <li>
+                crudzilla_base32_format_&lt;PARAMETER-NAME&gt;_linelength
+              </li>
+              <li>
+                crudzilla_base32_format_&lt;PARAMETER-NAME&gt;_lineseparator
+              </li>
+              <li>
+                crudzilla_base32_format_&lt;PARAMETER-NAME&gt;_urlsafe
+              </li>
+            </ul>
+          </li>
+          <li>
+            Binary
+          </li>
+          <li>
+            Hex
+            <ul>
+              <li>
+                crudzilla_hex_format_&lt;PARAMETER-NAME&gt;_charset
+              </li>
+            </ul>
+          </li>
+           </ul>
+         </li>
+          <li>
+            DATE
+            <ul>
+              <li>crudzilla_date_format_&lt;PARAMETER-NAME&gt;</li>
+            </ul>
+          </li>
+          <li>
+            TIME
+            <ul>
+              <li>crudzilla_time_format_&lt;PARAMETER-NAME&gt;</li>
+            </ul>
+          </li>
+          <li>
+            TIMESTAMP
+            <ul>
+              <li>crudzilla_timestamp_format_&lt;PARAMETER-NAME&gt;</li>
+            </ul>
+          </li>
+        </ul> 
+
+        <h6>BLOB,CLOB</h6>
+        <p>
+        you may also upload files in place of data for these types, so for instance you may call a DataStament in a multipart http request that includes an image file to be stored in a blob.
+        
+        The types supported are either Java types or SQL types, in other words JDBC types.  
+        </p>
+        
+        
+<h5>JDBC Transactions</h5>
+ <p>Transaction support is easy to add, simply create a transaction object by right-click on
+    target folder and do <span class="list-item-header">New==>Application Object==>JDBC Transaction</span></p>
+<p>
+  You must specify a unique name for your transaction object. The name must follow the java
+  identifier naming syntax. A running transaction can be accessed on the argument map as
+  <code>crudzilla_transaction_&lt;TRANSACTION-NAME&gt;</code> where 
+  <code>&lt;TRANSACTION-NAME&gt;</code> is the unique name of the transaction.
+</p>
+        
+<p>
+      The <code>crudzilla_transaction_&lt;TRANSACTION-NAME&gt;</code> object has properties
+</p>
+<ul>
+  <li>
+    <span class="list-item-header">transaction</span> - a reference to the raw transaction configuration object, ie the Instantiator specified
+    in the DataStatement.
+  </li>
+  <li>
+    <span class="list-item-header">connection</span> - JDBC connection object for the transaction
+  </li>
+</ul>
+
+        <h6>Dynamic Transactions</h6>
+        <p>
+          The transactions properties outlined above can be specified dynamically in code.
+          To dynamically pass a transaction config object pass it as <code>crudzilla_transaction_object</code>.
+          Transaction action can be specified by passing <code>crudzilla_transaction_action</code>.
+        </p>
+
+        
+        <p>The file extension of DataStatement is "stm".</p>
+        
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/ip0OdT6D47o?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>
+
+      <section  class="tab-pane" id="instantiator">
+        <h2>Configuration</h2>
+        <p>
+          Configuration on the HiveMind platform is a vasatile capability that can be used to solve a variety of problems.
+          HiveMind doesn't rely on configuration files in formats such as xml, json or Java properties files. 
+          Instead the user can create named objects to hold configuration. These objects can be called in code
+          or in parameter declarations. These named objects are called Instantiators. To create an Instantiator simply
+          right click on the target folder and choose <span class="list-item-header">New==>Crud==>Instantiator</span>.
+        </p>
+        <p>
+          The parameters of Instantiators form the properties of the resulting object.
+        </p>
+        
+        <p>
+        By default an Instantiator would return a generic
+          java bean. If the platform parameter <code>crudzillaJavaLangClass</code> is supplied, the object is of this type. The
+          screenshot below shows the application settings for HiveMind developer environment application as an example.
+        </p>
+        <p><img src="img/instantiator.png"/></p>
+        
+        <p>
+          When a call is made to an Instantiator that returns an object, the object's properties can
+          be referenced with the dot notation just like any other object, because they are in fact
+          real objects.
+        </p>
+
+        <h5>Lists</h5>
+        <p>
+          An Instantiator that only has the value of properties without the corresponding names would
+          be interpreted as a list. In other words to make a list, just add parameters that have no name.
+        </p>
+        <p>
+          If an Instantiator returns a List, this would be a <code>java.util.ArrayList</code> object.         
+        </p>
+        
+        The file extension of Instantiator is "ins".
+        
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/jw5YYBG1W0Q?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>
+      
+      <section  class="tab-pane" id="fileuploader">
+        <h2>Uploading Files</h2>
+        <p>
+          File uploads are one of several common tasks that developers always have to do when building a web application.
+          As with doing database interactions, within the HiveMind platform the user doesn't have to write code for 
+          doing file upload. File uploads are done using an executable contruct called a FileUploader.
+          To create a FileUploader simply right-click on taget folder and do <span class="list-item-header">New==>Crud==>FileUploader</span>.
+        </p>
+        <h5>Properties</h5>
+        <p>
+          The following properties allows you to upload files and control how the 
+          uploaded file should be handled.
+        </p>
+        <ul>
+          <li><span class="list-item-header">destDir</span> - where to upload the file, by default it is <code>.</code>, meaning the working directory of the
+            crud.</li>
+          <li><span class="list-item-header">autoGenName</span> - set to <code>true</code> if you want an auto generated name for uploaded file</li>
+          <li><span class="list-item-header">useName</span> - a name to use for uploaded file, if not specified and name is not auto generated
+            then the original file name is used.</li>
+          <li><span class="list-item-header">namePrefix</span> - a prefix for auto generated file names.</li>
+          <li><span class="list-item-header">sizeLimit</span> - file size limit for uploaded files.</li>
+          <li><span class="list-item-header">mime</span> - mime type of uploaded file.</li>
+          <li><span class="list-item-header">enableUnpack</span> - set to true if you want to unzip uploaded zip files.</li>
+          <li><span class="list-item-header">deleteOriginal</span> - set to true if you want the original zip file to be deleted after unpacking.</li> 
+        </ul>
+        <p><img src="img/fileuploader.png"/></p>
+        <p>
+          <span class="point-to-note">Note</span>, you may optionally set <code>crudzilla_temp_upload_directory</code> in <code>crudzilla-app-settings/system-settings</code>
+          to specify a temporary location of uploaded files before they are moved to their <code>destDir</code>.
+        </p>
+        
+        The file extension of FileUploader is "upl".
+        
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/gbbtbAwOG2I?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>    
+      
+      <section  class="tab-pane" id="connector">
+        <h2>Connecting to HTTP Services</h2>
+        <p>
+          HiveMind provides an executable called HttpConnector for connecting to HTTP services. User can use
+          HttpConnectors to connect to RESTful services or even to download remote files and login
+          to remote web applications. 
+        </p>
+        <p>
+		  As with many other aspects of using HiveMind, HttpConnector connectors
+          require writing no code. You only need to specify the necessarily parameters. To create an HttpConnector
+          simply right-click on target folder and do <span class="list-item-header">New==>Crud==>HttpConnector</span>.          
+        </p>
+        <p>
+          <img src="img/httpconnector.png"/><br/>
+        </p>
+        
+        <h5>Properties</h5>
+        <p>
+          Use the necessarily combinations of the parameters below to connect to HTPP services.
+        </p>
+        <ul>
+          <li><span class="list-item-header">url</span> - url to connect to. If it is a string then it is assumed to be a single url, 
+            otherwise it can be a list of objects each with property <code>url</code>,<code>destDir</code>, <code>saveAs</code>,<code>enableUnpack</code>,<code>deleteOriginal</code> </li>
+          <li><span class="list-item-header">headers</span> - header for request. This can be an executable (Instantiator or ScriptExecutor) that returns the header object or a json defining header object. <span class="point-to-note"> Note</span> the header object is a single object with name/value pairs.</li>
+          <li><span class="list-item-header">loginUserId</span> - user name for http authentication.</li>
+          <li><span class="list-item-header">loginPassWord</span> - password for http authentication.</li>
+          <li><span class="list-item-header">authenticationHost</span> - this is option as it will be extracted from url if not specified</li>
+          <li><span class="list-item-header">authenticationPort</span> - similarly optional if url will be used for authentication.</li>
+          <li><span class="list-item-header">download</span> - Set to <code>true</code> if this is a file download.</li>
+          <li><span class="list-item-header">destDir</span> - directory to place downloaded files in.</li>
+          <li><span class="list-item-header">saveAs</span> - specify a file name to use for downloaded file. 
+            If not set, the <code>Content-Dispostion</code> response header is consulted, 
+            if this header is absent then the download url is assumed to end with a file name and that would be used.</li>
+          
+          <li><span class="list-item-header">enableUnpack</span> - set to true if you want to unzip downloaded zip files.</li>
+          <li><span class="list-item-header">deleteOriginal</span> - set to true if you want the original zip file to be deleted after unpacking.</li> 
+          
+          <li><span class="list-item-header">authenticationType</span> - This can be
+            <ul>
+              <li><span class="list-item-header">NONE</span> - no authentication
+              </li>
+              <li>
+                <span class="list-item-header">FORM</span> - for form based authentication.
+              </li>
+              <li>
+                <span class="list-item-header">PREEMPTIVE-BASIC</span> - Authenticates before making the url request. basic authentication.                
+              </li>
+              <li>
+                <span class="list-item-header">PREEMPTIVE-DIGEST</span> - Authenticates before making the url request.digest authentication.
+              </li>
+            </ul>
+          </li>
+          <li><span class="list-item-header">maxFileUploadSize</span> - maximum upload size if this is a multipart request.</li>
+          <li><span class="list-item-header">authenticationRealm</span> - </li>
+          <li><span class="list-item-header">authenticationScheme</span>
+            <ul>
+              <li><span class="list-item-header">basic</span></li>
+              <li><span class="list-item-header">digest</span></li>
+            </ul>
+          </li>
+          <li><span class="list-item-header">postDataSourceType</span> - for multipart request, this specified where to get files from
+            <ul>
+              <li>
+                <span class="list-item-header">DATAFROM-HTTPREQUEST</span> - when the files are uploaded as part of a browser based upload.
+              </li>
+              <li>
+                <span class="list-item-header">DATAFROM-FS</span> - Use this if you want data to comre from file system.
+              </li>
+            </ul>
+            
+          </li>
+          <li>
+            <span class="list-item-header">postDataFileItems</span> - json array of objects of the form {"path","paraName"}.
+            path is the local file system path of the file to upload and the paramName is
+            the http parameter name to use for this file.          	
+          </li>
+          <li>
+            <span class="list-item-header">method</span> - http method
+            <ul>
+              <li><span class="list-item-header">HTTP_GET</span></li>
+              <li><span class="list-item-header">HTTP_POST</span></li>
+              <li><span class="list-item-header">HTTP_POST_MULTIPART</span></li>
+              <li><span class="list-item-header">HTTP_POST_CHUNKED</span></li>
+            </ul>
+          </li>
+          <li><span class="list-item-header">mime</span> - for chunked post, what is the mime</li>
+          <li><span class="list-item-header">type</span> - not used</li>
+          <li><span class="list-item-header">formPageUrl</span> - url for form if form authentication is used.</li>
+          <li>
+            <span class="list-item-header">authenticationUseridParamName</span> - form user name http parameter name.
+            
+          </li>
+          <li><span class="list-item-header">authenticationPasswordParamName</span> - form password http parameter name.
+            
+          </li>
+            <li><span class="list-item-header">callParameters</span> -  This can be an executable (likely an Instantiator) that returns the parameters object or a json defining the parameters object. <span class="point-to-note"> Note</span> the parameters object is a single object with name/value pairs.
+          </li>
+        </ul>
+        
+        <h5>Return value</h5>
+        <p>
+          The return value for this executable type is an object with the following structure :
+        </p>
+        <ul>
+          <li><span class="list-item-header">headers</span> - the headers returned by the request.</li>  
+          <li><span class="list-item-header">statusCode</span> - the http status code</li>
+          <li><span class="list-item-header">statusLine</span> - the http status line text</li>
+          <li><span class="list-item-header">response</span> - the response body of the request</li>
+        </ul>
+        
+        
+        
+        The file extension of HttpConnector is "svc".
+        
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/k2wld7t6sl0?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>    
+      
+      <section  class="tab-pane" id="emailsender">
+        <h2>Sending E-mail</h2>
+        <p>
+          Sending email is another common web application development task. As with other such
+          tasks, no coding is required to send emails in HiveMind. HiveMind provides a construct called an
+          EmailSender. To create an EmailSender simply right-click and do <span class="list-item-header">New==>Crud==>EmailSender</span>.
+        </p>
+        <p>
+          You can send both single emails and bulk mail depending on how you configure the EmailSender.
+        </p>
+        
+        <p>
+          <img src="img/emailsender.png"/>
+        </p>
+        
+        <h5>Properties</h5>
+        <p>
+          Use the necessarily combination of the following properties to send email
+        </p>
+        <ul>
+          <li>
+            <span class="list-item-header">host</span> - The smtp host name.
+          </li>
+          <li>
+            <span class="list-item-header">smtpPort</span> - smtp port.
+          </li>
+          <li>
+            <span class="list-item-header">sslEnabled</span> - set to <code>true</code> if you want ssl enabled
+          </li>
+          <li>
+            <span class="list-item-header">dataSourceURI</span> - this is for embeded images.
+          </li>
+          <li>
+            <span class="list-item-header">loginUserId</span> - login username for smtp server.
+          </li>
+          <li>
+            <span class="list-item-header">loginPassWord</span> - pass username for smtp server.
+          </li>
+          <li>
+            <span class="list-item-header">messageTemplate</span> - this can either be html text, plain text or the url of an executable that will generate the html.
+            when it is a an executable url, it must be evaluated and the return object must be a string.
+          </li>
+          <li>
+            <span class="list-item-header">alternativeTextMessage</span> - this can either be plain text, or the url of a crud that will generate the html.
+            when it is an executable url, it must be evaluated and the return object must be a string.
+          </li>
+          <li>
+            <span class="list-item-header">bouncedMessageAddress</span> - for bounced email.
+          </li>
+          <li>
+            <span class="list-item-header">bcc</span> - a json array of objects of the form <code>{"emailAddres","name"}</code>,
+            name is optional.
+          </li>
+          <li>
+            <span class="list-item-header">cc</span>
+          </li>
+          <li>
+            <span class="list-item-header">replyTo</span> - a json array of objects of the form <code>{"emailAddres","name"}</code>,
+            name is optional.
+          </li>
+          <li>
+            <span class="list-item-header">headers</span> - a json array of objects of the form <code>{"name","value"}</code>
+          </li>
+          <li>
+           <span class="list-item-header">type</span> - for html email value is HtmlEmail, for text use SimpleEmail.
+          </li>
+          <li>
+            <span class="list-item-header">from</span> - a json object of the form <code>{"emailAddres","name"}</code>,
+            name is optional.
+          </li>
+          <li>
+            <span class="list-item-header">to</span> - a json array of objects of the form <code>{"emailAddres","name"}</code>,
+            name is optional.
+          </li>
+          <li>
+            <span class="list-item-header">subject</span> - text of subject line
+          </li>
+          
+          <li>
+            <span class="list-item-header">attachments</span> - a json array of objects of the form <code>{"path","name","description","url"}</code>.
+            path or url is required, all other fields are optional.
+          </li>
+          
+          <li>
+            <span class="list-item-header">bulkMailData</span> - Specify for sending bulk mail, 
+            this should be a list where each object is a unique email. For each object in this list,
+            the values would be exploded onto the arguments map before processing the corresponding email.
+          </li>          
+          
+          <li>
+            <span class="list-item-header">forEachEvalMessage</span> - Set to true if <code>messageTemplate</code> property must be evaluated for each <code>bulkMailData</code> entry.
+          </li>
+          <li>
+            <span class="list-item-header">forEachEvalAltMessage</span> - Set to true if <code>alternativeTextMessage</code> property must be evaluated for each <code>bulkMailData</code> entry.
+          </li>
+          <li>
+            <span class="list-item-header">forEachEvalSubject</span> - Set to true if <code>subject</code> property must be evaluated for each <code>bulkMailData</code> entry.
+          </li>
+          <li>
+            <span class="list-item-header">forEachEvalTo</span> - Set to true if <code>to</code> property must be evaluated for each <code>bulkMailData</code> entry.
+          </li>
+          <li>
+            <span class="list-item-header">forEachEvalFrom</span> - Set to true if <code>from</code> property must be evaluated for each <code>bulkMailData</code> entry.
+          </li>          
+          <li>
+            <span class="list-item-header">forEachEvalAttachments</span> - Set to true if <code>attachements</code> property must be evaluated for each <code>bulkMailData</code> entry.
+          </li>          
+          
+          
+          <!--          
+<li>
+attachments-a json array of objects of the form {"title","url"}.
+The title is the label of the attachement and the url is the url of the
+attachment.
+</li>
+-->
+        </ul>
+        <br/>
+        The file extension of EmailSender is "esd".
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/k2wld7t6sl0?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>    
+      
+	  <section  class="tab-pane" id="pre-execution">
+        <h2>PreExecution Handlers</h2>
+        <p>
+          PreExecution handlers are actions you want to happen before the primary action of the current execution.
+          This occurs after security checks and parameter processing has been applied. 
+        </p>
+        <p>
+     	  Handlers simply call other
+          executables within your application. For instance the handler could call a DataStatement to get some data
+          that would then be used for the current execution.     
+        </p>
+        <img src="img/preexecution.png"/>
+        <ul>
+          <li>
+            <span class="list-item-header">Enable</span> - check this to enable this handler. If unchecked, this handler is ignored and not
+            invoked.
+          </li>
+          <li>
+            <span class="list-item-header">Drop reference here</span> - drag-n-drop the executable you wish to execute as part of the PreExecution process, this is optional depending on argument propagation options.
+          </li>
+          <li>
+            <span class="list-item-header">Require True</span> - check this if the handler invoked is required to return the value
+            "true". If any other value is returned, then the primary execution would terminate and return
+            the value.
+          </li>
+          <li>
+            <span class="list-item-header">Argument Propagation Mode</span> - This controls how the argument map is propagated across invocations.
+            <ul>
+              <li>
+                <span class="list-item-header">pass map</span> - selecting this passes the current map as a reference, 
+                meaning the current map could be altered by the handler invoked.
+              </li>
+              
+              <li>
+                <span class="list-item-header">pass all map values</span> - selecting this propagates all values of the
+                current argument map but not the map itself. The current map would not be altered
+                by the handler invoked. <span class="point-to-note">Note</span>, for values that are Java objects, they could be
+                altered by the handler invoked.
+              </li>
+              <li>
+                <span class="list-item-header">pass some map values</span> - selecting this allows you to specify an Instantiator that will return
+                the name/value of the argument map values that will be propagated. This is a way to restrict
+                which current argument map values are propagated to the handler invoked.
+              </li>             
+              <li>
+                <span class="list-item-header">pass none</span> - selecting this passes none of the current argument map's entries to the handler  
+                invoked.
+              </li>
+            </ul>
+          </li>
+
+          
+          <li>
+            <span class="list-item-header">Return Mode</span> - The value selected determines what to do with return value.
+            <ul>
+              <li>
+                <span class="list-item-header">Ignore Return</span> - selecting this would ignore the return value of the handler invoked.
+              </li>
+              <li>
+                <span class="list-item-header">Save Return As Variable</span> - Put return value from handler invoked on argument map.
+                When selected, a field called "Save Return As Variable" is visible. Specify a variable name to be added to the current argument map that
+                represents the return value of the handler invoked. The name can then be used in all
+                places where argument map variables can be referenced.
+                
+              </li>
+              <li>
+                <span class="list-item-header">Explode</span> - selecting this, explodes the result of the handler invoked on the
+                argument map. <p>When this is
+                selected, a field called "Selected Properties" would be visible, this is a reference to an
+                Instantiator that would return the set of properties from the returned result to explode
+                onto the current argument map. If the selected field isn't specified, all properties would
+                be exploded.</p>
+                
+                <p>
+                  <span class="point-to-note">Note</span> that the return value of the handler invoked should be an object, in other
+                    words not a list.
+                </p>                
+              </li>              
+            </ul>
+          </li>          
+          
+        </ul>        
+        
+	  </section>
+
+	  <section  class="tab-pane" id="post-execution">
+        <h2>PostExecution Handlers</h2>
+        
+        <p>
+          PostExecution handlers are actions you want to happen after the primary action of the current execution.
+          You can return the result from these handlers as your final return values instead of the
+          results from the primary action.
+        </p>
+        <p>
+		  Handlers simply call other executables within your application. For instance the handler could call a DataStatement to update some data
+          as a result of the current execution.          
+        </p>
+        <img src="img/postexecution.png"/>
+        <ul>
+          <li>
+            <span class="list-item-header">Enable</span> - check this to enable this handler. If unchecked, this handler is ignored and not
+            invoked.
+          </li>
+          <li>
+            <span class="list-item-header">Drop reference here</span> - drag-n-drop the executable you wish to execute as part of the PreExecution process.
+          </li>  
+          <li>
+            <span class="list-item-header">Argument Propagagtion Mode</span> - same as in PreExecution
+          </li>
+          <li>
+            <span class="list-item-header">Return Mode</span> - The value selected determines what to return as the return value of the primary execution.
+            <ul>
+              <li>
+                <span class="list-item-header">Ignore Return</span> - selecting this would ignore the return value of the handler invoked.
+              </li>
+              <li>
+                <span class="list-item-header">Return As Primary</span> - selecting this returns the result of the handler invoked as the
+                overall result of the primary invocation.
+              </li>
+              <li>
+                <span class="list-item-header">Append To Primary</span> - selecting this, appends the result of the handler invoked as a
+                property of the primary result object of the primary invocation. When this is
+                selected, a field called "Append As Primary Variable" would be visible to name the
+                property to be appended.
+              </li>
+              <li>
+                <span class="list-item-header">Append Primary</span> - selecting this, appends the primary result of primary execution to the result
+                of the handler invoked. When this is selected, a field called 
+                "Append As Primary Variable" would be visible to name the property to be appended.
+              </li>
+              <li>
+                <span class="list-item-header">Return Variable</span> - selecting this allows you to specify the name of a property on the
+                argument map that should be returned as the primary result of the primary invocation.
+                When this is selected, a field called "Return Variable" would be visible to 
+                name the property to be returned.
+              </li>
+              
+              <li>
+                <span class="list-item-header">Save Return As Variable</span> - Put return value from handler invoked on argument map.
+                When selected, a field called "Save Return As Variable" is visible. Specify a variable name to be added to the current argument map that
+                represents the return value of the handler invoked. The name can then be used in all
+                places where argument map variables can be referenced.
+                
+              </li>              
+              
+              <li>
+                <span class="list-item-header">Explode</span> - selecting this, explodes the result of the handler invoked on the
+                argument map. 
+                <p>When this is
+                selected, a field called "Selected Properties" would be visible, this is a reference to an
+                Instantiator that would return the set of properties from the returned result to explode
+                onto the current argument map. If the selected field isn't specified, all properties would
+                  be exploded.</p>
+                
+                <p>
+                  <span class="point-to-note">Note</span> that the return value of the handler invoked should be an object, in other
+                    words not a list.
+                </p>
+              </li>              
+            </ul>
+          </li>
+        </ul>        
+	  </section>
+
+	  <section  class="tab-pane" id="application-error-handling">
+        <h2>Error Handlers</h2>
+        <p>
+          Error handlers are a special type of PostExecution handler, if an error occurs and there
+          is an enabled error handler, that handler would be invoked as the last action.          
+        </p>
+        <p>
+          <img src="img/error-handler.png"/>
+        </p>
+        <p>
+          The argument map would have an ErrorWrapper object <code>crudError</code>
+          with the following properties
+        </p>
+        <ul>
+            <li><span class="list-item-header">exception</span> - Java Exception object. 
+              can be null if error wasn't due to an exception.
+            </li>
+            <li><span class="list-item-header">errorType</span> - Error type can be of the following values
+              <ul>
+                <li><span class="list-item-header">access-control</span> - when access fails to be granted</li>
+                <li><span class="list-item-header">parameterization-validation</span> - when parameter validation fails</li>
+                <li><span class="list-item-header">primary</span> - when an error occured during primary action, this could be an error in 
+                  scripts, check exception log for further details.
+                </li>
+              </ul>
+          	</li>
+          <li>
+            <span class="list-item-header">errorSource</span> - attempts to give a clue as to where in the execution the error occured.
+            The values can be one of the following
+            <ul>
+              <li><span class="list-item-header">validation</span> - during parameter validation</li>
+                <li><span class="list-item-header">primary</span> - during primary action execution</li>
+            </ul>
+          </li>
+        </ul>        
+        
+	  </section>
+
+	  <section  class="tab-pane" id="application-security">
+        <h2>Application Security</h2>
+        <p>
+          You can restrict access to an executable by <code>userName</code> or by <code>role</code>. When <code>userName</code> is specified then 
+          <code>httpRequest.getUserPrincipal.getName</code> must be equal to the <code>userName</code>.
+          If <code>role</code> is specified then <code>httpRequest.isUserInRole</code> must return true when given the <code>role</code> name.
+          If both <code>userName</code> and <code>role</code> is specified then both must pass for access to be granted.
+        </p>
+        <img src="img/security.png"/>
+        <ul>
+          <li>
+            <span class="list-item-header">Sever side only</span> - check this if you only want this executable to be invoked from server-side operations,
+          for instance by other executables. This would prevent this executable from being invoked directly from a browser.
+          </li>
+          <li>
+            <span class="list-item-header">Require All Roles</span> - check this if you want all user identity entries to be evaluated.
+            This will require the user to have all the roles listed, otherwise access isn't granted.
+          </li>          
+          
+          <li>
+          <span class="list-item-header">User Identity</span> - drop a refrences to a user identity object. You can have as many identity entries.
+          Any entry to this list, automatically implies authentication is required. So for instances you can drop
+          a user identity object whose user and role entries are blank to indicate that only authentication
+          is required.
+          </li>
+        </ul>        
+        
+        <p>
+          A user identity object can be created by right-click on target folder and doing <span class="list-item-header">New==>Application Object==>User Identity</span>.
+        </p>
+        
+	  </section>
+
+      <section  class="tab-pane" id="crud-test">
+        <h2>Testing Your Application</h2>
+        Testing your application involves testing executables. To test an executable your can right click the executable
+        and select <span class="list-item-header">Test</span>.
+        
+        
+        <ul>
+          <li><span class="list-item-header">Output format</span> - select the expected result type.
+            <ul>
+              <li>JSON - for JSON data.</li>
+              <li>Html Page - If you want the result to open in a new browser tab and an html page.</li>
+              <li>Text - if expecting plain text</li>
+            </ul>
+          </li>
+          <li><span class="list-item-header">Ignore</span> - check this if you don't want the parameter sent to the executable being tested.
+          </li>
+          <li><span class="list-item-header">Name</span> - parameter name</li>
+          <li><span class="list-item-header">Value</span> - parameter value</li>
+          
+        </ul>
+        <img src="img/test.png"/><br/>
+        <h6>Simulate</h6>
+        <p>
+          When you simulate an executable, the executable is run in the context of a HiveMind engine instance that attempts
+          to simulate the instance that will be running in your application. You simulate if your app
+          isn't running or if you want to test a crud that requires authentication but you would like
+          to bypass the authentication for the purpose of testing.
+        </p>
+        <h6>Run</h6>
+        <p>
+          When you run an executable or any other static asset, the test invokes a url directly against
+          a running app. In other words when you run a test, it is assumed that your app is running
+          at the url specified in the app context.
+        </p>
+        
+      </section>
+      
+      <section  class="tab-pane" id="program-cwab">
+        <h2>Programming HiveMind</h2>
+        <p>
+          The HiveMind developer environment is self-referencing, what this means is that HiveMind is used to
+          build HiveMind, similar to how eclipse or netbeans may be used to build new versions of themselves.
+          There are a number of functionality in HiveMind where you directly alter the functionality by
+          modifying certain cruds.
+        </p>
+        
+        <h5>Adding CodeMirror Modes</h5>
+        <p>
+        CodeMirror is the editor used for coding in HiveMind.
+          You can add aditional editor modes to edit text files. 
+          Adding new modes involves the following steps
+        </p>
+        <ul>
+          <li>
+            Current modes are defined in the folder  <code>com/crudzilla/HiveMind/web/editor-mode-definitions</code>.
+            Navigate to crudbase and open this folder.
+          </li>
+          <li>
+            Create the new mode via right-click <span class="list-item-header">New==>Application Object==>CodeMirror Mode</span>.
+          </li>
+          <li>
+            Fill out the mode fields, see other modes for examples.
+          </li>
+          <li>
+            Map mode to an extension by adding an entry to the
+            <code>com/crudzilla/HiveMind/web/editor-mode-definitions/codemirror-editor-ext2modes</code> Instantiator.
+          </li>
+          <li>
+            To add a new mode to the Web Resource menu, add an entry for the new mode to the
+            <code>com/crudzilla/HiveMind/web/editor-mode-definitions/editable-types</code> Instantiator.
+          </li>          
+          <li>
+            When you refresh, if you added a menu item then the new mode will have a menu item and you 
+            should now be able to create files of this mode.
+          </li>
+        </ul>
+        
+        <h5>Adding new loggers</h5>
+        <p>
+          You can add logging from additional classes that you may have in jar components. This can be done
+          both for HiveMind and your own apps, so if you are building or using a Java component that is packaged 
+          as a jar and deployed with your web app, you can access the log output from classes in such a 
+          component in the HiveMind developer environment log-viewer by configuration.
+        </p>
+        <ul>
+          <li>
+            Every app created in HiveMind has a folder  <code>/dev-logging/classes</code> in the base (<code>web</code>) folder of that application.
+            By default this folder has configuration for logging from the crud execution engine.
+            Open this folder to add new log configurations.
+          </li>
+          <li>
+            Create the logger config via right-click <span class="list-item-header">New==>Application Object==>Logger Config</span>.
+          </li>
+          <li>
+            Fill out the mode fields, see other logger configs for examples.
+          </li>
+          <li>
+            To enable logging from this newly added class, open the <code>dev-logging/classes/class-list</code> Instantiator
+            and add an entry for the newly added class logger config.
+          </li>
+          <li>
+            You'll need to restart HiveMind for this to take effect.
+          </li> 
+        </ul>        
+        
+        <h5>Altering App configuration</h5>
+        <p>
+          When you create a new app a new configuration is created to register that app with HiveMind.
+          This configuration is the same as the object created if you right-click a folder
+          <span class="list-item-header">New==>Application Object==>Web App</span>.
+          All app configs are stored in folder <code>com/crudzilla/HiveMind/web/new-web-app/app-list</code>. 
+          They have the same name as the app and they are registered by addng an entry to
+          <code>com/crudzilla/HiveMind/web/new-web-app/app-list/apps</code>.
+          The contextPath propertie is important as it points to the url of the app and this is used for testing
+          cruds that belong to this app and also for the logviewer feature to work correctly.
+          
+        </p>        
+        
+        <h5>Adding new users to your HiveMind installation</h5>
+        <p>
+          You can manage users using the simple tool from the application menu.
+          You may also build on this tool for more surphiscated user management. 
+          Folder <code>com/crudzilla/HiveMind/web/user-identity</code> contains executables for managing users.
+        </p>
+            
+        
+        
+      </section>      
+      
+      <section  class="tab-pane" id="data-modeling">
+        <h2>Preemptive Schema Data Modeling (PSDM)</h2>
+
+        <p>
+          Ordinarily when you want to add a new data model to your application, you create a table to represent the model and
+          add columns to represent the fields of that model. What the HiveMind PSDM technology suggests
+          is to use the database table and columns as storage devices instead of modeling constructs.
+        </p>
+        
+        <p>
+          The data modeling technology built into HiveMind allows you to create DataModels in HiveMind and map them
+          to database tables and columns. When you use HiveMind data modeling, you view the database tables
+          and columns in your application database purely as storage devices. When you want to know what your actual data models look
+          like you'll look at your HiveMind DataModels not your database tables and columns.
+        </p>
+        <p>
+        	<span class="point-to-note">Note</span> that this is still an experimental technology. However it is
+			very much in use, for instance it is used with HiveMind for the task manager functionality and also used for the Parts Store.          
+        </p>
+        
+                
+        
+        <h5>Creating Premptive Schema tables</h5>
+        <p>
+          The first step towards data modeling in HiveMind is to create the <i>Preemptive Schema</i> database tables. This means
+          creating one or more database tables each with its own pool of columns of various sql type distributions.
+        </p>
+        <p>
+          Below is an example of what a Preemptive Schema database table looks like, note the distribution of 
+          sql types. It is up to you and your need to decide what the sql type distribution should be
+          for your Preemptive Schema tables.          
+        </p>
+        <img src="img/pooled-dbtable-sql.png"/>
+
+        <p>
+          You should view a Preemptive Schema table as a large matrix that holds data. The data modeling in HiveMind
+          provides the mechanism to make sense of the data in the matrix.
+        </p>
+        
+        <h6>Generating Preemptive Schema table sql create statement.</h6>
+        <p>
+          To generate the sql shown above, you need to create a generation strategy. <br/>
+          <span class="point-to-note">Note</span> that all
+          steps outlined below are optional, you can use any other means to create a database table
+          with a pool of columns of various sql types. The generation facility provided by HiveMind is only
+          for convenience but not required.
+        </p>
+        <ul>
+          <li>
+            Create a folder, where your strategy information would be stored.
+          </li>
+          <li>
+            <p>
+              For each sql type you wish to create columns for, create the generated column type.
+              From the Data Modeling menu:
+            </p>
+            <img src="img/generated-column-type-menu.png"/>
+          </li>
+          <li>
+            <p>
+              Fill out the Generated Column Type. The count is the number of columns of this type
+              that should be generated.
+            </p>
+            <img src="img/generated-column-type-view.png"/>
+          </li>
+          <li>
+            <p>
+              Create an Instantiator and list the created types in it. Make these types executable.
+            </p>
+            <img src="img/generated-column-type-list.png"/>
+          </li>
+          <li>
+            <p>
+              Create a "Generated DataTable Strategy" ... this should point to the list in the step
+              above.
+            </p>
+            <img src="img/generated-dtcp-strategy-menu.png"/>
+          </li>
+          <li>
+            <p>
+              Fill out the strategy fields.
+            </p>
+            <img src="img/datatable-strategy-view.png"/>
+            
+            <ul>
+              <li>
+                <span class="list-item-header">columnTypes</span> - Specify the path to the type list created above.
+              </li>
+              <li>
+                <span class="list-item-header">createDataTable</span> - Specify a dynamic DataStatement that would accept the generated
+                create table sql and execute it. This DataStatement should expect a 
+                parameter <code>sql</code> which is the sql we are going to generate.
+              </li>
+              <li>-OR-</li>
+              <li>
+                <span class="list-item-header">dataSource</span> - Alternatively, you can simply specify
+                a DataSource against which the generated sql must be executed, HiveMind would take care of executing it.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              HiveMind provides a simple tool for generating the necessary sql statements for creating 
+              Preemptive Schema tables. You can access the Preemptive Schema generator from the Application menu.         
+            </p>
+            <img src="img/generate-pooled-dbtable-menu.png"/>            
+          </li>
+          <li>
+            <p>Preemptive Schema table Generator Tool</p>
+            <img src="img/pooled-dbtable-generator-tool.png"/>          
+          </li>
+          <li>Drop a reference to the strategy created above</li>
+          <li>Click the Generate the button to generate the create statement sql template, 
+            change the name of the table you wish to generate
+          </li>
+          <li>
+            Click the Create button to run the generated statement.
+            <p>
+			<span class="point-to-note">Note</span> that this is optional as you can just run the generated sql in an
+                  sql client of your choosing  against your application database.  
+            </p>
+          </li>
+        </ul>
+        
+        <h5>Create DataTable Object.</h5>
+        <p>
+          After creating a Preemptive Schema table as outline above, you need to create a corresponding DataTable object
+          in HiveMind that will be used to map DataModels to the actual database table.
+        </p>
+        <ul>
+          <li>
+            <p>
+              Create a folder, this folder should have the same name as the Preemptive Schema database table it represents.
+              The DataTable object should be called <code>datatable</code>.
+            </p>
+            <img src="img/datatable-menu-item.png"/>
+          </li>
+          <li>
+            <p>Fill out the fields of the DataTable created above.</p>
+            <img src="img/datatable-view.png"/>
+            <ul>
+              <li><span class="list-item-header">crudzillaJavaLangClass</span> - The crudzillaJavaLangClass is used internally, do not edit.</li>
+              <li><span class="list-item-header">dataSource</span> - Provide the DataSource/database to which this DataTable database table belong.</li>
+              <li><span class="list-item-header">name</span> - Provide the name of the actual Preemptive Schema table created above.</li>
+              <li><span class="list-item-header">typeColumn</span> - This is the column object that will be mapped to type fields of DataModels</li>
+            </ul>
+          </li>
+        </ul>
+        
+        <h5>Generating DataTable Columns.</h5>
+        <p>
+          After creating a DataTable object as outline above, you need to create corresponding column objects
+          that will be used to map DataModel fields to actual database table columns.          
+        </p>
+        <ul>
+          <li>
+            Under your DataTable object folder create a sub-folder called <code>columns</code>.
+          </li>
+          <li>
+            <p>
+              Right-click on the columns folder and navigate to the Data Modeling menu and select "Generate Columns".
+            </p>
+            <img src="img/generate-datatable-columns-menu.png"/>
+          </li>
+          <li>
+            Drop a reference to the DataTable created above.
+          </li>
+          <li>
+            <p>
+            Click the "Generate" button to get the available columns from the Preemptive Schema database
+            table created above.
+            </p>
+            <img src="img/generated-column-tool-view.png"/>
+          </li>
+          <li>
+            Select the column objects you wish to generate, generally you'll select all.
+          </li>
+          <li>
+            Click the "Create" button to generate DataTable Column objects in the folder you right-clicked
+            on above. 
+          </li>
+          <li>
+            <p>This will create DataTable column objects that you are going to use for mapping to DataModel fields.</p>
+            <p>
+              The column objects generated will be named following the convention <code>&lt;Premeptive-Schema-table-column-name&gt;-&lt;sql-type&gt;</code>
+            </p>            
+            <p><img src="img/generated-columns.png"/></p>
+
+          </li>      
+          <li>
+            <p>You shouldn't have to edit the generated column objects.</p>
+            <p> <img src="img/generated-column-view.png"/></p>
+          </li>
+        </ul>
+        
+        <h5>Creating a DataModel</h5>
+        <p>
+          We now need to create the actual DataModels that will represent our application data models such
+          as say customer, order, inventory...etc.
+        </p>
+        <p>
+          The first step in creating a DataModel is to determine a namespace for the model. Because
+          you are going to be storing instances of numerous models in the same Preemptive Schema database table, you need a way to
+          uniquely identify rows that below to a particular model. The proposed approach is to
+          use the java package naming convention as a way to create namespaces.           
+        </p>
+        <p>
+           So for instance a DataModel called customer could be stored in the crudbase as
+          <code>com/crudzilla/crudzilla-website/data/customer</code>.
+          This path which is relative to the application base directory then becomes the type 
+          identifier for all customer rows. 
+        </p>
+        <p>
+          The path can be relative to any folder, as long as it is likely to be
+          unique across any number of different DataModels, this would be sufficient to uniquely
+          identify a given DataModel type.
+        </p>
+        <p>
+          There should be a field that all DataModels have that specify what their type namespace is. 
+          The field name should be <code>crudzillaType</code> and it should have the namespace value for all instances of the
+          DataModel.         
+        </p>
+        
+        <h6>Automatic approach</h6>
+        <p>
+          The easiest way to create your Data Model is to use the DataModel creation tool:
+        </p>
+        <p><img src="img/datamodel-tool-menu.png"/></p>
+        <p>
+          Select a Premeptive Schema table (aka WideTable) to map your model to and then fill in the fields and their 
+          corresponding column mapping.
+        </p>
+        <p><img src="img/datamodel-tool-view.png"/></p>
+        
+        
+        <h6>Manual approach</h6>
+        <ul>
+          <li>In your namespace folder, create a folder to hold your DataModel. 
+            This folder should have the name of your DataModel that you'll use in your sql statements,
+            for instance <code>customer</code>
+          </li>
+          
+          <li>
+            <p>
+              Right click on the folder and navigating to the Data Modeling menu to create a
+              DataModel object.
+            </p>
+            <p>
+              The DataModel object should be called <code>datamodel</code>.
+            </p>
+            <p><img src="img/datamodel-menu.png"/></p>
+          </li>
+          <li>
+            <p>Fillout the DataModel object.</p>
+            
+            <img src="img/datamodel-view.png"/>
+            <ul>
+              <li><span class="list-item-header">crudzillaJavaLangClass</span> - do not use, used internally.</li>
+              <li><span class="list-item-header">fields</span> - path to the field list of this DataModel, this should be <code>fields.ins</code></li>
+              <li><span class="list-item-header">name</span> - name of DataModel to be used in DataStatement sql, that is name of the  folder created above.</li>
+              <li><span class="list-item-header">dataTable</span> - path to DataTable object created above, this establishes the connection to actual Preemptive Schema database table.</li>
+              <li><span class="list-item-header">typeIdentifier</span> - type namespace of this model, this will be used internally by HiveMind for certain tasks.</li>
+            </ul>
+          </li>            
+        </ul>
+        
+        <h6>Creating DataModel Fields</h6>
+        <ul>
+          <li>
+            Under your DataModel folder, create a sub-folder called <code>fields</code>.
+          </li>
+          <li>
+            <p>
+              For each field of your DataModel, right click on <code>fields</code> folder and create the DataModel fields by navigating to DataModel Fields
+            menu.
+            </p>
+            <img src="img/datamodel-field-menu.png"/>
+          </li>
+          <li>
+            Fill out the DataModel Fields.
+            <img src="img/datamodel-field-view.png"/>
+            <ul>
+              <li><span class="list-item-header">crudzillaJavaLangClass</span> - should not be altered, it is used internally.</li>
+              <li><span class="list-item-header">column</span> - drag-n-drop one of the column objects that were generated earlier. The value should be the path to the draged-n-droped column</li>
+              <li><span class="list-item-header">name</span> - name of the field. This would be used in all sql statements to reference this field.</li>
+                <li><span class="list-item-header">useAsLabel</span> - set to true if the name should be automatically used as the label for the mapped column in instances where the AS clause isn't used in sql select statements.</li>
+            </ul>
+          </li>     
+          <li>
+            <p>
+            Under the DataModel folder create an Instantiator list to hold the fields, 
+              this object should be called <code>fields</code>. 
+              You must add all the fields your created above to this list.
+            </p>
+            <img src="img/datamodel-field-list.png"/>
+          </li>          
+        </ul>
+                      
+        
+        <h5>Create DataModel reference</h5>
+        <p>
+        A DataModel reference is an Instantiator list of DataModels that have been defined as required above.
+        You create any number of references depending on which DataModels you want to use. These
+        references would then be dropped on the appropriate DataStatement that uses them.
+        </p>
+        <p>
+        	<img src="img/datamodel-references.png"/>
+        </p>
+               
+        
+         <h5>DataTable Summary</h5>
+  
+        <h6>DataTable layout</h6>
+        <p>
+          Your DataTable should be layed out as demonstrated below. Below the <code>columns</code>
+          folder contains DataTable column objects generated as outlined above.<br/> <span class="point-to-note">Note</span> DataTables
+          need not follow the Java naming convention, however you should organize all your
+          DataTables in an appropriate manner.
+        </p>        
+        <p>
+        	<img src="img/datatable-crudbase-layout.png"/>
+        </p>
+        
+        <h6>Simplified steps for creating a DataTable</h6>
+        <ul>
+          <li>Create a folder with the same name as your Preemptive Schema table.</li>  
+          <li>Under this folder, create a DataTable object and it should be called <code>datatable</code>.</li>
+          <li>Fill out the fields of <code>datatable</code></li>
+          <li>Under the DataTable folder create a sub-folder called <code>columns</code></li>
+          <li>Right-click on the <code>columns</code> folder, and generate the DataTable column objects</li>
+        </ul>
+        
+        
+        <h5>DataModel Summary</h5>
+        <p>
+        	As further clarification, when you are done with the steps outlined above 
+          your crudbase should have the following layouts.
+        </p>
+        <h6>DataModel Layout</h6>
+        <p>
+          The following diagram shows what the layout for a typical applications DataModel should be.
+          In this diagram we see a DataModel for customer.
+        </p>
+        <p>
+        	<img src="img/datamodel-crudbase-layout.png"/>
+        </p>
+        <h6>Simplified steps for creating DataModel</h6>
+        <ul>
+          <li>Create a namespace that follows java package convention.</li>
+          <li>Create a folder under the right namespace with the name of your DataModel</li>
+          <li>Under this folder, create a DataModel object and it should be called <code>datamodel</code>.</li>
+          <li>Under this folder, create an Instantiator called <code>fields</code></li>
+          <li>Under this folder, create a sub-folder called <code>fields</code></li>
+          <li>Under the sub-folder <code>fields</code> create your DataModel Field objects</li>
+          <li>Make sure there is one field called <code>crudzillaType</code></li>
+          <li>Fill out all fields for your DataModel fields</li>
+          <li>Add the executable path in the <code>fields</code> Instantiator for each DataModel Field and make sure evaluation is enabled for each entry.</li>
+        </ul>        
+        
+        <p>
+          These layouts together describe what a DataModel in HiveMind looks like.
+        </p>        
+        
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/j9f7iCeD7d8?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+        <p><a class='youtube' href="http://www.youtube.com/embed/HXhrauD86Ic?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>
+      
+      <section  class="tab-pane" id="backup">
+        <h2>Backing up your work</h2>
+        <p>
+          It is highly recommeded that you run a regular backup of your work. HiveMind supports backing
+          up both your file system resources and your crud database.
+        </p>
+        <p>
+          To add a folder or file to backup, right click and select backup.
+          To run a backup select Run Backup from Application menu. <span class="point-to-note">Note</span> that adding a file or folder to
+          backup is not the same as running a backup.
+        </p>
+        <p>
+          The backup resources are all stored in your asset directory in the 
+          folder <code>crudzilla-backup-snapshots</code>.          
+        </p>
+        <p><img src="img/system-menu.png"/></p>
+        <p>
+          <span class="point-to-note">Note</span> that these backups are local, meaning if the computer on which HiveMind is running suffers
+          disk failure for instance, then you may lose all your work including backup. To address this
+          problem you should probably setup some sort of additional backup to save your backups in other
+          places, such as in the cloud, google drive, github..etc.
+        </p>
+        <p>Crudzilla will offer a cloud backup service in the near future.</p>
+      </section>
+      
+      
+      <section  class="tab-pane" id="log-view">
+        <h2>Logging</h2>
+        <p>
+          HiveMind supports logging during development. See section on Programming HiveMind for steps on
+          how to configure logging.
+        </p>
+        <p>
+          You can view log output for an application that is currently running from the application
+          menu.          
+        </p>
+        <p>
+          <img src="img/application-menu.png"/>
+        </p>
+        <p>
+          <span class="point-to-note">Note</span> that to configure production logging for your application, you'll need to integrate your
+          preffered logger and configure it. The logging in the HiveMind development environment is for
+          development only and isn't persisted to disk. The HiveMind development environment uses log4j,
+          you may setup something else for your production use.
+        </p>
+        <p>
+          Within ScriptExecutors the <code>crud</code> object has a method <code>logger()</code> for logging.
+          It returns the apache commons logging <code>org.apache.commons.logging.Log</code> object.
+        </p>
+      </section>
+
+      <section  class="tab-pane" id="configure">
+        <h2>Configuring Applications</h2>
+        <p>
+          You set application configurations via entries in <code>crudzilla-app-settings/system-settings</code>.
+          
+        </p>
+        <p>
+			You need to specify the base directory of your application assets including cruds. 
+          There are varous directories that can be set.
+          By Default these are set to the asset directory sub-directory that 
+          your application is created in, that is the crud home of your 
+           application (<code>&lt;path-to-your-app-directory&gt;/web</code>). 
+          You should only need to 
+            set most of these for production deployment, not during development.
+        </p>
+        
+		<ul>
+          <li><span class="list-item-header">crudzilla_static_file_base_dir</span> - Where static resources such 
+            as html, javascript,image and css files are stored. You may leave this blank in which case 
+            the <span class="list-item-header">app-home</span> servlet init parameter value would be used.
+            </li>
+          <li><span class="list-item-header">crudzilla_monitor_crud_changes</span> - points to configuration 
+            for crud file change monitor for hot swapping of cruds.
+            </li>
+          <!--<li><span class="list-item-header">crudzilla_crud_home</span> - This is a directory that has all 
+            executable cruds. You may leave this blank in which case the <span class="list-item-header">app-home</span> servlet init parameter 
+            value would be used.</li>-->
+            <li><span class="list-item-header">crudzilla_velocity_template_root</span> - 
+            This is the base directory for the Velocity template engine, Velocity would 
+            look in this directory for template files. You may leave this blank in which case 
+              the <span class="list-item-header">app-home</span> servlet init parameter value would be used.
+            </li>
+          <li><span class="list-item-header">crudzilla_serve_static_content</span> - set to <code>true</code> to 
+            enable the serving of static resources. It is true by default.
+            </li>
+          <li><span class="list-item-header">crudzilla_engine_startup_handler</span> - pointer to an 
+            executable that should be run whenever the HiveMind middle-ware layer is initialized.
+            </li>
+          <li><span class="list-item-header">crudzilla_asset_base</span> - This simply states how 
+            many levels up from the developer studio application executable resource directory 
+            is the asset directory. This should not be modified, it used internally.
+            </li>
+          <li><span class="list-item-header">crudzilla_welcome_files</span> - 
+            comma seperated list of default directory files.
+            </li>
+          <li><span class="list-item-header">crudzilla_url_mapper</span> - 
+            Points to an Instantiator that replaces a native crud url with a user-friendly version. 
+            Each parameter entry represents one such mapping. 
+            The name of the parameter would be the user-friendly alias while the value has the actual crud path.
+            <p>
+              <span class="point-to-note">Note</span> that this must be a map, in other words the Instantiator
+              pointed to must have the parameter <code>crudzillaJavaLangClass</code> set to <code>map</code>.
+            </p>
+            </li>
+          <li><span class="list-item-header">crudzilla_interceptor</span> - 
+            a crud that serves as a central controller for all requests 
+            to the HiveMind middle-ware. Set this if you want control over all 
+            requests to your application. The argument map will have a variable named  
+            <code>crudzilla_requested_resource</code>, this holds the actual request resource path. 
+            The argument map will have a variable named  
+            <code>crudzilla_requested_serverside</code>, when set to <code>false</code>, indicates that original request came directly from browser. 
+            </li>
+          <li>
+            <span class="list-item-header">crudzilla_temp_upload_directory</span> - temp filesystem location for file uploads.
+          </li>
+          <li>
+            <span class="list-item-header">crudzilla_http_output_mime</span> - set the global mime type for velocity templates.
+            </li>
+          <li>
+            <span class="list-item-header">crudzilla_http_passthrough</span> - set to <code>true</code>
+            to allow velocity templates to stream output directly to <code>httpResponse</code>, 
+            this is default behaviour.
+          </li>
+          <li>
+            <span class="list-item-header">crudzilla_default_datasource</span> - set this to the path of the default DataSource object for DataStatements.
+          </li>
+          <li>
+            <span class="list-item-header">crudzilla_variable_selector_switches</span> - see NVP Processing section for details on Variable Selection.
+          </li>
+          <li>
+            <span class="list-item-header">crudzilla_user_profile_initializer</span> - path to a crud that will return a user profile object, see User Profile section.
+          </li>          
+          <li>
+            <span class="list-item-header">crudzilla_evaluate_user_supplied_values</span> - default is <code>false</code>. set to <code>true</code> if you want to enable expression evaluation
+            on parameters whose values may have been user supplied. By default all parameters with
+            their eval checkboxes checked are required to be final otherwise the evaluation would not be
+            performed, set this parameter to <code>true</code> to override this default behaviour.
+            <p>
+              <span class="point-to-note">Note</span> setting this to <code>true</code> is a potential security risk.
+            </p>
+          </li>
+          
+          <li>
+            <span class="list-item-header">crudzilla_module_base</span> - filesystem to locate modules.
+          </li>          
+        </ul>
+        <p>
+        <span class="list-item-header">app-home</span> is set in your application's web.xml file, by default it is
+        a relative path, ie relative to the asset directory which is <code>cwab-dist/crudzilla-apps/crudzilla</code>.
+        </p>
+        <p>
+
+        <p>
+        	You may also specify an absolute filesystem path for <span class="list-item-header">app-home</span>.
+        </p>
+        
+
+      </section>      
+      
+      <section  class="tab-pane" id="user-profile">
+        <h2>User Profile</h2>
+        <p>
+          The HiveMind platform provides a mechnism that makes it easy for your application
+          to use elements in a user's profile. A user's profile is simply imformation
+          about the currently logged in user, this can include name, contact information
+          and any other information that you want to associate with a user's profile in
+          an application.
+        </p>
+        
+        <p>
+          In your <code>crudzilla-app-settings/system-settings</code>, set the parameter <code>crudzilla_user_profile_initializer</code> to  
+          an executable (likely a DataStatement) path that returns the user profile object. For instances this can be a DataStatement
+          that uses the <code>crudzilla_user</code> argument map property to lookup the id of
+          the user which can be used to associate the user with elements in a multi-user application.
+        </p>
+        <p>
+          You can certainly get your user profile information ondemand, ie at the moment you need it in your
+          application, however this mechanism allows you to setup user profile retrieval once
+          and then easily use elements of the profile all over your application.
+        </p>
+        <p>
+          All elements of the user profile can be accessed in your application using the name pattern
+          <code>crudzilla_user_&lt;ELEMENT-NAME&gt;</code>, where <code>&lt;ELEMENT-NAME&gt;</code> is
+          a property in the user profile object returned, such as <code>id</code>.
+        </p>
+        <p>
+          The user profile object is stored in the http session(<code>httpRequest.getSession()</code>) as <code>crudzilla_user_profile</code>,
+          to invalidate this object, simply remove it from the session, it will be reloaded next time
+          a user request is processed. You may also manually [re]load it by setting the session attribute.
+        </p>
+        <p>
+          <span class="point-to-note">Note</span> that the argument map property <code>crudzilla_user</code>
+          is assumed to be the way you identify a user's profile. This property is available once a user
+          is authenticated.
+        </p>
+      </section>      
+      
+      
+      <section  class="tab-pane" id="app-startup">
+        <h2>Application Startup</h2>
+        <p>
+          When the HiveMind engine is started, you can register a handler to be called. This can be any
+          crud type though it should be a ScriptExecutor that will take care of startup tasks such as setting up 
+          logging.
+        </p>
+        <p>
+          In your <code>crudzilla-app-settings/system-settings</code>, set the parameter <code>crudzilla_engine_startup_handler</code> to your startup
+          crud path. <br/>
+        
+          <span class="point-to-note">Note</span>, this parameter should not be evaluated, just the path to the crud is required, the engine will
+          execute it once full engine setup is complete.
+        </p>
+        
+        <p>
+          By default new applications have a folder called <code>/app-startup</code> with a Groovy script <code>on-crud-engine-startup.ste</code>, you can simply use this.
+        </p>
+      </section>
+      
+      <section  class="tab-pane" id="deploy">
+        <h2>Deploying Applications</h2>
+        <p>
+          The HiveMind product is built on top of the jetty container. When you are building your 
+          application it will be running in jetty. You can deploy your finished application to 
+          another application server of your choice though the existing setup is recommended
+          unless there is solid reason to use a different java appserver/container.          
+        </p>
+        <p>
+          The key jar dependencies are outlined as follows.
+        </p>
+        
+        <ul>
+            <li>
+              <code>cwab-dist/lib/ext/crudzilla</code> contains all crudzilla dependent jars.
+            </li>
+            <li>
+              All jars in <code>cwab-dist/lib/ext/crudzilla/core</code> are required to run crud
+              applications except
+              <ul>
+                <li><span class="list-item-header">ant.jar</span> - required for development only unless you want to use ant in prod.</li>
+                <li><span class="list-item-header">ant-launcher.jar</span> - required for development only unless you want to use ant in prod.</li>
+                <li><span class="list-item-header">log4j.jar</span> - if you are not using log4j in prod then you must include your preferred logging implementation.</li>
+              </ul>
+            </li>
+            <li>
+              In <code>cwab-dist/lib/ext/crudzilla/jvm-language-support</code> the required jars are
+              <ul>
+                <li><span class="list-item-header">commons-jexl.jar</span> - jexl language support.</li>
+                <li><span class="list-item-header">groovy-all.jar</span> - groovy language support.</li>
+                <li><span class="list-item-header">velocity.jar</span> - velocity template support.</li>
+              </ul>
+              <p>
+                The jars below are required if you use the given languages in your applications
+              </p>
+              <ul>
+                <li><span class="list-item-header">js.jar</span> - if you use javascript.</li>
+                <li><span class="list-item-header">jruby-complete.jar</span> - if you use ruby.</li>
+                <li><span class="list-item-header">jython.jar</span> - if you use python.</li>
+                <li><span class="list-item-header">clojure.jar & clojure-jsr223.jar</span> - if you use clojure.</li>
+              </ul>
+            </li>          
+            <li>
+              jars in <code>cwab-dist/lib/ext/crudzilla/dev-tools</code> are only required during development.
+            </li>
+          
+            <li>
+              <p>
+              Additionally, jars in <code>cwab-dist/lib/ext/mail</code> include the Java mail api and implementation.
+              Your production environment may or may not have the required Java mail support.
+              </p>
+              <p>
+                The HiveMind EmailSender crud type uses the apache commons mail component which requires
+                Java mail support.
+              </p>
+            </li>          
+        </ul>
+        
+      </section> 
+
+      <section  class="tab-pane" id="dnd-support">
+        <h2>Visual UI Design</h2>
+        <p>
+          The HiveMind developer product provides a powerful visual development environment. This feature
+          allows for UI frameworks such as bootrapped, ionic, foundation ..etc to be used in
+          a visual drang-n-drop way to build UIs.
+        </p>
+        <p>
+          There's currently no tooling for enabling a particular framework but you can do so manually.
+          <code>/com/crudzilla/HiveMind/web/html-layout/frameworks</code> contains framework definitions.
+          To add a new framework simply follow the bootstrap example included.
+        </p>
+		<p>
+          The pattern for defining a framework is to define all components that can be drag-n-drop,
+          define whether they accepts other components. For additional help please visit the google
+          group. We'll provide additional info later.
+        </p>
+      </section>
+
+      <section  class="tab-pane" id="app-parts">
+        <h2>Building UI Parts</h2>
+        <h6>What are UI Parts</h6>
+        <p>
+          UI Parts are visual components that developers can use to quickly build applications.
+          There is nothing foundamentally different about UI Parts other than the fact that they are built with the
+          expectation that they'll be used on the HiveMind platform and the end-user-developer would be integrating
+          them visually. In other words, a UI Part is a component that can be designed/configured visually
+          and allows the end-user-developer to only specify what is essential, such as custom logic.
+        </p>
+        
+        <p>
+          You as the UI Part builder can make your part as visually sophiscated as you deem necessary,
+          the HiveMind platform prescribes no requirements for how to build parts other than defining
+          an <a href="./#ui-part-interface-section">integration interface</a>.
+        </p>
+        <p>
+          For instance let's say you build a part using the jqGrid jquery library. You'll want to provide
+          a means for the end-user-developer to visually create columns and drag-n-drop a <a data-target="#datastatement" data-toggle="tab">DataStatement</a> to
+          get the data from. You as the part developer would handle making sure that when your part is loaded
+          at runtime it behaves accordingly.
+        </p>
+        <p>
+          The most basic example of a UI Part would be html/css/js snippets as you can find on sites such
+          as bootsnip.com. Now imagine more sophiscated components that can integrate with other components
+          and integrate with a back end, that is what parts are.
+        </p>
+        
+        <p>Ultimately UI Parts are about leveraging another developer's work in as painless/effortless a manner
+          as possible.
+        </p>
+        
+
+          
+        <h6>Markup dependencies</h6>
+        <p>
+          A markup dependency is how you instruct the HiveMind UI builder to select the appropriate html element when
+          a drag-n-drop is performed.
+        </p>
+        <p>
+          To declare a dependency, specify the attribute <code>data-crudzilla-depends-on</code> on an element. 
+          This is a comma seperated list of JQuery/CSS selectors. 
+        </p>
+        <p>
+          The HiveMind UI builder would load these dependencies in the order they are listed. For instance, a certain html snippet
+          may depend on a set of css style definitions, in that case the css style tag would be listed as a dependency
+          to be loaded before the html snippet.
+        </p>        
+        <p>
+          If an element is drag-n-drop and no markup dependency is declared on it, then the element is inserted
+          into the active document. 
+        </p>
+        <p>
+		  However if a markup dependency is declared, the element that is dragged is never
+          automatically dropped onto the active document. If this element needs to be dropped, then you must list it
+          as a dependency.  In order words an element that has dependencies that includes itself should
+          list itself as a dependency.
+        </p>
+        <p>
+          Below is an illustration of how to declare markup dependencies:
+        </p>
+        <pre class="html-snippet" data-code-src="code-samples/markup-dependency.html"></pre>
+        
+        <h6>External dependencies</h6>
+        <p>
+          An external dependency is an external file that needs to be downloaded and 
+          placed in the right directory within the current application for the drag-n-drop to work properly. 
+        </p>
+        <p>
+          It can be a Javascript library dependency, for instance JQuery
+          or an image,or backend logic, basically anything required for the given component to work properly.
+        </p>
+        <p>
+          The attribute <code>data-crudzilla-external-dependency-src</code> is used to specify external dependencies. 
+          This attribute is a comma seperated list of of previously defined dependencies as described in the <a href="./#ui-part-interface-section">UI Part Javascript interface section</a>.
+          It can also simply be the urls for the depended-upon resource.
+        </p>
+        <p>
+          For instance if a script is a dependency, then that script could define this
+          attribute and have it point to the url to download this script. 
+          Similarly other resources such as images and css style sheets can be
+          be specified as external dependencies that need to the downloaded. 
+        </p>
+        <p>
+          The HiveMind UI builder would handle the downloaded and proceed after all resources have been downloaded.
+        </p>
+        <p>
+          Below is an illustration of how to declare external dependencies:
+        </p>        
+	    <pre class="html-snippet" data-code-src="code-samples/external-dependency.html"></pre>
+        
+        <h6 id="ui-part-interface-section">UI Part Javascript interface</h6>
+        <p>
+          A part must implement the following interface to fully integrate into the 
+          HiveMind UI Builder:
+        </p>        
+        <!--<script src="https://gist.github.com/CrudKing/9591953.js"></script>     -->
+        <pre class="javascript-snippet" data-code-src="code-samples/ui-part-interface.js"></pre>
+        
+        <h6>The document object</h6>
+        <p>
+          There is a document object associated with every design mode document. The active document
+          is accessible via the method <code>crudzilla.part.getActiveDoc()</code>. In general a
+          part developer isn't expected to do anything with the document object other than passing
+          it as an argument, so as to establish context for various operations.
+        </p>
+        <pre class="javascript-snippet" data-code-src="code-samples/document-object.js"></pre>
+        
+        <h6>Integration attributes</h6>
+        <p>
+          The following element attributes are available for integration of UI Parts into
+          the HiveMind UI Builder.
+        </p>        
+        
+        <ul>
+          <li>
+            <p>
+              <code>data-crudzilla-call-ondrop</code>: If this attribute is defined, then the processing of the dragged
+            component would be delegated to the interface <code>crudzilla.part.onDrop</code> which is expected to have
+              been implemented by the UI part. The value of this attribute is <code>true</code>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <code>data-crudzilla-part-component-id</code>:This attribute is recommended for identifying components. You
+              can choose other attributes but this is recommended because the UI tool may need to use it in
+              the future. You'll specifiy this attribute on all dependencies and then reference those dependencies
+              with an attribute selector that specifies this attribute.
+            </p>   
+          </li>
+        </ul>
+        
+        
+        
+        <p>
+          If you are a developer who wants to build parts, join our google <a href="https://groups.google.com/d/forum/crudzilla-web-application-builder-user-group" target="_blank">group</a>
+          to engage other developers. 
+        </p>
+        
+        <p>
+          <span class="point-to-note">Note</span> we are going to make the parts store a 
+          marketplace where developers can sell their parts, so get on board!
+        </p>
+      </section>
+
+      <section  class="tab-pane" id="cwab-ui">
+        <h2>Navigating Application Resources</h2>
+        <p>
+          Navigating application resources in the HiveMind environment involves navigating file system resources and database resources.<br/>
+        </p>
+        <p>
+          <img src="img/nav-tabs.png"/>
+        </p>
+        
+        
+        <div id="app-asset">
+          <h5>Apps & Assets</h5>
+          <p>
+          
+          This tab is used for navigating file system resources. Specifically the HiveMind developer environment 
+          application has an asset directory where all items that can be worked on in the HiveMind developer 
+          environment are stored. This includes all applications.
+          </p>
+          <p>
+              The actual location of the asset directory is <code>cwab-dist/crudzilla-apps/crudzilla</code>.
+          </p>
+                    
+          <h6>Various Menu Action</h6>
+          <p>
+          Depending on the type of resource you right-click on, any number of the following actions
+          maybe be avaialble in the resulting context menu.
+          </p>
+          <ul>
+            <li><span class="list-item-header">New</span> - creates a new resource
+              <ul>
+                <li><span class="list-item-header">Folder</span> - create new folder</li>
+                <li><span class="list-item-header">Web App</span> - creates a new Java web application</li>
+                <li><span class="list-item-header">Web Resource</span> - creates one of the following file types.
+                	<ul>
+                      <li><span class="list-item-header">Javascript</span></li>
+                      <li><span class="list-item-header">Markdown</span></li>
+                      <li><span class="list-item-header">Html</span></li>
+                      <li><span class="list-item-header">CSS</span></li>
+                      <li><span class="list-item-header">XML</span></li>
+                      <li><span class="list-item-header">Java</span></li>
+                    </ul>
+                </li>
+                <li><span class="list-item-header">Crud</span> - create one of the following crud types
+                  <ul>
+                    <li><span class="list-item-header">Instantiator</span></li>
+                    <li><span class="list-item-header">DataStatement</span></li>
+                    <li><span class="list-item-header">ScriptExecutor</span></li>
+                    <li><span class="list-item-header">HttpConnector</span></li>
+                    <li><span class="list-item-header">FileUploader</span></li>
+                    <li><span class="list-item-header">EmailSender</span></li>
+                  </ul>
+                </li>
+                <li><span class="list-item-header">Application Object</span> - create one of the following
+                  <ul>                    
+                    <li><span class="list-item-header">NVP Processing Type</span></li>
+                    <li><span class="list-item-header">Crud Type</span></li>
+                    <li><span class="list-item-header">Data Source</span> - datasource for connecting to database</li>
+                    <li><span class="list-item-header">Transaction</span> - create a jdbc transaction</li>
+                    <li><span class="list-item-header">CodeMirror Mode</span> - create a new CodeMirror editor mode</li>
+                    <li><span class="list-item-header">Logger Config</span></li>
+                    <li><span class="list-item-header">Web App</span> - web app configuration object</li>
+                    <li><span class="list-item-header">User Identity</span> - user identity object</li>
+                    <li><span class="list-item-header">Data Modeling</span> 
+                      <ul>
+                        <li><span class="list-item-header">Generated Column Type</span></li>
+                        <li><span class="list-item-header">DataTable Column</span></li>
+                        <li><span class="list-item-header">Generate DataTable</span></li>
+                        <li><span class="list-item-header">DataModel</span></li>
+                        <li><span class="list-item-header">Generated DataTable Strategy</span></li>
+                        <li><span class="list-item-header">DataModel Field</span></li>
+                        <li><span class="list-item-header">Generate Columns</span></li>
+                        <li><span class="list-item-header">DataTable</span> </li>
+                      </ul>
+                    </li>
+                  </ul>                    
+                </li>                
+              </ul>
+            </li>
+            
+            <li><span class="list-item-header">Add</span> - upload a file to the asset directory</li>
+            <li><span class="list-item-header">Copy</span> - copy an item in the asset directory</li>
+            <li><span class="list-item-header">Paset</span> - paste an item in the asset directory</li>
+            <li><span class="list-item-header">Rename</span> - Rename an item in the asset directory</li>
+            <li><span class="list-item-header">Delete</span> - Delete an item in the asset directory</li>
+            <li><span class="list-item-header">Refresh</span> - Refresh an item in the asset directory, when it is a a folder the following options are available
+              <ul>
+                <li><span class="list-item-header">Instantiator</span> - refresh only Instantiators</li>
+                <li><span class="list-item-header">DataStatement</span> - refresh only DataStatements</li>
+                <li><span class="list-item-header">ScriptExecutor</span> - refresh only ScriptExecutors</li>
+                <li><span class="list-item-header">HttpConnector</span> - refresh only HttpConnectors</li>
+                <li><span class="list-item-header">FileUploader</span> - refresh only FileUploader</li>
+                <li><span class="list-item-header">EmailSender</span> - refresh only EmailSenders</li>
+                <li><span class="list-item-header">All</span> - refresh all cruds regardless of type</li>
+              </ul>          
+            </li>
+            <li><span class="list-item-header">Delete Web App</span></li>
+            <!--<li><span class="list-item-header">Sync</span> - syncs crud</li>-->
+            <li><span class="list-item-header">Clone Tree</span> - opens a new tab with a clone of the asset directory try for easy drag-n-drop</li>
+            <li><span class="list-item-header">Backup</span> - add item to backup</li>
+            <li><span class="list-item-header">To Source</span> - transform crud to source form for editing</li>
+              
+            <li><span class="list-item-header">View</span> - view html/crud in wysiwyg editor</li>
+            <li><span class="list-item-header">Test</span> - runs a test</li>
+            <li><span class="list-item-header">Build</span> - builds a build.xml file</li>              
+          </ul>          
+
+        </div>
+        
+        <div  class="tab-pane" id="crudbase">
+          <h5>The Crudbase</h5>
+          <p>
+          This tab is for navigating the crud database. All crud definitions are stored in a database and 
+          all alterations to crud definitions are against this database. This database has a
+          taxonomy layered on top of it which allows for interacting with, and manipulation of the
+          crud database in a manner similar to a filesystem. In other words the items on this
+          tab are not on the file system but in a database.
+          </p>
+          <p>
+            This is an embeded derby database <code>cwab-dist/derby/crudzilla</code>
+          </p>
+          
+          <h6>Various Menu Action</h6>     
+          <p>
+          Depending on the type of resource you right-click on, any number of the following actions
+          maybe be avaialble in the resulting context menu.
+          </p>          
+        
+          <ul>
+            <li><span class="list-item-header">New</span> - create one of the following
+              <ul>
+                <li><span class="list-item-header">Category</span> - create a taxonomy category node</li>
+                <li><span class="list-item-header">Instantiator</span></li>
+                <li><span class="list-item-header">DataStatement</span></li>
+                <li><span class="list-item-header">ScriptExecutor</span></li>
+                <li><span class="list-item-header">HttpConnector</span></li>
+                <li><span class="list-item-header">FileUploader</span></li>
+                <li><span class="list-item-header">EmailSender</span></li>
+                <li><span class="list-item-header">Application Object</span> - create one of the following
+                  <ul>                    
+                    <li><span class="list-item-header">NVP Processing Type</span></li>
+                    <li><span class="list-item-header">Crud Type</span></li>
+                    <li><span class="list-item-header">Data Source</span> - datasource for connecting to database</li>
+                    <li><span class="list-item-header">Transaction</span> - create a jdbc transaction</li>
+                    <li><span class="list-item-header">CodeMirror Mode</span> - create a new CodeMirror editor mode</li>
+                    <li><span class="list-item-header">Logger Config</span></li>
+                    <li><span class="list-item-header">Web App</span> - web app configuration object</li>
+                    <li><span class="list-item-header">User Identity</span> - user identity object</li>
+                    <li><span class="list-item-header">Data Modeling</span> 
+                      <ul>
+                        <li><span class="list-item-header">Generated Column Type</span></li>
+                        <li><span class="list-item-header">DataTable Column</span></li>
+                        <li><span class="list-item-header">Generate DataTable</span></li>
+                        <li><span class="list-item-header">DataModel</span></li>
+                        <li><span class="list-item-header">Generated DataTable Strategy</span></li>
+                        <li><span class="list-item-header">DataModel Field</span></li>
+                        <li><span class="list-item-header">Generate Columns</span></li>
+                        <li><span class="list-item-header">DataTable</span> </li>
+                      </ul>
+                    </li>
+                  </ul>                    
+                </li>
+              </ul>          
+            </li>
+            <li><span class="list-item-header">Add Crud</span> - show search tab for search and drag-n-drop of cruds.</li>
+            <li><span class="list-item-header">Clone Tree</span> - clone crudbase tree for easy drag-n-drop operations.</li>            
+            <li><span class="list-item-header">Rename</span> - rename category or crud</li>
+            <li><span class="list-item-header">Delete</span> - delete category or crud</li>
+            <li><span class="list-item-header">Bake</span> - bake a crud/category of cruds, ie make a crud definition executable.</li>
+            <li><span class="list-item-header">Clone</span> - clone this crud</li>
+            <li><span class="list-item-header">Bake</span> - baking turns a crud definition in the crudbase to an executable file on disk.</li>
+            <li><span class="list-item-header">Delete</span> - delete crud from taxonomy and crudbase</li>
+            <li><span class="list-item-header">Test</span> - test crud</li>
+            <li><span class="list-item-header">Unlink</span> - remove crud from taxonomy but don't delete from crudbase.</li>
+          </ul> 
+          <p>
+            <span class="point-to-note">Note</span> that all actions in the crudbase should happen in the context of an application.
+            Meaning categories and cruds you create and manipulate must ultimately be along a valid
+            application path that mirrors the application path in the asset directory.
+          </p>
+          <p>
+            Creating cruds and categories that don't map to an existing application is likely to create
+            problems because the HiveMind platform assumes all cruds belong to an application.
+          </p>
+          
+        </div>
+        
+        
+        <p><a class='youtube' href="http://www.youtube.com/embed/FqbLemUufi4?rel=0&amp;wmode=transparent">Screencast <img src="../../img/gnome-mplayer.png"/></a></p>
+      </section>
+

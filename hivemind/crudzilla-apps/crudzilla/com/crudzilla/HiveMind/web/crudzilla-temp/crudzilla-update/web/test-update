@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Crudzilla-Web development on the web - java ruby python javascript clojure groovy velocity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- styles -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="assets/css/docs.css" rel="stylesheet">
+<link href="assets/css/prettyPhoto.css" rel="stylesheet">
+<link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+<link href="assets/css/flexslider.css" rel="stylesheet">
+<link href="assets/css/sequence.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/color/default.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/js/colorbox/example3/colorbox.css" />  
+  
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<script src="assets/js/jquery-1.8.2.min.js"></script>
+<script src="assets/js/jquery.easing.1.3.js"></script>
+<script src="assets/js/google-code-prettify/prettify.js"></script>
+<script src="assets/js/modernizr.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/jquery.elastislide.js"></script>
+<script src="assets/js/sequence/sequence.jquery-min.js"></script>
+<script src="assets/js/sequence/setting.js"></script>
+<script src="assets/js/jquery.tweet.js"></script>
+<script src="assets/js/jquery.prettyPhoto.js"></script>
+<script src="assets/js/application.js"></script>
+<script src="assets/js/jquery.flexslider.js"></script>
+<!-- Portfolio hover -->
+<script src="assets/js/hover/jquery-hover-effect.js"></script>
+<script src="assets/js/hover/setting.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="assets/js/crudzilla.js"></script>
+<!-- fav and touch icons -->
+<link rel="shortcut icon" href="assets/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  
+<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Gravitas+One|Varela' rel='stylesheet' type='text/css'>  
+  
+
+<script src="assets/js/colorbox/jquery.colorbox.js"></script>  
+  
+<script>
+  $(document).ready(function(){
+      crudzilla.init_subscribe(true);
+      $(".screenshots").colorbox({rel:'screenshots', transition:"none"});
+  });
+</script>  
+  
+</head>
+<body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=262873860423860";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>  
+  
+  <style type="text/css">
+	.btn-custom { background-color: hsl(48, 100%, 58%) !important; background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe88e", endColorstr="#ffd428"); background-image: -khtml-gradient(linear, left top, left bottom, from(#ffe88e), to(#ffd428)); background-image: -moz-linear-gradient(top, #ffe88e, #ffd428); background-image: -ms-linear-gradient(top, #ffe88e, #ffd428); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffe88e), color-stop(100%, #ffd428)); background-image: -webkit-linear-gradient(top, #ffe88e, #ffd428); background-image: -o-linear-gradient(top, #ffe88e, #ffd428); background-image: linear-gradient(#ffe88e, #ffd428); border-color: #ffd428 #ffd428 hsl(48, 100%, 53%); color: #333 !important; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33); -webkit-font-smoothing: antialiased; }
+    .screenshot-title{font-weight:bold}
+    
+	.doc-btn-custom {font-weight:bold; background-color: hsl(48, 100%, 58%) !important; background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe88e", endColorstr="#ffd428"); background-image: -khtml-gradient(linear, left top, left bottom, from(#ffe88e), to(#ffd428)); background-image: -moz-linear-gradient(top, #ffe88e, #ffd428); background-image: -ms-linear-gradient(top, #ffe88e, #ffd428); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffe88e), color-stop(100%, #ffd428)); background-image: -webkit-linear-gradient(top, #ffe88e, #ffd428); background-image: -o-linear-gradient(top, #ffe88e, #ffd428); background-image: linear-gradient(#ffe88e, #ffd428); border-color: #ffd428 #ffd428 hsl(48, 100%, 53%); color: #333 !important; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33); -webkit-font-smoothing: antialiased; }
+    
+</style>    
+  
+<header>
+<!-- Navbar
+    ================================================== -->
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<!-- logo -->
+          <a class="brand logo" href="./">
+			<img src="assets/img/logo.png" alt="" />
+			</a>
+			<!-- end logo -->
+			<!-- top menu -->
+			<div class="navigation">
+				<nav>
+				<ul class="nav topnav">
+                  
+					<li>
+                      <a href="doc/eu-doc/">Documentation</a>
+					</li>                  
+                  
+                    <!--
+					<li class="dropdown active">
+					<a href="index.html">Home</a>
+					</li>
+					-->
+                  
+                  
+                  
+					<li>
+                      <a href="get-it/">Pricing</a>
+					</li>
+					<li>
+                      <a href="contact/">Contact</a>
+					</li>                  
+                            
+                    
+                    <!--
+					<li>
+                      <a href="about/">About</a>
+					</li>                   
+                    -->
+					<li>
+                      <a href="blog/">Blog</a>
+					</li>
+  
+				</ul>
+				</nav>
+			</div>
+			<!-- end menu -->
+		</div>
+	</div>
+</div>
+</header>
+<section id="intro">
+<div class="jumbotron masthead">
+	<div class="container">
+      
+      
+		<!-- slider navigation -->
+		<div class="sequence-nav">
+			<div class="prev">
+				<span></span>
+			</div>
+			<div class="next">
+				<span></span>
+			</div>
+		</div>
+		<!-- end slider navigation -->
+		<div class="row">
+			<div class="span12">
+				<div id="slider_holder">
+					<div id="sequence">
+						<ul>
+							<!-- Layer 1 -->
+                          <li>
+                            <div class="info animate-in" style="top:0">
+								<h2 style="text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);font-family: 'Ubuntu Condensed', cursive;">
+                                  Web development in the browser</h2>
+								<br>
+								
+								<h3 style="font-size:22px;font-family: 'Ubuntu Condensed', sans-serif;text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);">
+									Runs on your laptop,server or in the cloud.
+								</h3>							
+      
+                                <h4 style="font-size:22px;font-family: 'Ubuntu Condensed', sans-serif;text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);">Easy setup</h4>
+                              	<!--
+                                <code style="display:block">
+                                	1. unzip cwab-dist.zip<br/>
+                                  	2. cd cwab-dist<br/>
+                                  	3. java -jar start.jar -Dderby.system.home=./derby<br/>
+                                  	4. http://localhost:7000<br/>
+                                  	5. login with developer/developer
+                                </code><br/>
+								-->
+                                
+                              	1. <code>unzip cwab-dist.zip</code><br/>
+                              	2. <code>cd cwab-dist</code><br/>
+                              	3. <code>java -jar start.jar -Dderby.system.home=./derby</code><br/>
+                              	4. <code>goto http://localhost:7000</code><br/>
+                              	5. <code>login with developer/developer</code><br/><br/>
+                              	
+                                <!--
+                                <ol>
+                                  <li><code>unzip cwab-dist.zip</code></li>
+                                  <li><code>cd cwab-dist</code></li>
+                                  <li><code>java -jar start.jar -Dderby.system.home=./derby</code></li>
+                                  <li><code>http://localhost:7000</code></li>
+                                  <li><code>login with developer/developer</code></li>
+                                </ol>   
+								-->
+                              <div style="text-align:right">
+                                <a class="btn btn-success" href="get-it/">Download &raquo;</a>
+                                &nbsp;&nbsp;
+                                <a class="screenshots btn btn-custom" style="font-weight:bold" id="screenshots-btn" href="assets/img/home-page/home.png" title="<span class='screenshot-title'>Developer tools need not be ugly.</span>"> Screenshots <img style="vertical-align:middle" src="assets/img/home-page/emblem-photos.png"/></a>
+                                
+								&nbsp;&nbsp;
+                                <a class="btn" style="font-weight:bold" href="doc/eu-doc/"> Documentation</a>                                
+                               </div>
+							</div>
+                           
+							<img class="slider_img animate-in" src="assets/img/languages/all.png" alt="" />
+							</li>
+							<!-- Layer 2 
+							<li>
+							<div class="info">
+								<h2>Smart and fresh</h2>
+								<br>
+								<h3>Rich of features</h3>
+								<p>
+									Lorem ipsum dolor sit amet, munere commodo ut nam, quod volutpat in per. At nec case iriure, consul recteque nec et.
+								</p>
+								<a class="btn btn-success" href="#">Learn more &raquo;</a>
+							</div>
+							<img class="slider_img" src="assets/img/slides/sequence/img-2.png" alt="" />
+							</li>
+							<!-- Layer 3 
+							<li>
+							<div class="info">
+								<h2>Far from ugly</h2>
+								<br>
+								<h3>Latest technology</h3>
+								<p>
+									Lorem ipsum dolor sit amet, munere commodo ut nam, quod volutpat in per. At nec case iriure, consul recteque nec et.
+								</p>
+								<a class="btn btn-success" href="#">Learn more &raquo;</a>
+							</div>
+							<img class="slider_img" src="assets/img/slides/sequence/img-3.png" alt="" />
+							</li>
+                          -->
+						</ul>
+					</div>
+				</div>
+				<!-- Sequence Slider::END-->
+                
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section id="maincontent">
+  
+  
+  <div class="container">
+      	<div style="width:90%;margin-left:auto;margin-right:auto">	
+  
+          <div style="width:256px;float:left;">
+              <a href="https://twitter.com/CrudzillaSoft" class="twitter-follow-button" data-show-count="false">Follow @CrudzillaSoft</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </div>      
+        
+          <div style="width:128px;float:left;">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-via="CrudzillaSoft">Tweet</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </div>
+          <div style="width:128px;float:left;">
+              <div class="fb-like" data-href="http://www.crudzilla.com" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div>        
+          </div>
+          <div style="width:128px;float:left;">
+            <!-- Place this tag where you want the +1 button to render. -->
+            <div class="g-plusone" data-size="medium"></div>
+            
+            <!-- Place this tag after the last +1 button tag. -->
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>          
+          </div>
+          <div style="width:256px;float:right;">
+            <h5>SUBSCRIBE TO OUR NEWSLETTER</h5>
+            <form id="subscriber-form">              
+              <div class="input-append">                
+                <input id="newsletterSubscriberEmail" class="span2" placeholder="Enter Email Address"  type="text" required>
+                <button class="btn btn-color" type="submit">Subscribe</button>
+              </div> 
+            </form>
+            <h4 id="confirmation"></h4>   
+          </div>          
+          
+          <div style="clear:both"></div>
+        </div>
+    
+    <div style="display:none">
+      <!--<p><a class="screenshots" href="assets/img/home-page/home.png" title="Dev tools need not be ugly.">Screenshots</a></p>-->
+      <p><a class="screenshots" href="assets/img/home-page/datastatement.png" title="<span class='screenshot-title'>Hassle-free CRUD operations with the full power of SQL.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/emailsender.png" title="<span class='screenshot-title'>Why write code to send email?.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/httpconnector.png" title="<span class='screenshot-title'>or connect to RESTful http services.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/instantiator.png" title="<span class='screenshot-title'>XML or JSON files to hold configuration are a thing of the past.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/generic-ide.png" title="<span class='screenshot-title'>Plug in any language of your choice.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/task-manager.png" title="<span class='screenshot-title'>Manage your workload with built-in task manager.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/lucene.png" title="<span class='screenshot-title'>Unleash the power of a search engine on your code base.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/validation.png" title="<span class='screenshot-title'>Conserve brain cycles for important task not for concerns like form validation.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/groovy.png" title="<span class='screenshot-title'>Enjoy the power of JSR-223 with a buffet of laguages you can build your apps with.</span>">Screenshots</a></p>
+      
+      <p><a class="screenshots" href="assets/img/home-page/ruby.png" title="<span class='screenshot-title'>Ruby off Rails.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/python.png" title="<span class='screenshot-title'>Python without Django.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/clojure.png" title="<span class='screenshot-title'>Clojure for you functional folks:).</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/javascript.png" title="<span class='screenshot-title'>Use Javascript on both front and back ends.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/ant.png" title="<span class='screenshot-title'>The power of ANT is at your finger tip.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/java.png" title="<span class='screenshot-title'>With ANT, you have a capable Java IDE.</span>">Screenshots</a></p>
+      <p><a class="screenshots" href="assets/img/home-page/access-control.png" title="<span class='screenshot-title'>Take the guesswork out of security with easy access control.</span>">Screenshots</a></p>
+    </div>
+    <!--
+    <div>
+      <div class="row" >
+        <div class="span3">Dev tools need not be ugly.</div>
+        <div class="span9">
+          <img src="assets/img/home-page/home.png"/>
+        </div>
+        
+      </div>
+      
+      
+      <div class="row" >
+        <div class="span3">Hasle-free CRUD operations with the full power of SQL. </div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/datastatement.png"/>
+        </div>    
+        
+      </div>    
+      
+      
+      <div class="row" >
+        <div class="span3">Why write code to send email?. </div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/emailsender.png"/>
+        </div>    
+        
+      </div>    
+      
+      <div class="row" >
+        <div class="span3">Or connect to RESTFUL http services. </div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/httpconnector.png"/>
+        </div>    
+        
+      </div>    
+      
+      
+      <div class="row" >
+        <div class="span3">XML or JSON files to hold configuration are a thing of the past. </div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/instantiator.png"/>
+        </div>    
+        
+      </div>    
+      
+      <div class="row" >
+        <div class="span3">Plug in any language of your choice. </div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/generic-ide.png"/>
+        </div>    
+        
+      </div>  
+      
+      <div class="row" >
+        <div class="span3">Manage your workload with built-in task manager.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/task-manager.png"/>
+        </div>    
+        
+      </div>   
+      
+      <div class="row" >
+        <div class="span3">Unleash the power of a search engine on your code base.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/lucene.png"/>
+        </div>    
+        
+      </div>   
+      
+      <div class="row" >
+        <div class="span3">Conserve brain cycles for important task not for concerns like form validation.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/validation.png"/>
+        </div> 
+      </div>     
+      
+      <div class="row" >
+        <div class="span3">Enjoy the power of JSR-223 with a buffet of laguages you can build your apps with.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/groovy.png"/>
+        </div>    
+        
+      </div>   
+      
+      <div class="row" >
+        <div class="span3">Ruby off Rails.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/ruby.png"/>
+        </div>
+      </div>
+      
+      <div class="row" >
+        <div class="span3">Python without DJango.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/python.png"/>
+        </div>
+      </div>  
+      
+      <div class="row" >
+        <div class="span3">Clojure for you functional folks:).</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/clojure.png"/>
+        </div>
+      </div>  
+      
+      <div class="row" >
+        <div class="span3">Use Javascript on on both front and back ends.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/javascript.png"/>
+        </div>
+      </div>  
+      
+      <div class="row" >
+        <div class="span3">The power of ANT is at your finger tip.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/ant.png"/>
+        </div>
+      </div>  
+      
+      <div class="row" >
+        <div class="span3">With ANT, you have a capable Java IDE.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/java.png"/>
+        </div>
+      </div>  
+      
+      
+      <div class="row" >
+        <div class="span3">Take the guesswork out of security with easy access control.</div>
+        
+        <div class="span9">
+          <img src="assets/img/home-page/access-control.png"/>
+        </div>
+      </div>  
+      
+    </div> 
+    -->
+  </div>
+  </section>
+
+<!-- Footer
+ ================================================== -->
+<footer class="footer">
+  
+  <div class="container">
+	<div class="row">
+      	  <div class="span3"></div>
+      	  <div class="span3"></div>
+      	  <div class="span3"></div>
+          <div class="span3">
+            <div class="widget" style="display:none">
+              <h5>Keep updated</h5>
+              <h4 id="confirmation"></h4>
+              <p>
+                Enter your email to subcribe to newsletter
+              </p>
+              <form id="subscriber-form"> 
+                <div class="input-append">
+                  <input id="newsletterSubscriberEmail" class="span2" placeholder="Your email address"  type="text" required>
+                  <button class="btn btn-color" type="submit">Subscribe</button>
+                </div> 
+              </form>
+              
+            </div>
+          </div>
+	</div>
+</div>
+ 
+<div class="verybottom">
+	<div class="container">
+		<div class="row">
+		  <div class="span6">
+				<p>
+					&copy; Cruzilla Software Inc 2013 - All right reserved
+				</p>
+	      </div>
+
+		</div>
+	</div>
+</div>
+</footer>
+  
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18136695-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>  
+</body>
+</html>

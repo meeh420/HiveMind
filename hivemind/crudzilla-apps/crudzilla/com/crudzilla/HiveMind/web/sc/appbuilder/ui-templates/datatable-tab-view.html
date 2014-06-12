@@ -1,0 +1,58 @@
+<div id="datatable-tabs-<#=id#>">
+    <ul>
+        <li><a href="#datatable-sql-tab-<#=id#>">Sql</a></li>
+    </ul>
+
+  
+  	<div id="datatable-sql-tab-<#=id#>" style="padding-left: 5px;padding-right:10px">
+      
+
+        <div style="width:100%;margin-bottom:4px">
+          
+            <div style="float:left;width:30%">
+              <fieldset>
+                <legend>Generation Strategy</legend>
+                <div id="datatable-generation-strategy-path-label-drop-" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop reference here.</span></div>
+                <span id="datatable-generation-strategy-path-label-"></span>
+                
+                <button  id="datatable-generation-strategy-clear-path-button-">Clear</button>
+                <input type="hidden" id="datatable-generation-strategy-path-"/>
+              </fieldset>
+            </div>       
+          
+          	<div style="float:left;width:30%;">
+              <fieldset>
+                <legend>DataSource</legend>                
+                <div id="datatable-datasource-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop reference here.</span></div>
+                <span id="datatable-datasource-path-label-<#=id#>"></span>
+                
+                <button  id="datatable-datasource-clear-path-button-<#=id#>">Clear</button>
+                <input type="hidden" id="datatable-datasource-path-<#=id#>"/>                       
+              </fieldset>
+            </div>
+          
+            <div style="float:right;width:30%">
+               <fieldset>
+                 <legend>Actions</legend>                
+                    <button id="datatable-sql-generation-button-<#=id#>" title="Generate Create Table sql statement">Generate</button>  <button title="Run Statement" id="datatable-sql-execute-button-<#=id#>">Create</button>   
+               </fieldset>
+            </div> 
+          	<div style="clear:both;margin-bottom:8px"></div> 
+        </div>      
+      
+      
+      
+        <div style="margin-bottom:5px">
+          <table id="datatable-columnspace-table-<#=id#>"></table>      
+        </div>
+    
+
+  
+        <div>
+              <textarea id="datatable-sql-editor-<#=id#>"></textarea>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+   
+  
+</div>

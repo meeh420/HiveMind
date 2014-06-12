@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>CrudzillaAppServer</servlet-name>
+        <servlet-class>com.crudzilla.server.AppServer</servlet-class>
+        <init-param>
+            <param-name>app-home</param-name>
+            <param-value>crudzilla/com/crudzilla/testApplication/web</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CrudzillaAppServer</servlet-name>
+        <url-pattern>/crud-appserver/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            120
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+  
+  	<!--BEGIN SECURITY SECTION-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>testApplication Security</web-resource-name>            
+            <url-pattern>/crud-appserver/secure/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>developer</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>developer</role-name>
+    </security-role>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>testApplication</realm-name>
+        <form-login-config>
+          <form-login-page>/crud-appserver/login/login.html</form-login-page>
+          <form-error-page>/crud-appserver/login/login-error.html</form-error-page>
+        </form-login-config>
+    </login-config>    
+    <!--END SECURITY SECTION-->
+    
+    <resource-ref>
+        <description>testApplication DB Connection</description>
+        <res-ref-name>jdbc/testApplicationDB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>

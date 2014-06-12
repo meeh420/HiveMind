@@ -1,0 +1,190 @@
+<div id="datastatement-info-panel-<#=id#>" style="display:none"></div>
+<div id="datastatement-tabs-<#=id#>" style="border-style:none;">
+    <ul>
+        <li><a href="#datastatement-preexecution-handler-tab-<#=id#>">PreExecution</a></li>
+        <li><a href="#datastatement-execution-handler-tab-<#=id#>">Execution</a></li>
+        <li><a href="#datastatement-postexecution-handler-tab-<#=id#>">PostExecution</a></li>
+        
+      
+        <!--<li><a href="#datastatement-crud-settings-tab-<#=id#>">Crud Settings</a></li>-->
+        <li><a href="#datastatement-security-tab-<#=id#>">Security</a></li>
+      
+        <li style="display:none"><a href="#datastatement-info-panel-bar-<#=id#>" id="#datastatement-info-panel-bar-tab-<#=id#>"  onclick="return false;"></a><a href="" onclick="return false;" title="Staled references" id="datastatement-info-panel-trigger-<#=id#>" style="display:none;padding: 3px;padding-left: 5px;padding-right: 5px;background-color: #d03838;color:#f69e40;cursor: pointer"></a></li>
+    </ul>
+
+    <div id="datastatement-execution-handler-tab-<#=id#>" style="border-style:none;height:100%;padding:0;border-top:0"> 
+        <ul>                        
+            <li><a href="#datastatement-sql-template-tab-<#=id#>">Template</a></li>
+            <li><a href="#datastatement-sql-executable-tab-<#=id#>">Compiled</a></li>
+            <li><a href="#datastatement-execution-parameter-tab-<#=id#>">Parameters & Validation</a></li>
+        </ul>
+        <div id="datastatement-sql-template-tab-<#=id#>">
+
+          <div style="width:100%" class="todo-list">
+            
+            
+               <div style="width:45%;float:left">
+                 <div>
+                   <fieldset>
+                     <legend>DataSource</legend>
+                      <div id="datastatement-datasource-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop datasource reference here.</span></div>
+                      <span id="datastatement-datasource-path-label-<#=id#>"></span>
+                    
+                      <button  id="datastatement-datasource-clear-path-button-<#=id#>">Clear</button>
+                      <input type="hidden" id="datastatement-datasource-path-<#=id#>"/>
+                   </fieldset>
+                 </div>
+                
+              
+                  <div>                   
+                   <fieldset>
+                      <legend>Transaction</legend>
+                       
+                      <div id="datastatement-transaction-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop transaction reference here.</span></div>
+                      <span id="datastatement-transaction-path-label-<#=id#>"></span>
+                    
+                      <button  id="datastatement-transaction-clear-path-button-<#=id#>">Clear</button>
+                    
+                      <input type="hidden" id="datastatement-transaction-path-<#=id#>"/>
+                     <select   id="datastatement-transaction-action-<#=id#>"> <option>none</option><option>start</option><option>start_only</option><option>join</option><option>commit</option><option>commit_only</option></select>
+                   </fieldset>
+                 </div>           
+               </div>
+
+               <div style="width:25%;float:left">                 
+                 <fieldset>
+                   	<legend>DataModel Reference</legend>                  	
+                  	<div id="datastatement-datamodel-reference-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop transaction reference here.</span></div>
+                  	<span id="datastatement-datamodel-reference-path-label-<#=id#>"></span>
+                  
+                  	<button  id="datastatement-datamodel-reference-clear-path-button-<#=id#>">Clear</button>
+                  
+                  	<input type="hidden" id="datastatement-datamodel-reference-path-<#=id#>"/>
+                 </fieldset>
+               </div>   
+            
+            
+               <div style="width:25%;float:right">
+                 
+                 <div>
+                   <fieldset>
+                      <legend>Dynamic Sql</legend>                  	
+                      <div id="datastatement-dynamic-sql-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop reference here.</span></div>
+                      <span id="datastatement-dynamic-sql-path-label-<#=id#>"></span>
+                    
+                      <button  id="datastatement-dynamic-sql-clear-path-button-<#=id#>">Clear</button>
+                    
+                      <input type="hidden" id="datastatement-dynamic-sql-path-<#=id#>"/>
+                   </fieldset>
+                 </div>
+                 <div>
+                   <fieldset>
+                      <legend>Resultset Processor</legend>                  	
+                      <div id="datastatement-resultset-processor-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop reference here.</span></div>
+                      <span id="datastatement-resultset-processor-path-label-<#=id#>"></span>
+                    
+                      <button  id="datastatement-resultset-processor-clear-path-button-<#=id#>">Clear</button>
+                    
+                      <input type="hidden" id="datastatement-resultset-processor-path-<#=id#>"/>
+                   </fieldset>
+                 </div>
+               </div>
+            
+            
+
+              <div style="clear:both"></div>
+            </div>
+            
+            <!---<div  id="datastatement-datasource-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding: 10px;width:256px">
+                <span>Drag and drop data source here</span>
+            </div>-->
+            <button  id="datastatement-clear-datasource-drop-button-<#=id#>">Clear</button>
+            
+            <span style="color:silver"><span style="color:blue;font-weight: normal">sql</span> {</span>
+            <div>
+                <textarea id="datastatement-sql-editor-<#=id#>"></textarea>
+            </div><div style="clear:both"></div>
+            <span style="color:silver">}</span>                    
+        </div>
+        <div id="datastatement-sql-executable-tab-<#=id#>">
+            <h3 style="color:silver;display:inline"><span style="color:blue;font-weight: bold">Parameter List</span> [</h3>
+            <p id="datastatement-sql-executable-param-list-<#=id#>" style="word-wrap: break-word;"></p>
+            <h3 style="color:silver;display:inline">]</h3> <br/> <br/>
+
+            <h3 style="color:silver;display:inline"><span style="color:blue;font-weight: bold">ResultSet Template</span> [</h3>
+            <p id="datastatement-sql-executable-resultset-template-<#=id#>" style="word-wrap: break-word;"></p>
+            <h3 style="color:silver;display:inline">*]</h3>                    
+
+            <h3 style="color:silver"><span style="color:blue;font-weight: bold">sql</span> {</h3>
+            <div>
+                <textarea id="datastatement-sql-executable-editor-<#=id#>"></textarea>
+            </div><div style="clear:both"></div>
+            <h3 style="color:silver">}</h3>                    
+        </div>
+        <div id="datastatement-execution-parameter-tab-<#=id#>"  style="border-style:none;height:100%;padding:0;border-top:0">
+            
+            <div id="datastatement-execution-parameter-definition-tabs-<#=id#>" style="border-style:none;height:100%;padding:0;border-top:0"> 
+                <ul>                        
+                    <li><a href="#datastatement-execution-parameter-definition-tab-<#=id#>">Definitions</a></li>
+                </ul>
+                <div id="datastatement-execution-parameter-definition-tab-<#=id#>"  style="padding-left: 5px;padding-right:5px">
+                  <div class="parameter-view">
+                    <table id="datastatement-execution-parameter-table-<#=id#>"></table>
+                  </div>
+                </div>
+            </div>
+            
+        </div>                 
+    </div> 
+
+    <div id="datastatement-preexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+
+        <table id="datastatement-preexecution-handler-table-<#=id#>"></table>                               
+    </div>                 
+    <div id="datastatement-postexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+        
+        <table id="datastatement-postexecution-handler-table-<#=id#>"></table>
+    </div>    
+
+  <div id="datastatement-crud-settings-tab-<#=id#>" style="padding-left: 5px;display:none">
+      
+      Implementor:
+      <div style="margin-bottom:4px">
+                <div id="datastatement-implementor-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop datasource reference here.</span></div>
+                <span id="datastatement-implementor-path-label-<#=id#>"></span>
+                
+                <button  id="datastatement-implement-clear-path-button-<#=id#>">Clear</button>
+                <input type="hidden" id="datastatement-implement-path-<#=id#>"/>
+            </div>    
+      Initializer:
+            <div style="margin-bottom:4px">
+                <div id="datastatement-initializer-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop datasource reference here.</span></div>
+                <span id="datastatement-initializer-path-label-<#=id#>"></span>
+                
+                <button  id="datastatement-initializer-clear-path-button-<#=id#>">Clear</button>
+                <input type="hidden" id="datastatement-initizlizer-path-<#=id#>"/>
+            </div>        
+      Post-Validation:
+            <div style="margin-bottom:4px">
+                <div id="datastatement-post-validation-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop datasource reference here.</span></div>
+                <span id="datastatement-post-validation-path-label-<#=id#>"></span>
+                
+                <button  id="datastatement-post-validation-clear-path-button-<#=id#>">Clear</button>
+                <input type="hidden" id="datastatement-post-validation-path-<#=id#>"/>
+            </div>
+      Icon:
+            <div style="margin-bottom:4px">
+                <div id="datastatement-icon-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop datasource reference here.</span></div>
+                <span id="datastatement-icon-path-label-<#=id#>"></span>
+                
+                <button  id="datastatement-icon-clear-path-button-<#=id#>">Clear</button>
+                <input type="hidden" id="datastatement-icon-path-<#=id#>"/>
+            </div>        
+    </div>
+  
+    <div id="datastatement-security-tab-<#=id#>" style="padding-left: 5px;padding-right:20px">
+        <input type="checkbox" id="datastatement-security-serverside-<#=id#>" /> Server side only.
+        <input type="checkbox" id="datastatement-security-requireallidentities-<#=id#>" /> Require All Roles.
+        <table id="datastatement-security-table-<#=id#>"></table>
+    </div>
+</div>

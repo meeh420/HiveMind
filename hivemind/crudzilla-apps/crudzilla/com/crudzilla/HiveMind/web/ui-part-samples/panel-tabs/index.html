@@ -1,0 +1,273 @@
+<html lang="en"><head>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="static-assets/bootstrap/ico/favicon.ico">
+
+    <title>UI</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script type="text/javascript">
+          document.crudzilla ={
+            part:
+            {
+              //this is required and should be a uuid
+              "id":"f77a7d52-a866-11e3-b1d4-030027ab8d96",
+              //define your external dependencies before declaring them on elements
+              external_dependencies:
+              {
+                "https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip":
+                {
+                  //url for downloading this dependency
+                  "url":"https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip",
+                  //a short one or two line 
+                  "description":"bootstrap CSS framework",
+                  //name of this dependecy
+                  "label":"Bootstrap",
+                  //external page for any additional information about this dependency
+                  "info_page":"http://getbootstrap.com/",
+                  //where you want this to be placed within the current application, 
+                  //if left blank, downloaded file would be place in the same directory 
+                  //as active document.
+                  "local_path":"/path/to/save/in"
+                },
+                "https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist1.zip":
+                {
+                  "url":"https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip",
+                  "description":"bootstrap CSS framework",
+                  "label":"Bootstrap",
+                  "info_page":"http://getbootstrap.com/",
+                  "local_path":"/path/to/save/in"
+                }               
+              }
+              ,
+             /*
+              * This interface checks the list of required dependencies and removes the ones that have already
+              * been met so user isn't prompted to install them. It can be implemented to check for dependencies
+              * in the active document in whatever means the developer deems suitable, the implementation below
+              * is just an example.
+              */
+              onCheckDependencies:function(requiredDependencies,activeDoc){
+                
+                //example implementation
+                for(var i=0;i<requiredDependencies.length;i++){
+                  var dependency = this.external_dependencies[requiredDependencies[i]];
+                  if(dependency.label == "jquery"){
+                    if(activeDoc.documentElement.ownerDocument.SomeJQueryVersion){
+                      //remove this dependency as it has been already met
+                      requiredDependencies.splice(i,1);
+                    }
+                  }
+                  else
+                  if(dependency.label == "bootstrap"){
+                    if(activeDoc.documentElement.ownerDocument.SomeBootstrapVersion){
+                      //remove this dependency as it has been already met
+                      requiredDependencies.splice(i,1);
+                    }
+                  }
+                  //...
+                  //...do something similar for other dependencies                  
+                }
+              },
+              /*
+               * Implement this interface if you want to handle the insertion of html elements
+               * when a drag-n-drop is performed. This interface would be called by the HiveMind
+               * UI builder if drag-n-drop is performed on an element that has the attribute
+               * data-crudzilla-call-ondrop defined and set to true.
+               */
+              onDrop:function(doc,dragElement,dropElement,callBack){
+                //This object describes a mutation to a document.
+                var mutation = 
+                {
+                  //node to be added, removed or reparentd
+                  "node":nodeAddedRemovedOrReparented,
+                  //can be null
+                  "oldParentNode":null,
+                  //the parent that it added node was attached to
+                  "newParentNode":null,
+                  //can be null
+                  "oldPreviousSibling":null,
+                  //can be null if one isn't applicable
+                  "oldNextSibling":null,
+                  //where to drop an added node in relation to a particular sibling
+                  "dropNextToNode":"none | left | right",
+                  //specify if application
+                  "newPreviousSibling": null,
+                  //specify if applicable
+                  "newNextSibling" : null,
+                  //select on of these values to indicate the type of mutation to perform
+                  "type":"added | removed | reparented"
+                };           
+                //for all mutations to active document, notify HiveMind so mutation is persisted
+                //you may call this interface any time you make a persitent mutation to
+                //the active document. With out calling this interface, your changes would not
+                //become persistent so saving the active document would not capture your mutations.
+                this.onDocMutation(mutation,this.getActiveDoc());
+                
+                
+                //additionaly you can leverage the HiveMind UI builder in the implementation of
+                //this part. If you want the UI builder to enable drag-n-drop on an element that
+                //you inserted into this UI part's DOM, you can invoke onDocMutation with this UI part's
+                //document as follows:
+                this.onDocMutation(mutation,this.doc);
+              },
+              /*
+               * Called after an element is dragged from the UI Part document to the
+               * currently active document.
+               * @doc - refers the active document
+               */
+              onPostDrop:function(doc){                
+                //$(doc.crudzillaCloneDOM).find("*").removeClass(this.classes.join(" "));                
+                doc.updatePair();
+                console.log("onPostDrop");
+              },
+              /*
+               * Called after a new document is open in design mode, this opened document
+               * becomes the active document
+               * @doc - refers the active document
+               */              
+              onDocOpen:function(doc){
+                console.log("onDocOpen");
+              },
+              /*
+               * Called when a document that is open in design mode is closed
+               * @doc - refers the closed document
+               */              
+              onDocClose:function(doc){
+                console.log("onDocClose");
+              },
+              /*
+               * Called when a the tab an open document is activated, that is selected
+               * This document becomes the active document.
+               * @doc - refers the active document
+               */              
+              onDocTabActivate:function(doc){
+                console.log("onDocTabActivate");
+              },              
+              /*
+               * Called when a the tab of active document is deactivated, 
+               * that is another tab is selected               
+               * @doc - refers the active document
+               */            
+              onDocTabDeactivate:function(doc){
+                console.log("onDocTabDeactivate");
+              }
+            }
+      };
+      
+      //register this ui part interface implementation 
+      if(top.appBuilder)             
+        top.appBuilder.registerUIPart(document.crudzilla);    
+    </script>
+  </head>
+  <body> 
+ 
+
+       
+    <!--
+      This element depends on the stylesheet and script below as specified by its attributes. 
+      Notice that it also depends on it self, this is how you tell the HiveMind UI builder to
+      drop this element when you do drag-n-drop operations. The order of the listed dependecy
+      determins how they are loaded.
+    -->
+    <div class="container" data-crudzilla-depends-on="[data-crudzilla-part-component-id='ea6f5382-a153-11e3-b1d4-080027ab8d96'],[data-crudzilla-part-component-id='d433a756-a153-11e3-b1d4-080027ab8d96'],[data-crudzilla-part-component-id='c497400b-a153-11e3-b1d4-080027ab8d96']" 
+             data-crudzilla-part-component-id="d433a756-a153-11e3-b1d4-080027ab8d96">
+      <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">Panel title</h3>
+                      <span class="pull-right">
+                          <!-- Tabs -->
+                          <ul class="nav panel-tabs">
+                              <li class="active"><a href="#tab1" data-toggle="tab">Tab 1</a></li>
+                              <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
+                              <li><a href="#tab3" data-toggle="tab">Tab 3</a></li>
+                              <li><a href="#tab4" data-toggle="tab">Tab 4</a></li>
+                          </ul>
+                      </span>
+                  </div>
+                  <div class="panel-body">
+                      <div class="tab-content">
+                          <div class="tab-pane active" id="tab1">
+                            <div class="container">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+                        </div>
+                          <div class="tab-pane" id="tab2">
+                            <div class="container">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+                        </div>
+                          <div class="tab-pane" id="tab3">
+                            <div class="containerx">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+                        </div>
+                          <div class="tab-pane" id="tab4">
+                            <div class="containerx">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                                          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,</div>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>      
+    </div>
+
+    <!-- This stylesheet is depended upon by the container above -->
+    <style type="text/css" data-crudzilla-part-component-id="ea6f5382-a153-11e3-b1d4-080027ab8d96">
+        /*Panel tabs*/
+      .panel-tabs {
+          position: relative;
+          bottom: 30px;
+          clear:both;
+          border-bottom: 1px solid transparent;
+      }
+
+      .panel-tabs > li {
+          float: left;
+          margin-bottom: -1px;
+      }
+
+      .panel-tabs > li > a {
+          margin-right: 2px;
+          margin-top: 4px;
+          line-height: .85;
+          border: 1px solid transparent;
+          border-radius: 4px 4px 0 0;
+          color: #ffffff;
+      }
+
+      .panel-tabs > li > a:hover {
+          border-color: transparent;
+          color: #ffffff;
+          background-color: transparent;
+      }
+
+      .panel-tabs > li.active > a,
+      .panel-tabs > li.active > a:hover,
+      .panel-tabs > li.active > a:focus {
+          color: #fff;
+          cursor: default;
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          border-radius: 2px;
+          background-color: rgba(255,255,255, .23);
+          border-bottom-color: transparent;
+      }
+    </style>
+
+    <!-- This script is depended upon by the container above -->
+    <script type="text/javascript" data-crudzilla-part-component-id="c497400b-a153-11e3-b1d4-080027ab8d96">
+
+    </script>    
+    
+    
+</body>
+</html>

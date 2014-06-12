@@ -1,0 +1,86 @@
+/* 
+    Document   : searchbox
+    Created on : Feb 10, 2013, 10:42:55 PM
+    Author     : bitlooter
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.crudlayout .search input,
+.crudlayout .search .results {
+    font-family: arial, sans-serif;
+    font-size: 10pt;
+    color: #1A1A1A;
+}
+
+.crudlayout .search {
+    display:inline;/*--position: absolute;*/
+    right: 2px;
+    top: 2px;
+}
+
+.crudlayout .searchbar {
+    position: absolute;
+    top:50%; height:10em; 
+    margin-top:-5em
+}
+
+.crudlayout .search .frame {
+    border: 1px solid #97B0F8;
+    background-color: white;
+    padding: 0 2px;
+    margin: 0;
+}
+
+.crudlayout .search .frame table {
+    border-collapse: collapse;
+}
+
+.crudlayout .search input {
+    width: 120px;
+    border: none;
+    outline: none;
+    margin: 1px;
+}
+
+.crudlayout .search .results {
+    color: #4d4d4d;
+    padding-right: 5px;
+    line-height: 24px;
+}
+
+.crudlayout .search button {
+    width: 16px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: url('img/crudlayout-icons.png');
+    vertical-align: top;
+}
+
+.crudlayout .search button:hover {
+    background-color: transparent;
+}
+
+.crudlayout .search button.refresh {
+    width: 18px;
+    background-position: -99px -73px;
+}
+
+.crudlayout .search button.next {
+    cursor: pointer;
+    background-position: -124px -73px;
+}
+.crudlayout .search button.next:hover {
+    background-position: -124px -49px;
+}
+
+.crudlayout .search button.previous {
+    cursor: pointer;
+    background-position: -148px -73px;
+    margin-right: 2px;
+}
+.crudlayout .search button.previous:hover {
+    background-position: -148px -49px;
+}

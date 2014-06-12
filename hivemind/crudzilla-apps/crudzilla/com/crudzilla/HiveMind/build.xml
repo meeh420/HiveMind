@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. -->
+<project name="hivemind" default="war" basedir=".">
+  <description>Builds, testsx, and runs the project HiveMind.</description>    
+  
+  <target name="war">
+    
+    <!--
+    <copy file="web/lucene/lucene-4.5.0/core/lucene-core-4.5.0.jar" todir="WEB-INF/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/analysis/common/lucene-analyzers-common-4.5.0.jar" todir="WEB-INF/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/queryparser/lucene-queryparser-4.5.0.jar" todir="WEB-INF/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/highlighter/lucene-highlighter-4.5.0.jar" todir="WEB-INF/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/queries/lucene-queries-4.5.0.jar" todir="WEB-INF/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/memory/lucene-memory-4.5.0.jar" todir="WEB-INF/lib"/>
+    -->
+    
+    <copy file="web/lucene/lucene-4.5.0/core/lucene-core-4.5.0.jar" todir="${jetty.home}/lib/ext/crudzilla/lucene/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/analysis/common/lucene-analyzers-common-4.5.0.jar" todir="${jetty.home}/lib/ext/crudzilla/lucene/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/queryparser/lucene-queryparser-4.5.0.jar" todir="${jetty.home}/lib/ext/crudzilla/lucene/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/highlighter/lucene-highlighter-4.5.0.jar" todir="${jetty.home}/lib/ext/crudzilla/lucene/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/queries/lucene-queries-4.5.0.jar" todir="${jetty.home}/lib/ext/crudzilla/lucene/lib"/>
+    <copy file="web/lucene/lucene-4.5.0/memory/lucene-memory-4.5.0.jar" todir="${jetty.home}/lib/ext/crudzilla/lucene/lib"/>
+    
+    
+    <war destfile="hivemind.war" webxml="WEB-INF/web.xml">
+      <!--Uncomment these lines to package a war that contains all cwab dependencies-->
+      <!--
+	  <lib dir="${jetty.home}/lib/ext/crudzilla/core"/>
+      <lib dir="${jetty.home}/lib/ext/crudzilla/jvm-language-support"/>
+	  -->
+      <lib dir="WEB-INF/lib"/>
+      <webinf file="WEB-INF/jetty-web.xml"/> 
+      <webinf file="WEB-INF/jetty-env.xml"/>
+    </war>
+    <copy file="hivemind.war" todir="${jetty.home}/webapps"/>
+  </target>
+</project>

@@ -1,0 +1,93 @@
+/* 
+    Document   : layout
+    Created on : Feb 10, 2013, 11:53:42 AM
+    Author     : bitlooter
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body, html {
+    font-family: arial, sans-serif;
+    font-size: 11pt;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+}
+
+#auto {
+    width: 100%;
+    height: 100%;
+
+    margin: -40px 0 0px 0;
+    padding: 40px 0  0px 0;
+
+    /*
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;*/
+    /*border-style: solid;
+    border-width: 1px;*/
+    overflow: hidden;
+}
+
+
+#contents {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 1px;
+    overflow: hidden;
+}
+
+#layout-left-panel,#layout-right-panel {
+    float: left;
+    height: 100%;
+    width: 400px;
+    /*--
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;*/
+}
+
+
+
+#splitter {
+    float: left;
+    height: 100%;
+    cursor: col-resize;
+    border-top: 1px solid lightgray;
+    border-bottom:0;
+    width:5px;
+    /*--background-color: #F5F5F5;    */
+    color: #F5F5F5; 
+}
+
+#footer {
+    
+    height: 16px;
+    font-size: 10pt;
+    
+    overflow: hidden;
+    color: #BFBFBF;
+    /*--border: 1px solid lightgray;*/
+    text-align: center;
+    /*--background-color: #F5F5F5;*/
+    margin:4px;
+    
+    margin-top: 0;
+}
+#footer-inner {
+    /*--margin: 4px;*/
+}
+
+a.footer {
+    color: #BFBFBF;
+    text-decoration: none;
+}
+a.footer:hover {
+    color: red;
+    text-decoration: underline;
+}
+

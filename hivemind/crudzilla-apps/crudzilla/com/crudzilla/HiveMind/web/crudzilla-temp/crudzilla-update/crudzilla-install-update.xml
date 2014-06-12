@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. -->
+<project name="hivemind" default="install" basedir=".">
+  <description>Updates Crudzilla Web Application Builder (HiveMind)</description>    
+  
+  <target name="install">
+    
+    <copy file="web/test-update.html" todir="${jetty.home}/crudzilla-apps/crudzilla/com/crudzilla/HiveMind/web"/>
+
+    <!--<copy file="hivemind.war" todir="${jetty.home}/webapps"/>-->
+  </target>
+</project>

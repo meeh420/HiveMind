@@ -1,0 +1,184 @@
+<div id="right-panel"  style="width:100%;">
+    
+   <div id="main-tab-pane" class="ui-widget-header" style="border-width:0;border-bottom-width:1px">
+    
+     <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
+          <div class="scroll-bar"></div>
+     </div>
+     
+     <div class="scroll-pane" style="width:100%;">
+       
+       <div style="width:90%;float:left;overflow:hidden">
+         <div class="scroll-content"> 
+
+           <div id="tabs" style="border-style:none;">
+               <ul style="width:32000px">
+                 <li><a href="#home-tab" style="font-weight:bold;"><img src="img/nav/evolution-tasks.png" style="width:12px;height:12px;vertical-align:top"/> Task Decks</a></li>
+               </ul>
+               <div id="home-tab" style="padding:0;margin:0"></div>                    
+            </div>
+
+         </div>
+       </div>
+
+       <div class="scroll-buttons todo-list" style="width:48px;float:right;text-align:right;padding-top:2px;padding-right:3px">
+         <button class="scroll-left" style="width:16px;padding:0">Prev</button><button class="scroll-right" style="width:16px;padding:0">Next</button>
+       </div>       
+     </div>
+     
+
+     
+     <div style="clear:both"></div>
+   </div>
+  
+   <div style="clear:both"></div>
+     
+  
+   <div id="layout-right-content">
+      <div id="content-tabs" class="ui-widget-content" style="border-style:solid;height:100%;margin: 4px">
+        <div id="home-content-tab" class="none-editor-tab ui-widget-content" style="border-style:none">
+          
+          <div id="crudzilla-project-panel-header"  class="ui-widget-header" style="border-left:0;border-right:0;border-top:0">
+            <div style="width:40%;float:left;overflow:hidden">
+              <span style="width:90%;float:left"><span><img src="img/start-here.png"/></span><span  style="vertical-align:top;" id="crudzilla-active-project-label"></span></span> 
+                            
+            </div>
+            
+            <div id="project-control-panel" style="width:55%;float:right;padding-top:6px">
+              <div>
+                 <button id="add-card-project-group-button" style="display:none;float:right">Add Deck</button>
+                 <button id="delete-project-button" style="display:none;float:right">Delete Project</button>
+                 
+                 <button id="add-card-project-button" style="float:right">Add Project</button>
+                 <button id="show-card-project-list-button" style="float:right">Projects</button>
+              </div>
+            </div>
+            <div style="clear:both"></div>
+          </div>
+          
+          <div id="crudzilla-card-project-panel" style="background-color:#10759a;" class="todo-list">
+            <div id="crudzilla-card-group-panel">
+              
+            </div>
+          </div>
+        </div>    
+
+        
+        <div id="datasource-tab" class="none-editor-tab"></div>
+        <div id="datatable-tab" class="none-editor-tab"></div>
+        <div id="datamodel-tab" class="none-editor-tab"></div>
+        
+        <div id="datastatement-tab" class="none-editor-tab"></div>
+        <div id="datastatement-reference-tab" class="none-editor-tab"></div>
+        
+        <div id="connector-tab" class="none-editor-tab"></div>
+        <div id="connector-reference-tab" class="none-editor-tab"></div>
+        
+        <div id="scriptexecutor-tab"  class="none-editor-tab"></div>
+        <div id="scriptexecutor-reference-tab" class="none-editor-tab"></div>
+        
+        <div id="fileuploader-tab" class="none-editor-tab"></div>
+        <div id="fileuploader-reference-tab" class="none-editor-tab"></div>
+
+        <div id="emailsender-tab" class="none-editor-tab" ></div>
+        <div id="emailsender-reference-tab" class="none-editor-tab" ></div>        
+        
+        <div id="instantiator-tab" class="none-editor-tab"></div>
+        <div id="instantiator-reference-tab" class="none-editor-tab"></div>        
+        
+        <div id="sysadmin-apptaxonomy-tab" class="none-editor-tab"></div>
+
+        <div id="appresource-tab" class="none-editor-tab"></div>
+        <div id="staticfile-tab" class="none-editor-tab"></div>
+        <div id="usermanagement-tab" class="none-editor-tab"></div>
+        <div id="apptreecontrol-tab" class="none-editor-tab"></div>
+        <div id="worktreecontrol-tab" class="none-editor-tab"></div>
+        
+        
+        <div id="definition-search-tab" class="none-editor-tab"></div>
+        
+        <div id="crud-test-tab" class="none-editor-tab"></div>
+        
+        <div id="text-search-tab" class="none-editor-tab"></div>
+        <div id="html-layout-tab" class="none-editor-tab"></div>
+        <div id="osgi-console-tab" class="none-editor-tab"></div>
+        
+        <div id="datamodel-creation-tab" class="none-editor-tab"></div>
+        <div id="preference-tab" class="none-editor-tab"></div>
+        
+        <div id="editor-holder"></div>
+        <!--<ul id="crudzilla-log-menu" style="width:150px;display:none"></ul>-->
+        <ul id="crudzilla-user-settings-menu" class="todo-list" style="z-index:300;width:256px;display:none">
+          <li>
+            <a href="#" onclick="return false;">View Log</a>
+          	<ul id="crudzilla-log-menu" style="width:150px;display:none"></ul>
+          </li>
+          
+          <li><a href="#" onclick="return false;">Data Modeling</a>
+            <ul>
+            	<li><a href="#" onclick="return false;">Generate Preemptive Schema Table</a></li>
+            </ul>
+          </li>
+          <li><a href="#" onclick="return false;">Manage Users</a></li>
+          <li><a href="#" onclick="return false;">OSGi Console</a></li>
+          <li><a href="#" onclick="return false;">Run Backup</a></li>
+          <li><a href="documentation/end-user-documentation/" target="_blank" >User Guide</a></li>
+          <li><a href="#" onclick="return false;">Options</a></li>          
+          <li><a href="#" onclick="return false;">Log-out</a></li>
+        </ul>
+        <ul id="crudzilla-app-menu" style="display:none"></ul>
+        
+        <ul id="crudzilla-card-project-menu" class="todo-list" style="display:none"></ul>
+        <div id="screencast-viewer-dialog" title="Screencast" style="text-align:center;padding:20px;background-image:url(img/ui-bg_dots-small_35_35414f_2x2.png);background-repeat:repeat">
+          <div id="screencast-viewer-video"></div>
+        </div>
+      </div>
+  </div>
+  <div id="toolbar_search_and_replace_panel" style="display:none" class="crudlayout">
+    <table>
+      <tr>
+        <td>Search for:</td><td><span class="search_for_textbox"></span><input type="hidden" class="search_for_text"/></td>
+      </tr>
+      <tr>
+        <td>Replace with:</td><td style="padding-left:5px"><input type="text" style="border-style:none;outline: 1px solid #97B0F8;width:186px" class="replace_with_textfield"/></td>
+      </tr>
+      <tr>
+        <td></td><td><input type="checkbox" class="match_case_checkbox"/> Match case</td>
+      </tr>
+      <tr>
+        <td></td><td><input type="checkbox" class="regex_checkbox"/> Regex</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="replace_all_button">Replace All</button>
+          <button class="replace_button">Replace</button>
+          <button class="find_button">Find</button>
+        </td>
+      </tr>      
+    </table>
+    <div class="search_results"></div>
+  </div>
+  
+  <div id="crudzilla-dnd-contextmenu-panel" style="display:none">
+    <button id="crudzilla-dnd-contextmenu-panel-delete">Delete</button>
+    <!--<button id="crudzilla-dnd-contextmenu-panel-cloneright">Clone Right</button>
+    <button id="crudzilla-dnd-contextmenu-panel-cloneleft">Clone Left</button>-->
+  </div>
+  <div id="crud-to-source-dialog-confirm" title="Keep existing crud Ids?">
+      <!--<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Keep existing crud Ids?</p>-->
+  </div>  
+  <div class="crudzilla-dnd-address-bar" style="display:none;">
+    <input type="text" id="crudzilla-dnd-address-bar-address" size="32" title="url"/> <button id="crudzilla-dnd-address-bar-go-btn">Go</button> <button id="crudzilla-dnd-address-bar-bookmark-btn">Bookmark</button>
+    <ul id="crudzilla-dnd-address-bar-bookmark-list" style="list-style:none;padding:0!important;margin:4px;margin-left:0;overflow:hidden">
+      
+    </ul>
+  </div>
+  <div id="crudzilla-download-dialog" title="Download">
+    <input type="text"/> <input type="checkbox" title="unzip"/>
+  </div>
+  <div id="crudzilla-dependency-download-dialog" title="External Dependencies">
+    <ul id="crudzilla-dependency-download-list" style="list-style:none;padding-left:0">
+      
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. -->
+<project name="testApplication" default="war" basedir=".">
+    <description>Builds, tests, and runs the project testApplication.</description>    
+    
+    <target name="war">
+      <war destfile="testApplication.war" webxml="WEB-INF/web.xml">
+        <!--Uncomment these lines to package a war that contains all cwab dependencies-->
+        <!--
+        <lib dir="${jetty.home}/lib/ext/crudzilla/core"/>
+        <lib dir="${jetty.home}/lib/ext/crudzilla/jvm-language-support"/>        
+        -->
+        
+        <lib dir="WEB-INF/lib"/>
+        <webinf file="WEB-INF/jetty-web.xml"/> 
+        <webinf file="WEB-INF/jetty-env.xml"/>      
+      </war>  
+      <copy file="testApplication.war" todir="${jetty.home}/webapps"/>
+    </target>
+</project>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  
+    <!--
+    <context-param>
+    	<param-name>app-home</param-name>
+    	<param-value>crudzilla/com/crudzilla/HiveMind/web</param-value>
+    </context-param>  
+  	-->
+  
+    <listener>
+        <description>OSGIServletContextListener</description>
+        <listener-class>com.crudzilla.felix.StartupListener</listener-class>            
+    </listener>  
+    <servlet>
+        <servlet-name>AppServer</servlet-name>
+        <servlet-class>com.crudzilla.server.AppServer</servlet-class>
+      
+        
+        <init-param>
+            <param-name>app-home</param-name>
+          <param-value>crudzilla/com/crudzilla/HiveMind/web</param-value>
+        </init-param>
+        
+      
+        <init-param>
+            <param-name>use-app-server-home</param-name>
+            <param-value>true</param-value>
+        </init-param>    
+      
+		<!--
+        <init-param>
+            <param-name>app-settings</param-name>
+            <param-value>/system/system-settings.ins</param-value>
+        </init-param>
+		-->
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AppServer</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    
+  
+    
+    <listener>
+        <listener-class>org.apache.felix.http.proxy.ProxyListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>proxy</servlet-name>
+        <servlet-class>org.apache.felix.http.proxy.ProxyServlet</servlet-class>
+        <!--<load-on-startup>1</load-on-startup>-->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>proxy</servlet-name>
+        <url-pattern>/osgi/*</url-pattern>
+    </servlet-mapping>  
+    
+  
+    <servlet>
+        <servlet-name>crudzilla-http-proxy</servlet-name>
+        <servlet-class>com.crudzilla.http.proxy.ProxyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>crudzilla-http-proxy</servlet-name>
+      <url-pattern>/crudzilla-http-proxy/*</url-pattern>
+    </servlet-mapping>  
+  
+  
+  
+  
+    <session-config>
+        <session-timeout>-1</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.ste</welcome-file>
+    </welcome-file-list>
+
+	<security-constraint>
+	    <web-resource-collection>
+		<web-resource-name>javascript</web-resource-name>
+		<url-pattern>/js/*</url-pattern>
+	    </web-resource-collection>
+	    <!-- OMIT auth-constraint -->
+	</security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>HiveMind Security</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>developer</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>developer</role-name>
+    </security-role>
+
+    
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>HiveMind</realm-name>
+        <form-login-config>
+            <form-login-page>/authenticate/login.ste</form-login-page>
+            <form-error-page>/authenticate/login.ste</form-error-page>
+        </form-login-config>
+    </login-config>    
+    
+    
+    <resource-ref>
+        <description>HiveMind DB Connection</description>
+        <res-ref-name>jdbc/hivemindDB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+	
+</web-app>

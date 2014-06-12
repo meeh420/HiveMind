@@ -1,0 +1,172 @@
+
+CREATE TABLE accesscontrol (
+  id varchar(64) NOT NULL,
+  user_identity varchar(512) NOT NULL,
+  definition_id varchar(64) NOT NULL,
+  position varchar(8) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE apptaxonomy (
+  apptaxonomy_id varchar(256) DEFAULT NULL,
+  parent_id varchar(128) DEFAULT NULL,
+  presibling_id varchar(128) DEFAULT NULL,
+  link_id varchar(128) DEFAULT NULL,
+  link_apptaxonomy_id varchar(128) DEFAULT NULL,
+  id varchar(256) NOT NULL,
+  name varchar(64) NOT NULL,
+  config clob,
+  type varchar(32) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE apptaxonomy_accesscontrol (
+  id varchar(256) NOT NULL,
+  apptaxonomy_id varchar(256) NOT NULL,
+  user_id varchar(256) DEFAULT NULL,
+  role_id varchar(256) DEFAULT NULL,
+  create_access varchar(8) DEFAULT NULL,
+  read_access varchar(8) DEFAULT NULL,
+  write_access varchar(8) DEFAULT NULL,
+  delete_access varchar(8) DEFAULT NULL,
+  execute_access varchar(8) DEFAULT NULL,
+  extended_access integer DEFAULT NULL,
+  PRIMARY KEY (id,apptaxonomy_id)
+);
+
+CREATE TABLE crud_definition (
+  id varchar(256) NOT NULL,
+  sql_code clob,
+  name varchar(512) NOT NULL,
+  description varchar(512) DEFAULT NULL,
+  server_side_only varchar(8) DEFAULT NULL,
+  require_all_identities varchar(8) DEFAULT NULL,
+  last_modified_timestamp varchar(256) DEFAULT NULL,
+  statement_type varchar(16) DEFAULT NULL,
+  prepared_statement clob,
+  prepared_statement_param_list clob,
+  resultset_template clob,
+  sql_dialect varchar(32) DEFAULT NULL,
+  datasource_path varchar(256) DEFAULT NULL,
+  crud_type varchar(64) DEFAULT NULL,
+  implementor_path varchar(256) DEFAULT NULL,
+  implementor_ref_type varchar(16) DEFAULT NULL,
+  initializer_path varchar(128) DEFAULT NULL,
+  icon_path varchar(256) DEFAULT NULL,
+  post_validate_handler_path varchar(128) DEFAULT NULL,
+  code clob,
+  type varchar(32) DEFAULT NULL,
+  transaction_path varchar(256) DEFAULT NULL,
+  transaction_action varchar(16) DEFAULT NULL,
+  datamodel_reference_path varchar(512) DEFAULT NULL,
+  sql_src_path varchar(512) DEFAULT NULL,
+  resultset_processor_path varchar(512) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE crudzilla (
+  id varchar(256) NOT NULL,
+  sys_prop varchar(256) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE definition_reference_map (
+  definition_id varchar(256) NOT NULL,
+  reference_id varchar(256) NOT NULL,
+  path varchar(256) NOT NULL,
+  last_refresh_timestamp varchar(64) DEFAULT NULL
+);
+
+
+CREATE TABLE execution_parameter (
+  id varchar(256) NOT NULL,
+  definition_id varchar(256) DEFAULT NULL,
+  name varchar(128) NOT NULL,
+  type varchar(128) NOT NULL,
+  required varchar(16) NOT NULL,
+  validation_regex varchar(512) DEFAULT NULL,
+  default_value clob,
+  max_length varchar(16) DEFAULT NULL,
+  min_length varchar(16) DEFAULT NULL,
+  line_end_length varchar(16) DEFAULT NULL,
+  max_range varchar(64) DEFAULT NULL,
+  min_range varchar(64) DEFAULT NULL,
+  date_format varchar(128) DEFAULT NULL,
+  date_format_strict varchar(8) DEFAULT NULL,
+  url_allowallschemes varchar(8) DEFAULT NULL,
+  url_allow2slashes varchar(8) DEFAULT NULL,
+  url_nofragments varchar(8) DEFAULT NULL,
+  url_schemes varchar(256) DEFAULT NULL,
+  eval_left varchar(8) DEFAULT NULL,
+  eval_right varchar(8) DEFAULT NULL,
+  keep_alive_count varchar(8) DEFAULT NULL,
+  label varchar(64) DEFAULT NULL,
+  description varchar(512) DEFAULT NULL,
+  is_final varchar(8) DEFAULT NULL,
+  validator_path varchar(512) DEFAULT NULL,
+  position varchar(8) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE postexecution_handler (
+  definition_id varchar(64) NOT NULL,
+  id varchar(64) NOT NULL,
+  path varchar(256) DEFAULT NULL,
+  enable varchar(8) DEFAULT NULL,
+  returnmode varchar(32) DEFAULT NULL,
+  returnval_name varchar(128) DEFAULT NULL,
+  eval_returnval_name varchar(8) DEFAULT NULL,
+  parent_id varchar(64) NOT NULL,
+  presibling_id varchar(64) NOT NULL,
+  arg_propagation_mode varchar(16) DEFAULT NULL,
+  primary_result_var_name varchar(32) DEFAULT NULL,
+  type varchar(32) DEFAULT NULL,
+  arg_propagation_list_path varchar(256) DEFAULT NULL,
+  exploded_prop_list varchar(256) default null,
+  position varchar(8) DEFAULT NULL,  
+  PRIMARY KEY (definition_id,id)
+);
+
+CREATE TABLE preexecution_handler (
+  definition_id varchar(64) NOT NULL,
+  id varchar(64) NOT NULL,
+  path varchar(256) DEFAULT NULL,
+  enable varchar(8) DEFAULT NULL,
+  only_proceedon_true varchar(8) DEFAULT NULL,
+  label varchar(16) DEFAULT NULL,
+  returnmode varchar(32) DEFAULT NULL,
+  returnval_name varchar(64) DEFAULT NULL,
+  parent_id varchar(64) NOT NULL,
+  presibling_id varchar(64) NOT NULL,
+  arg_propagation_mode varchar(16) DEFAULT NULL,
+  arg_propagation_list_path varchar(256) DEFAULT NULL,
+  exploded_prop_list varchar(256) default null,
+  position varchar(8) DEFAULT NULL,
+  PRIMARY KEY (definition_id,id)
+);
+
+CREATE TABLE roles (
+  id integer NOT NULL GENERATED BY DEFAULT AS IDENTITY (START WITH 1, INCREMENT BY 1),
+  role varchar(256) DEFAULT '',
+  alias varchar(256) DEFAULT NULL,
+  description varchar(256) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE user_roles (
+  user_id integer NOT NULL,
+  role_id integer NOT NULL,
+  PRIMARY KEY (user_id,role_id)
+);
+
+CREATE TABLE users (
+  id integer NOT NULL GENERATED BY DEFAULT AS IDENTITY (START WITH 1, INCREMENT BY 1),
+  user_name varchar(256) NOT NULL UNIQUE,
+  pass_word varchar(256) NOT NULL,
+  name varchar(256) NOT NULL,
+  part_store_access_token varchar(256) DEFAULT NULL,
+  PRIMARY KEY (id)
+);

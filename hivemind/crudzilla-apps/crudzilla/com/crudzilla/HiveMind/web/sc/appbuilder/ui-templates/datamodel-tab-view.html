@@ -1,0 +1,88 @@
+<div>
+        <div id="datamodel-tabs-<#=keyId#>">
+            <ul>                        
+                <li><a href="#datamodel-tab-<#=keyId#>">Fields</a></li>
+                <li><a href="#datamodel-key-tab-<#=keyId#>">Keys</a></li>
+                <li><a href="#datamodel-constraints-tab-<#=keyId#>">Constraints</a></li>
+                <li><a href="#datamodel-security-tab-<#=keyId#>">Security</a></li>
+            </ul>
+            
+            
+            <div id="datamodel-tab-<#=keyId#>" style="padding-left: 5px;padding-right: 5px;">                
+                Map to DataTable:<select id="datamodel-mapto-datatable-<#=keyId#>"></select>                                
+                <div>
+                    <table id="datamodel-field-table-<#=keyId#>"></table>
+                    <div id="datamodel-field-table-pager-<#=keyId#>"></div>
+                </div><br/>
+                <div style="text-align:center">
+                    <button id="datamodel-save-button-<#=keyId#>">Save</button><br/>
+                </div>
+            </div>            
+            
+            <div id="datamodel-key-tab-<#=keyId#>" style="padding-left: 5px">
+                <table id="datamodel-primary-key-table-<#=keyId#>"></table><br/>
+                <table id="datamodel-foreign-key-table-<#=keyId#>"></table>
+            </div>
+            <div id="datamodel-constraints-tab-<#=keyId#>" style="padding-left: 5px">
+                <div id="datamodel-constraint-tabcontrol-<#=keyId#>">
+                    <ul>
+                        <li><a href="#insert-constraint-tab-<#=keyId#>">Insert Constraint</a></li>
+                        <li><a href="#update-constraint-tab-<#=keyId#>">Update Constraint</a></li>
+                        <li><a href="#select-constraint-tab-<#=keyId#>">Select Constraint</a></li>
+                        <li><a href="#delete-constraint-tab-<#=keyId#>">Delete Constraint</a></li>
+                    </ul>
+                    <div id="insert-constraint-tab-<#=keyId#>">
+                        Enabled <input type="checkbox" id="datamodel-insert-constraint-enabled-<#=keyId#>"/>
+                        <br/>
+                        <h3 style="color:silver"><span style="color:blue;font-weight: normal">function</span> onInsert(data_instance){</h3>
+                        <div>
+                            <textarea id="datamodel-insert-constraint-editor-<#=keyId#>"></textarea>
+                        </div><div style="clear:both"></div>
+                        <h3 style="color:silver">}</h3>
+                        <div style="text-align:center">
+                            <button id="datamodel-insert-constraint-save-button-<#=keyId#>">Save</button>
+                        </div>
+                    </div>
+                    <div id="update-constraint-tab-<#=keyId#>">
+                        Enabled <input type="checkbox" id="datamodel-update-constraint-enabled-<#=keyId#>"/>
+                        <br/>
+                        <h3 style="color:silver"><span style="color:blue;font-weight: normal">function</span> onUpdate(< data_instance||query>){</h3>
+                        <div>
+                            <textarea id="datamodel-update-constraint-editor-<#=keyId#>"></textarea>
+                        </div><div style="clear:both"></div>
+                        <h3 style="color:silver">}</h3>
+                        <div style="text-align:center">
+                            <button id="datamodel-update-constraint-save-button-<#=keyId#>">Save</button>
+                        </div>
+                    </div>
+                    <div id="select-constraint-tab-<#=keyId#>">
+                        Enabled <input type="checkbox" id="datamodel-select-constraint-enabled-<#=keyId#>"/>
+                        <br/>
+                        <h3 style="color:silver"><span style="color:blue;font-weight: normal">function</span> onSelect(query){</h3>
+                        <div>
+                            <textarea id="datamodel-select-constraint-editor-<#=keyId#>"></textarea>
+                        </div><div style="clear:both"></div>
+                        <h3 style="color:silver">}</h3>
+                        <div style="text-align:center">
+                            <button id="datamodel-select-constraint-save-button-<#=keyId#>">Save</button>
+                        </div>
+                    </div>
+                    <div id="delete-constraint-tab-<#=keyId#>">
+                        Enabled <input type="checkbox" id="datamodel-delete-constraint-enabled-<#=keyId#>"/>
+                        <br/>
+                        <h3 style="color:silver"><span style="color:blue;font-weight: normal">function</span> onDelete(query){</h3>
+                        <div>
+                            <textarea id="datamodel-delete-constraint-editor-<#=keyId#>"></textarea>
+                        </div><div style="clear:both"></div>
+                        <h3 style="color:silver">}</h3>
+                        <div style="text-align:center">
+                            <button id="datamodel-delete-constraint-save-button-<#=keyId#>">Save</button>
+                        </div>
+                    </div>                         
+                </div>
+            </div>
+            <div id="datamodel-security-tab-<#=keyId#>" style="padding-left: 5px">
+                <table id="datamodel-security-table-<#=keyId#>"></table>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,478 @@
+<p>&nbsp;</p>
+
+<h1 style="text-align:center"><strong>Crudzilla Web Application Builder (HiveMind) Platform</strong></h1>
+
+<h2 style="text-align:center"><strong>Technical Document</strong></h2>
+
+<p>HiveMind is a modern web-based web application development platform. It combines traditional IDE features with an innovative middle-ware layer that makes building web applications simple and fun. HiveMind is built atop the Java platform and the diagram below shows how it fits into the Java stack.</p>
+
+<p><img alt="HiveMind Stack" src="../img/cwab-stack.png" style="height:280px; width:600px" /></p>
+
+<h2><strong>The Middle-ware Layer</strong></h2>
+
+<p>The HiveMind middle-ware layer is a light-weight execution engine that executes the artifacts created via the HiveMind developer environment application. These artifacts are called <strong><em>&quot;cruds&quot;.&nbsp; </em></strong>Foundamentally, a crud represents an encapsulation of concerns usually associated with running web applications. In the stack diagram above, the HiveMind middle-ware is the crud execution engine instance hosted inside a Java web application, this instance is a POJO singleton. Specifically a <em><strong>crud</strong></em> has the following structure.</p>
+
+<h3 dir="ltr"><strong>Structure of a crud</strong></h3>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">A crud construct is made of the the following components:</span></p>
+
+<ul dir="ltr">
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Security definitions</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Parameters</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Pre Execution handlers</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Primary action</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Post Execution handlers</span></p>
+	</li>
+</ul>
+
+<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">This basic construct completely describes a crud and how to execute a particular crud. </span><u>For instance assuming a crud represents a script in some programming language to perform a certain database action.</u></span></p>
+
+<ol dir="ltr">
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The crud is able to describe security restrictions associated with this action.</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The crud is able to describe all parameters associated with this action (for instance say account number)</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The crud is able to specify which actions must be completed before this action (these would be invoking references to other cruds).</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The crud should describe the primary action in the form of an executable logic (run script, db action, upload file, send email..etc).</span></p>
+	</li>
+	<li>
+	<p><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The crud should specify any ex-post actions that must be completed after the primary action</span></p>
+	</li>
+</ol>
+
+<h2 dir="ltr"><strong>The Crud File.</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Cruds exist in two forms, definition form and executable form. Crud definitions are basically the source form of a crud, you <em>&ldquo;bake&rdquo;</em> a crud definition to make it into the JSON formatted executable crud file. These executables are then executed by the crud engine. When you deploy applications on the HiveMind platform, crud files along with other assets are what you&#39;ll deploy as your application.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">From HiveMind application tab, you can refresh an executable crud to update it with the latest changes to its definition. In general whenever you alter a crud definition, an alert shows up with a list of all crud executables derived from this definition that may have become staled as a result of the update.</span></p>
+
+<h2 dir="ltr"><strong>HiveMind database (crudbase)</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Crud definitions are stored in a database called the <em>crudbase</em>. The <em>crudbase</em> mirrors the design concerns outlined in the crud structure/design principle section. The following tables are present in the <em>crudbase</em>:</span></p>
+
+<ul dir="ltr">
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">accesscontrol</span> - holds security definitions</li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crud_definition - holds basic crud definition information such as code.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">execution_parameter - holds all parameters</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">preexecution_handler - holds preexecution handlers</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">postexecution_handler - holds postexecution handlers.</span></li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">In addition to the crud definition tables, there are the following:</span></p>
+
+<ul dir="ltr">
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla - identity table used in certain sql operations internally.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">apptaxonomy - taxonomy nodes for navigating crudbase.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">apptaxonomy_accesscontrol - access controls definitions for taxonomy node.</span></li>
+	<li>definition_reference_map - maintains a mapping between file system crud executables and their corresponding crudbase definitions.</li>
+</ul>
+
+<p dir="ltr"><span style="color:#FF0000"><span style="background-color:transparent; font-family:arial; font-size:15px"><strong>Note</strong></span></span><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"> that the crudbase is only to support application development. This database isn&rsquo;t useful for executing cruds. In other words when a crud application is deployed to production, the crudbase is not a part of the application.</span></p>
+
+<h2 dir="ltr"><strong>Crud Taxonomy</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The HiveMind environment has a taxonomy structure around the crudbase. This taxonomy allows for browsing the crudbase in a manner similar to browsing a file system. </span>The taxonomy has two types of nodes, category nodes and crud nodes. Category nodes can contain other category nodes and crud nodes.</p>
+
+<h2 dir="ltr"><strong>The argument map</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The HiveMind middle-ware engine has an argument map that is used for propagating arguments across crud calls. Think of the argument map as similar to the HTTP_POST/GET maps in languages such as php. There are various modes of argument propagation :</span></p>
+
+<ul dir="ltr">
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><strong>Pass Map</strong> - pass the current argument map reference.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><strong>Pass All Map Values</strong> - pass only the entries of the current map but not the actual map, however </span></span><span style="color:#FF0000"><span style="background-color:transparent; font-family:arial; font-size:15px"><span style="background-color:transparent; font-family:arial; font-size:15px">note</span></span></span><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"> that java references may be altered by called cruds.</span></span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><strong>Pass Some Map Values</strong> - selectively propagate argument map entries.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><strong>Pass None</strong> - a new empty argument map is created and propagated.</span></li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The argument map is available to <em>ScriptExecutor</em> cruds as an object named <strong><em>arguments, </em></strong>it is natively an instance of java.util.HashMap.</span></p>
+
+<h2 dir="ltr"><strong>Name-Value-Pair (NVP) Processing</strong><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"> </span></h2>
+
+<h2 dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">NVP Processing is a powerful feature of the execution engine that facilitates object composition. NVP Processing is applied to the parameters component of crud construct.<strong> </strong>When NVP processing is applied on a crud, the input to NVP processing are parameters supplied when the given crud is invoked, this can be either directly from a browser or via a other cruds. the following steps occur for each parameter in the parameters list:</span></h2>
+
+<ul dir="ltr">
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Apply data validation requirements if one is specified for the parameter.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Apply expression evaluation if necessary</span> to name/value pair.</li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Apply any variable selection (see section on Variable Selection)</span></li>
+</ul>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><strong><em>&quot;Final&quot;</em></strong> parameters are parameters whose values cannot be overwritten by incoming argument maps.</p>
+
+<p dir="ltr"><strong><em>crudzilla_empty_string</em></strong> is available for initializing parameter values with empty string, otherwise the value is null. The usage syntax for this parameter is <code>@crudzilla_empty_string</code> or <code>:crudzilla_empty_string</code></p>
+
+<p dir="ltr">Additionally, an existing variable on the argument map can be referenced as the value for a subsequent parameter by using <code>[@|:]&lt;variable-name&gt;</code> syntax as the default value for the parameter you want to assign the value to.</p>
+
+<p dir="ltr">&nbsp;</p>
+
+<h2 dir="ltr"><strong>Building HiveMind &nbsp;Platform Application</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Crud applications are plain old J2EE web applications. This means your crud application would be deployed into your environment just like any other application. There is absolutely nothing different about how you deploy a regular Java web application and how you deploy a crud application on an app-server. Ok, now you are wondering, so I have to redeploy my apps everytime I make a tiny change? No!!! </span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">What the HiveMind platform allows, is for the application deployment to be further abstracted. Similar to how you can drop jsp files into a running application (war file), you can drop cruds into your crud application directory without actually re-deploying your war file. The war file only needs to be redeployed when a jar component changes, or you need to change your crud application directory. Both of these activities occur sparingly during the development of a web application, the hassle of re-deploying war files is significantly minimized.</span></p>
+
+<p dir="ltr"><span style="color:#FFA500"><span style="background-color:transparent; font-family:arial; font-size:15px">The applications you build on HiveMind are POJWAs (Plain Old Java Web Applications)</span></span></p>
+
+<p dir="ltr">You need to specify the base directory of your application assets including cruds. There are varous directories that can be set. By Default these are set to the asset directory sub-directory that your application is created in. You should only need to set most of these for production deployment, not during development.</p>
+
+<ul dir="ltr">
+	<li><strong>crudzilla_static_file_base_dir:</strong> Where static resources such as html, javascript,image and css files are stored. You may leave this blank in which case the<em> app-home</em> servlet init parameter value would be used.</li>
+	<li><strong>crudzilla_monitor_crud_changes:</strong> points to configuration for crud file change monitor for hot swapping of cruds.</li>
+	<li><strong>crudzilla_env :</strong> specifies the current environment. This parameter can be assigned as a switch value to environmentally dependent parameters.</li>
+	<li><strong>crudzilla_crud_home:</strong> This is directory that has all executable cruds. You may leave this blank in when case the <em>app-home</em> servlet init parameter value would be used.</li>
+	<li><strong>crudzilla_velocity_template_root:</strong> This is the base directory for the Velocity template engine, Velocity would look in this directory for template files. You may leave this blank in which case the <em>app-home</em> servlet init parameter value would be used.</li>
+	<li><strong>crudzilla_serve_static_content:</strong> set to true to enable the serving of static resources. It is true by default.</li>
+	<li><strong>crudzilla_engine_startup_handler:</strong> pointer to a crud that should be run whenever the HiveMind middle-ware layer is initialized.</li>
+	<li><strong>crudzilla_asset_base:</strong> This is simply states how many levels up from the developer studio application executable resource directory is the asset directory. This should not be modified, it used internally.</li>
+	<li><strong>crudzilla_welcome_files:</strong> comma seperated list of default directory files.</li>
+	<li><strong>crudzilla_url_mapper:</strong> replace a native crud url with a user-friendly version. Each parameter represents one such mapping.</li>
+	<li><strong>crudzilla_interceptor:</strong> a crud that serves as a central controller for all requests to the HiveMind middle-ware. Set this if you want control over all requests to your application. The argument map will have a variable<strong><em> crudzilla_requested_resource</em></strong> holding the actual resource requested.</li>
+</ul>
+
+<h3 dir="ltr"><strong>Understanding the HiveMind product structure.</strong></h3>
+
+<p dir="ltr">The developer studio application, which is the application that you use to build your HiveMind applications, is destributed as an integration of jetty container and the derby embeded database, it contains the following important directories:</p>
+
+<ul dir="ltr">
+	<li><strong>crudzilla-apps</strong>
+
+	<ul>
+		<li>This directory is the default application directory if the <strong><em>app-home</em></strong> initilization parameter has a relative path in an application&#39;s web.xml descriptor. The subdirectories in this directory represents apps and their assets, the HiveMind middle-ware engine would look into these subdirectories for url requested resources.</li>
+	</ul>
+	</li>
+	<li><strong>derby</strong>
+	<ul>
+		<li>embeded derby databases. This would contain all embeded databases used by applications, including the crudzilla database used by the developer studio.</li>
+	</ul>
+	</li>
+	<li><strong>webapps</strong>
+	<ul>
+		<li>This is the jetty webapp directory that contains war files.</li>
+	</ul>
+	</li>
+</ul>
+
+<p>The developer studio&#39;s asset directory is crudzilla-apps/crudzilla, this directory is the developer workspace that holds all applications. The developer studio application&#39;s base executable resource directory is crudzilla-apps/crudzilla/com/crudzilla/CAB, in other words, the platform parameters</p>
+
+<ul>
+	<li>crudzilla_static_file_base_dir</li>
+	<li>crudzilla_crud_home:
+	<ul>
+		<li>This is not used.</li>
+	</ul>
+	</li>
+	<li>crudzilla_velocity_template_root</li>
+</ul>
+
+<p>all point to this directory.</p>
+
+<p><span style="color:#FF0000"><strong>Note:</strong></span> The <em>app-home</em> servlet init parameter can be set as an absolute path or as a path relative to the <em>crudzilla-apps</em> directory.</p>
+
+<h1 dir="ltr"><strong>Crud Types</strong></h1>
+
+<p dir="ltr">There are six types of cruds available on the HiveMind platform. Below you&#39;ll find a detailed explanation of all of them.</p>
+
+<h2 dir="ltr"><strong>ScriptExecutor</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><em>ScriptExecutor</em> as the name suggests is a crud type for running executable code. The HiveMind platform supports a set of jvm targeted languages including Groovy, Jexl, Javascript, Clojure, Jruby and Jython. Interesting enough, the HiveMind platform doesn&rsquo;t directly support coding in the Java language! The Java language is compiled and is expected to be used for developing components in a traditional IDE. For instance a Java component is used to implement the <em>EmailSender</em> crud type that does the actual sending of email. It is however possible to code Java in HiveMind and use ant to build and deploy it as part of your app&rsquo;s war.</span></p>
+
+<p dir="ltr">ScriptExecutor cruds have a number of native objects available to scripts.</p>
+
+<ul dir="ltr">
+	<li><strong><em>crud</em></strong>
+
+	<ul>
+		<li>This object is used for invoking other cruds. It has the following methods:
+		<ul>
+			<li>add</li>
+			<li>call</li>
+			<li>logger</li>
+		</ul>
+		</li>
+		<li>The usage syntax of the <strong><em>crud</em></strong> object is as follows: <code>crud.[add(&lt;parameter-name&gt;,&lt;parameter-value&gt;).]*call(&lt;crud-path&gt;[,&lt;arguments-partial-clone&gt;])</code>;
+		<ul>
+			<li><em>crud-path</em>: this is either a relative or absolute path of a crud, relative to the application crud directory.</li>
+			<li><em>arguments-partial-clone</em>: This is a HashMap object to be passed as an argument map for the call. If this argument is supplied, the parameters added via an <em>add</em> call will be ignored.</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li><strong><em>crudzilla</em></strong>
+	<ul>
+		<li>This is an object that represents an instance of the HiveMind execution engine. It should not be used by a developer. future use maybe.</li>
+	</ul>
+	</li>
+	<li><strong><em>httpRequest</em></strong>
+	<ul>
+		<li>HttpServletRequest object</li>
+	</ul>
+	</li>
+	<li><strong><em>httpResponse</em></strong>
+	<ul>
+		<li>HttpServletResponse object</li>
+	</ul>
+	</li>
+	<li><strong><em>arguments</em></strong>
+	<ul>
+		<li>Argument map as described above</li>
+	</ul>
+	</li>
+	<li><strong>crudzilla_user</strong>
+	<ul>
+		<li>currently logged in user, if any</li>
+	</ul>
+	</li>
+</ul>
+
+<h2><strong>Templating</strong><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"> </span></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">HiveMind supports html templating via the Velocity engine. Templates are a type of ScriptExecutor. Templates support a number platform parameters:</span></p>
+
+<ul dir="ltr">
+	<li><strong><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_http_output_mime</span></strong>
+
+	<ul>
+		<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">This is the mime type for a given template to return.</span></li>
+	</ul>
+	</li>
+	<li><strong><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_http_passthrough</span></strong>
+	<ul>
+		<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">If set to <em>true</em>, the result of the template is returned verbatim without being encased in a JSON object. By default this value is <em>true</em> but can be overriden.</span></li>
+	</ul>
+	</li>
+	<li><strong>crudzilla_velocity_template_encoding</strong>
+	<ul>
+		<li>See velocity documentation for detail</li>
+	</ul>
+	</li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">These parameters can be set globally at the engine level or individually on a template crud.</span></p>
+
+<h2 dir="ltr"><strong>DataStatement</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">DataStatement crud type is responsible for supporting all sql based database interactions. It is what would be used for doing C.R.U.D operations in a web application. The DataStatement crud type is a vastly superior approach for doing C.R.U.D than existing approaches including ORM. DataStatements facilitate ease of use that exceeds that of the ORM approach while effortlessly granting a developer the full power of SQL.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">DataStatements are not only the easiest way to do C.R.U.D operations, they are also robust and support safe database interactions. Some points of note about DataStatements include:</span></p>
+
+<ul dir="ltr">
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">SQL injections are taken care of by DataStatements without the developer ever thinking about it. </span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Issues such as parameter binding that developers often have to contend with, are automatically taken care of by DataStatements. </span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Transaction support is as easy as adding a DataStatement to a defined JDBC transaction.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">DataStatements also support specifying an SQL generator via a ScriptExecutor (probably a template). This is only for dynamic query building.</span>
+	<ul>
+		<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">When using dynamic sql, the parameter </span><em>crudzilla_dynamic_sql_resultset_template</em><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"> must be set, this should follow the format of the &quot;Compiled&quot; sql...see the &quot;Compiled&quot; tab of a non-dynamic sql DataStatement for an example of what a resultset template must look like. </span></li>
+		<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">If SQL is entered in the editor for a DataStatement, it will be available as a parameter </span><em>crudzilla_prepared_dynamic_sql_statement.</em></li>
+	</ul>
+	</li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">A reference can be set to a ScriptExecutor which can serve as a custom resultset processor. This is an advanced capability which gives the developer full control over the processing of the resultset from an executed query. The resultset is available as a variable called </span><em>crudzilla_datastatement_resultset</em>. This is a JDBC result object type.</p>
+
+<p dir="ltr">DataStatements also support the platform parameter <span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"><strong><em>crudzillJavaLangClass</em></strong>. Set this to the fully qualified Java class name if you want the resulting data to be converted to a Java bean of the specified class type.</span></p>
+
+<p dir="ltr">The platform parameter <em><strong>crudzilla_default_datasource</strong></em> should be set as part of <em>crudzilla-app-settings/system-settings</em> to specify a default data source for newly created DataStatements. This would be automatically filled in when ever a new DataStatement crud is created. Most business applications only have a single data source, so this would save the developer a few extra clicks.</p>
+
+<p dir="ltr">The platform parameter <em><strong>crudzillaResultSetFormat</strong></em> is available for use with DataStatements. The value can be one of the following:</p>
+
+<ul dir="ltr">
+	<li><em>bean</em> - to return the result as a single object</li>
+	<li><em>list</em> - return result as a list. This is the default</li>
+	<li><em>decorated</em> - return the result with column information. The resulting object has the form {&quot;columns&quot;:[{&quot;name&quot;,&quot;type&quot;}],&quot;rows&quot;:[{}]}.</li>
+</ul>
+
+<h3 dir="ltr"><strong>Parameter Type hinting</strong></h3>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">DataStatements support type hinting, this is useful for RDMSs that have strict type requirements for prepared statement parameters.</span> To specify a type simply enclose the type in parenthesis following the parameter name. The syntax is as follows: <code>:&lt;PARAMETER-NAME&gt;(&lt;SQL/Java-Type&gt;)</code></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">When a type hint is supplied with a specified parameter, the following additional parameters may be supplied.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">For types: BINARY, VARBINARY, LONGVARBINARY,CLOB,BLOB</span></p>
+
+<ul>
+	<li dir="ltr">
+	<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Base64</span></p>
+
+	<ul>
+		<li dir="ltr">
+		<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_base64_format_&lt;PARAMETER-NAME&gt;_linelength</span></p>
+		</li>
+		<li dir="ltr">
+		<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_base64_format_&lt;PARAMETER-NAME&gt;_lineseparator</span></p>
+		</li>
+		<li dir="ltr">
+		<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_base64_format_&lt;PARAMETER-NAME&gt;_urlsafe</span></p>
+		</li>
+	</ul>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Base32</span></p>
+
+	<ul>
+		<li dir="ltr">
+		<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_base32_format_&lt;PARAMETER-NAME&gt;_linelength</span></p>
+		</li>
+		<li dir="ltr">
+		<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_base32_format_&lt;PARAMETER-NAME&gt;_lineseparator</span></p>
+		</li>
+		<li dir="ltr">
+		<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_base32_format_&lt;PARAMETER-NAME&gt;_urlsafe</span></p>
+		</li>
+	</ul>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Binary</span></p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Hex</span></p>
+
+	<ul>
+		<li dir="ltr">
+		<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_hex_format_&lt;PARAMETER-NAME&gt;_charset</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">DATE</span></p>
+
+<ul>
+	<li dir="ltr">
+	<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_date_format_&lt;PARAMETER-NAME&gt;</span></p>
+	</li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">TIME</span></p>
+
+<ul>
+	<li dir="ltr">
+	<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_time_format_&lt;PARAMETER-NAME&gt;</span></p>
+	</li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">TIMESTAMP</span></p>
+
+<ul>
+	<li dir="ltr">
+	<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">crudzilla_timestamp_format_&lt;PARAMETER-NAME&gt;</span></p>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">BLOB,CLOB</span></p>
+
+<p dir="ltr" style="margin-left:40px"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">you may also upload files in place of data for these types, so for instance you may call a datastament in a multipart http request that includes an image file to be stored in a blob.</span></p>
+
+<p dir="ltr">The types supported are either Java types or SQL types, in other words JDBC types.</p>
+
+<h2 dir="ltr"><strong>Instantiator</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Instantiators are easily one of the most useful crud types on the HiveMind platform. The Instantiator exposes the NVP Processing mechanism for general use by applications. Instead of the parameterization mechanism only serving cruds, it is exposed as a crud type of its own with Instantiators. What this facilitates is an incredibly flexible and versatile facility for creating data structures. Data structures constructed via an Instantiator can get their data from any number of sources including from other crud types such as DataStatements or HttpConnectors.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">You may now be wondering, well what can I use an Instantiator for, well the simple answer is: almost anything!</span></p>
+
+<ul dir="ltr">
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">For instance the menu for creating static resources (html, javascript...etc)? Those are powered by Instantiator</span>s</li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">All the configuration of HiveMind is represented as an instantiator.</span></li>
+	<li><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The data source definitions used by DataStatements is represented as an Instantiator.</span></li>
+</ul>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Instantiator crud types support the platform parameter <strong><em>crudzillJavaLangClass</em></strong>, the value can be the fully qualified class name for the resulting bean. It can also take the special values </span><em>map</em><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"> for HashMap or </span><em>list</em><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px"> for ArrayList.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The default return value is a generic classless Java bean, however if the name is missing for all parameters, then the <em>Instantiator</em> return type is assumed to be a list. In all other ways, the Instantiator uses the parameterization mechanism as with the other crud types.</span></p>
+
+<h2 dir="ltr"><strong>FileUploader</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">This crud type supports file uploads. It supports automated file naming and file unzipping, specifying upload directory. It relies on the apache commons fileupload component. Again you write no code, just create a FileUploader crud type, configure it and you can do file uploads.</span> The file uploader relies on the <strong><em>crudzilla_temp_upload_directory</em></strong> platform parameter. This parameter should be set as part of the <em>crudzilla-app-settings/system-settings</em>.</p>
+
+<h2 dir="ltr"><strong>EmailSender</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">This crud type implements the apache smtp component. You can use it to connect to an stmp server and send emails. The email text itself needs to be generated from a velocity template. If you&rsquo;ve ever had to configure your emails in text files or awkward database entries, you&rsquo;ll smile when you have to send emails on HiveMind. </span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Even a platform such as rails which prides itself on making such task simple is simply no match for what HiveMind offers. To put simply, sending emails in a HiveMind application simply makes sense. Your email templates can be edited and previewed, so you know exactly what it looks like.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Because emails are velocity templates, you can incorporate logic and data into your emails easily, sending reports and customer account information becomes a trivial task.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Did I mention, no writing code?</span></p>
+
+<h2 dir="ltr"><strong>HttpConnector</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">This crud type supports connecting to external systems via http. Excellent for doing RESTful operations. You can use this to consume webservices and other types of integration. This crud type uses the apache commons http client components and supports all the options supported by that component. The component has several parameters with predefined values.</span> This crud type depends on the platform parameter <strong><em>crudzilla_temp_upload_dir</em></strong> when request includes file upload.</p>
+
+<p dir="ltr">postDataSourceType</p>
+
+<ul dir="ltr">
+	<li>DATAFROM-HTTPREQUEST</li>
+	<li>DATAFROM-HTTPREQUEST-FS</li>
+	<li>DATAFROM-FS</li>
+</ul>
+
+<p dir="ltr">method</p>
+
+<ul dir="ltr">
+	<li>HTTP_GET</li>
+	<li>HTTP_POST</li>
+	<li>HTTP_POST_MULTIPART</li>
+	<li>HTTP_POST_CHUNKED</li>
+</ul>
+
+<p dir="ltr">authenticationType</p>
+
+<ul dir="ltr">
+	<li>NONE</li>
+	<li>FORM</li>
+	<li>PREEMPTIVE-BASIC</li>
+	<li>PREEMPTIVE-DIGEST</li>
+</ul>
+
+<h2 dir="ltr"><strong>Testing</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">HiveMind provides a simple way to run tests of your crud application. You can run numerous tests for different test cases.</span></p>
+
+<h2 dir="ltr"><strong>Crud Caching and Monitoring</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The CEE maintains a cache for crud executables at runtime. When a crud is requested for the first time, if there is a cache miss in the crud cache then that crud is loaded from disked and cached. Subsequent requests for that crud will not reload the crud from disk but rather use the cached crud.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">The HiveMind monitors the application directory for any changes to cruds and invalidates the currently cached version of an altered crud.</span></p>
+
+<h2 dir="ltr"><strong>Configuring HiveMind</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">HiveMind needs to be configured via an Instantiator. HiveMind would look for a servlet init property called app-home that is assumed to point to the relative path of the application base directory, settings are stored in the instantiator</span><em> crudzilla-app-settings/system-settings.ins</em><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">. This would be executed and the data used to start the engine.</span></p>
+
+<h2 dir="ltr"><strong>Preemptive Schema Data Modeling (PSDM)</strong> <strong>Technology</strong></h2>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Database Table and Column pooling is an experimental technology introduced in HiveMind that allows for further abstraction of the database. The basic idea is to view database tables and columns as storage constructs as opposed to modeling constructs. Modeling is then facilitated in HiveMind via Instantiators. This technique allows for numerous data models to be mapped to a small pool of database tables and columns, as opposed to creating a table for every model. </span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">This technique would be particularly useful for developing products that have third-party extensions/plugins. By using an approach where component developers know beforehand that there is a pool of database table and columns, data aware third-party &nbsp;components can be built and integrated with ease. </span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">Column pooling works by assuming a database table exists with a pool of columns of various types. A flexible data model can then be constructed to map fields to available columns of appropriate type. The DataStatement crud type is capable of recognizing a data model reference and substituting the corresponding database table column in the compiled sql query.</span></p>
+
+<p dir="ltr"><span style="background-color:transparent; color:#000000; font-family:arial; font-size:15px">There are of course obvious weaknesses associated with this approach, it should be used only where the benefits significantly exceeds the shortcomings.</span></p>
+
+<p>&nbsp;</p>
+
+<h2 dir="ltr"><strong>Security</strong></h2>
+
+<p>&nbsp;</p>
+
+<p dir="ltr">Every crud definition can specify access restriction based on a user&#39;s identity. The identity is specificied by user-name and role. This approach to application security is transparent and makes security audit and enforcement a trivial task.</p>
+
+<p><br />
+<br />
+&nbsp;</p>

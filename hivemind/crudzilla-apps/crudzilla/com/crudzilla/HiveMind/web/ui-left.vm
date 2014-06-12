@@ -1,0 +1,204 @@
+<div id="left-panel" style="width: 100%">
+                 
+            <div id="nav-tabs" style="border-style:none;width:100%">
+                <ul>                        
+                  <li><a href="#app-home-tab" style="font-weight:bold"><img src="img/nav/gnome-colors.png" style="width:12px;height:12px;vertical-align:top"/> Apps & Assets</a></li>
+                  <!--<li id="app-work-tab-tab" style="visibility:hidden;font-weight:bold"><a href="#app-work-tab">Crudbase</a></li>-->
+                  <!--<li id="html-layout-component-tab-tab" style="visibility:hidden;font-weight:bold"><a href="#html-layout-component-tab">Components</a></li>-->
+                  <!--<li><a href="#app-admin-tab">Admin</a></li>-->
+                </ul>
+                <div id="app-home-tab" style="padding:0;margin:0"></div>
+                <!--<div id="app-work-tab" style="padding:0;margin:0"></div>-->
+                <!--<div id="html-layout-component-tab" style="padding:0;margin:0"></div>-->
+                <!--<div id="app-data-tab" style="padding:0;margin:0"></div>--> 
+                <!--<div id="app-admin-tab" style="padding:0;margin:0"></div>--> 
+            </div>
+            
+            
+  <div id="layout-left-content" class="ui-widget-content" style="background-color:white;margin:4px;">
+                <div id="nav-tabs-content-wrapper">
+                    <div id="app-home-tab-content" style="overflow:auto">
+                      <div id="app-treecontrol" ></div>
+                    </div>
+                    <div id="app-work-tab" style="">
+                      <!--<div id="work-treecontrol" ></div>-->
+                    </div>
+                    <div id="app-admin-tab-content" style="display:none;">
+                        <div id="sysadmin-treecontrol" ></div>
+                    </div>                 
+                    <div id="html-layout-snippet-tab" class="none-editor-tab"></div>
+					<div id="editor-pair-tab" class="none-editor-tab"></div>                  
+                  
+                </div>
+
+                
+                <div style="display:none">
+                    <div id="resource-url-dialog" title="Url" style="display: none">
+                        <input type="text" id="resource-url" name="resource-url"/>
+                    </div>
+                </div>
+
+                <div id="datasource-dialog" title="Data Source" style="display: none">
+                    Name: <input type="text" id="datasource-dialog-name" />
+                </div>             
+                <div id="datamodel-dialog" title="Data Model" style="display: none">
+                    Name: <input type="text" id="datamodel-dialog-name" />               
+                </div>
+                <div id="datatable-dialog" title="Data Table" style="display: none">
+                    Name: <input type="text" id="datatable-dialog-name" />               
+                </div>            
+                <div id="datastatement-dialog" title="Data Statement" style="display: none">
+                    Name: <input type="text" id="datastatement-dialog-name" />               
+                </div>            
+                <div id="connector-dialog" title="Connector" style="display: none">
+                    Name: <input type="text" id="connector-dialog-name" />               
+                </div>  
+                <div id="scriptexecutor-dialog" title="ScriptExecutor" style="display: none">
+                    Name: <input type="text" id="scriptexecutor-dialog-name" /> 
+                    <div id="scriptexecutor-dialog-type-box">
+                      Type: <select id="scriptexecutor-dialog-type"> <option value="velocity-template">Velocity Template</option><option value="velocity-template-file">Velocity Template(file)</option></select>               
+                    </div>
+                </div>   
+                <div id="fileuploader-dialog" title="FileUploader" style="display: none">
+                    Name: <input type="text" id="fileuploader-dialog-name" />               
+                </div>
+                <div id="emailsender-dialog" title="EmailSender" style="display: none">
+                    Name: <input type="text" id="emailsender-dialog-name" />               
+                </div>
+                <div id="instantiator-dialog" title="Instantiator" style="display: none">
+                    Name: <input type="text" id="instantiator-dialog-name" />               
+                </div>      
+                <div id="crud-type-instantiator-dialog" title="Crud" style="display: none">
+                    Name: <input type="text" id="crud-type-instantiator-dialog-name" />
+                </div>              
+              
+              
+                
+                <div id="sysadmin-apptaxonomy-dialog" title="App Taxonomy" style="display: none">
+                    Name: <input type="text" id="sysadmin-apptaxonomy-dialog-name" />               
+                    <div class="ui-widget-header ui-corner-all"  id="sysadmin-apptaxonomy-link-drop" style="text-align: center;padding:5px">
+                        <span>Drop link here.</span>
+                    </div>
+                </div>
+
+                <div id="appresource-dialog" title="Name" style="display: none">
+                    Name:<input type="text" id="appresource-dialog-name" size="32"/>
+                    <div id="appresource-dialog-definition-search-box">
+                        Search for <span></span>
+                        <input id="appresource-dialog-definition-search-field"/>
+                        
+                        <div class="ui-widget-header ui-corner-all"  id="appresource-dialog-definition-search-box-drop" style="text-align: center;padding:5px">
+                            <span>Drop reference here.</span>
+                        </div>                         
+                    </div>             
+                </div> 
+              
+              	<div id="new-web-app-dialog" title="New App" style="display: none">
+                  <table>
+                    <tr><td style="text-align:left;font-weight:bold;text-decoration:underline" colspan="2"><h3>Name & Location</h3></td></tr>
+                    <tr><td style="text-align:right;">App Name*:</td><td style="padding-bottom:8px;"><input type="text" id="new-web-app-dialog-name"/></td></tr>
+                    <tr id="new-web-app-dialog-app-location-row"><td style="text-align:right;padding-top:2px;padding-bottom:2px;">Location:</td><td class="crudzilla-app-location"></td></tr>
+                    
+                    
+                    <tr><td style="text-align:left;font-weight:bold;text-decoration:underline" colspan="2"><h3>Database Connection</h3></td></tr>
+                    <tr id="new-web-app-dialog-create-auth-tables-row"><td style="text-align:right">Data Source:</td><td class="atds"></td></tr>
+                    <tr id="new-web-app-dialog-create-auth-tables-row"><td style="text-align:right;font-weight:bold">OR</td><td></td></tr>
+                    <tr id="new-web-app-dialog-create-embeded-db-row"><td style="text-align:right">Create Derby Database:</td><td><input type="text" id="new-web-app-dialog-create-embeded-db"/></td></tr>
+                    
+                    <tr><td style="text-align:left;font-weight:bold;text-decoration:underline" colspan="2"><h3>Authentication</h3></td></tr>
+                    <tr><td style="text-align:right">Create Authentication Tables:</td><td><input type="checkbox" id="new-web-app-dialog-create-auth-tables"/></td></tr>
+                    <!--<tr id="new-web-app-dialog-create-auth-tables-db-row"><td style="text-align:right">Create Database:</td><td><input type="checkbox" id="new-web-app-dialog-create-auth-tables-db"/></td></tr>-->
+                  </table>                  
+                </div>
+              
+              
+              	<div id="delete-web-app-dialog" title="Delete Web App" style="display: none">
+                  <table>
+                    <tr><td style="text-align:right">Drop Database:</td><td><input type="checkbox" id="delete-web-app-dialog-drop-db"/></td></tr>
+                    <tr id="delete-web-app-dialog-drop-db-datasource-row"><td style="text-align:right">Data Source:</td><td class="atds"></td></tr>
+                  </table>                  
+                </div>              
+              
+                <div id="fileresource-dialog" title="Upload File" style="display: none">
+                    <table>
+                      <tr><td style="text-align:right">File:</td><td><input type="file" id="fileresource-dialog-file" /></td></tr>
+                      <tr><td style="text-align:right">unzip:</td><td><input type="checkbox" id="fileresource-dialog-unpack" /></td></tr>
+                    </table>                    
+                </div>
+                
+                <div id="app-directory-navigator-dialog">
+                    <div id="app-directory-navigator-treecontrol"></div>
+                </div>
+                <div id="apptaxonomy-node-action-confirmation-dialog">
+                    <span id="apptaxonomy-node-action-confirmation-dialog-span"></span>
+                </div>                
+              
+                <div id="card-project-dialog" title="New Project" style="display: none">
+                  Name:<input type="text" id="card-project-dialog-name"/>
+                </div>
+                <div id="card-project-group-dialog" title="New Project Group" style="display: none">
+                  Name:<input type="text" id="card-project-group-dialog-name"/>
+                </div>              
+              
+                <div id="listify-dialog" title="List" style="display: none">
+                  <table>
+                      <tr><td style="text-align:right">Name:</td><td><input type="text" id="listify-dialog-name" /></td></tr>
+                      <tr><td style="text-align:right">Eval:</td><td><input type="checkbox" id="listify-dialog-eval" /></td></tr>
+                  </table>                    
+                </div>       
+    			
+                <div id="generate-update-package-dialog" title="Generate Update Package" style="display: none">
+                    <table>
+                      <tr>
+                        <td style="text-align:right">Package Name:</td>
+                        <td><input type="text" id="generate-update-package-dialog-name" /></td>
+                      </tr>
+                      
+                      <tr>
+                        <td colspan="2" style="font-weight:bold">
+                          Exclusion Filters
+                        </td>
+                      </tr>   
+                      
+                      <tr>
+                        <td style="text-align:right">
+                          Date Range:
+                        </td>
+                        <td>
+                          <input type="text" size="5" id="generate-update-package-dialog-date_range_start_filters" /> -
+                          <input type="text" size="5" id="generate-update-package-dialog-date_range_end_filters" />
+                        </td>
+                      </tr> 
+
+                      <tr>
+                        <td style="text-align:right">
+                          Size Range:
+                        </td>
+                        <td>
+                          <input type="text" size="5" id="generate-update-package-dialog-size_range_start_filters" /> -
+                          <input type="text" size="5" id="generate-update-package-dialog-size_range_end_filters" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style="text-align:right">
+                          Wildcards:
+                        </td>
+                        <td>
+                          <input type="text" id="generate-update-package-dialog-wildcard_filters" />
+                        </td>
+                      </tr>                         
+                      
+                      <tr>
+                        <td style="text-align:right">
+                          RegEx:
+                        </td>
+                        <td>
+                          <input type="text" id="generate-update-package-dialog-regex_filters" />
+                        </td>
+                      </tr>                       
+                    </table>
+                </div>
+                
+        </div>
+</div>

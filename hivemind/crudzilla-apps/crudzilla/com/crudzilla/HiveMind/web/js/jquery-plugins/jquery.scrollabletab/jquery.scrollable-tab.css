@@ -1,0 +1,56 @@
+#tabs .ui-widget {
+    font-size: .8em !important;
+}
+
+#tabs .ui-tabs-nav {
+    position:relative;
+}
+
+#tabs .ui-tabs .ui-tabs-nav-arrows {
+    position:absolute;
+    top:1px;
+    right:1px;
+    left:1px;
+    margin:.1em;
+    padding:0;
+}
+
+#tabs .ui-tabs .ui-tabs-nav-arrows .ui-tabs-arrow-next {
+    float:right;
+}
+
+#tabs .ui-tabs .ui-tabs-nav-arrows li {
+    list-style:none;
+    position:relative;
+    cursor:pointer;
+    z-index:1000;
+    line-height:1;
+    margin:0;
+    padding:0;
+}
+
+#tabs .ui-tabs .ui-tabs-nav-arrows li a {
+    display: block;
+    padding: .7em .1em;
+}
+
+#tabs .ui-tabs .ui-tabs-nav-arrows .ui-tabs-arrow-previous {
+    float:left;
+}
+
+#tabs .ui-tabs .ui-tabs-scroll-container {
+    position:relative;
+    height: 2.7em;
+    overflow:hidden;
+}
+
+#tabs .ui-tabs .ui-tabs-nav-scrollable {
+    position:absolute;
+    left:0;
+    right:0;
+}
+
+#tabs .ui-tabs .ui-tabs-nav-scrollable ul {
+    position:relative;
+    width:10000px;
+}

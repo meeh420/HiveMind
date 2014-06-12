@@ -1,0 +1,41 @@
+<div id="fileuploader-info-panel-<#=id#>" style="display:none"></div>
+<div id="fileuploader-tabs-<#=id#>" style="border-style: none">
+    <ul>
+        <li><a href="#fileuploader-preexecution-handler-tab-<#=id#>">PreExecution</a></li>
+        <li><a href="#fileuploader-execution-handler-tab-<#=id#>">Execution</a></li>
+        <li><a href="#fileuploader-postexecution-handler-tab-<#=id#>">PostExecution</a></li>
+        <li><a href="#fileuploader-security-tab-<#=id#>">Security</a></li>
+        <li style="display:none"><a href="#fileuploader-info-panel-bar-<#=id#>"></a><a href="" onclick="return false;" title="Staled references" id="fileuploader-info-panel-trigger-<#=id#>" style="display:none;padding: 3px;padding-left: 5px;padding-right: 5px;background-color: #d03838;color:#f69e40;cursor: pointer"></a></li>
+    </ul>
+
+    <div id="fileuploader-execution-handler-tab-<#=id#>" style="border-style: none;padding:0;border-top:0"> 
+        <ul>
+            <li><a href="#fileuploader-execution-parameter-tab-<#=id#>">Parameters & Validation</a></li>
+        </ul>
+
+        <div id="fileuploader-execution-parameter-tab-<#=id#>"   style="border-style:none;height:100%;padding:0;border-top:0">
+            <div id="fileuploader-execution-parameter-definition-tabs-<#=id#>" style="border-style:none;height:100%;padding:0;border-top:0"> 
+                <ul>                        
+                    <li><a href="#fileuploader-execution-parameter-definition-tab-<#=id#>">Definitions</a></li>
+                </ul>
+                <div id="fileuploader-execution-parameter-definition-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+                  <div class="parameter-view">
+                    <table id="fileuploader-execution-parameter-table-<#=id#>"></table>
+                  </div>
+                </div>
+            </div>
+        </div>                 
+    </div> 
+
+    <div id="fileuploader-preexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+        <table id="fileuploader-preexecution-handler-table-<#=id#>"></table>
+    </div>                 
+    <div id="fileuploader-postexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">        
+        <table id="fileuploader-postexecution-handler-table-<#=id#>"></table>
+    </div>    
+    <div id="fileuploader-security-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+        <input type="checkbox" id="fileuploader-security-serverside-<#=id#>" /> Server side only.
+        <input type="checkbox" id="fileuploader-security-requireallidentities-<#=id#>" /> Require All Roles.
+        <table id="fileuploader-security-table-<#=id#>"></table>
+    </div>
+</div>

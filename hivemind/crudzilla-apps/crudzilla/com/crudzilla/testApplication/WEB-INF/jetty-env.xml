@@ -1,0 +1,17 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<Configure  class="org.eclipse.jetty.webapp.WebAppContext">
+
+  <New id="testApplicationDB" class="org.eclipse.jetty.plus.jndi.Resource">
+    <Arg>jdbc/testApplicationDB</Arg>
+    <Arg>
+     <New class="org.apache.commons.dbcp.BasicDataSource">
+          <Set name="driverClassName">org.apache.derby.jdbc.EmbeddedDriver</Set>
+          <Set name="url">jdbc:derby:testApplication;create=true</Set>
+          <Set name="username"></Set>
+          <Set name="password"></Set>
+     </New>
+    </Arg>
+  </New>
+
+</Configure>

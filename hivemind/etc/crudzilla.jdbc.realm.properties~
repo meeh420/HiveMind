@@ -1,0 +1,15 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+jdbcdriver=org.apache.derby.jdbc.EmbeddedDriver
+url=jdbc:derby:crudzilla
+usertable=USERS
+usertablekey=id
+usertableuserfield=user_name
+usertablepasswordfield=pass_word
+roletable=roles
+roletablekey=id
+roletablerolefield=role
+userroletable=user_roles
+userroletableuserkey=user_id
+userroletablerolekey=role_id
+cachetime=300

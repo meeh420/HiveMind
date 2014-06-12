@@ -1,0 +1,23 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<Configure id="testApplicationApp" class="org.eclipse.jetty.webapp.WebAppContext">  
+  
+  <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/testApplication.war</Set>
+  <Set name="contextPath">/testApplication</Set>
+  
+  <!--BEGIN SECURITY HANDLER-->
+  <Get name="securityHandler">
+    <Set name="loginService">
+     <New class="org.eclipse.jetty.security.JDBCLoginService">
+	    <Set name="name">testApplication</Set>
+	    <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/testApplication.jdbc.realm.properties</Set>
+            <!-- To enable reload of realm when properties change, uncomment the following lines -->
+            <!-- changing refreshInterval (in seconds) as desired                                -->
+            <!-- <Set name="refreshInterval">5</Set><Call name="start"></Call> -->
+      </New>
+    </Set>
+    <Set name="checkWelcomeFiles">true</Set>
+  </Get>
+  <!--END SECURITY HANDLER-->
+  
+</Configure>

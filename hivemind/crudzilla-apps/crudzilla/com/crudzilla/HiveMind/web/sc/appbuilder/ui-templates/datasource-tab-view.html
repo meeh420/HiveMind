@@ -1,0 +1,34 @@
+<div id="datasource-tabs-<#=key#>" style="border-style: none">
+    <ul>                        
+        <li><a href="#datasource-settings-tab-<#=key#>">Settings</a></li>
+        <!--<li><a href="#datasource-security-tab-<#=key#>">Security</a></li>-->
+    </ul>    
+    <div id="datasource-settings-tab-<#=key#>">
+        <table>
+            <tr>
+                <td>
+                    Enabled:
+                </td>
+                <td>
+                    <input type="checkbox" id="datasource-enabled-<#=key#>"/>
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    JNDI Path: 
+                </td>
+                <td>
+                    <input type="text" id="datasource-jndipath-<#=key#>"/>
+                </td>
+            </tr>    
+        </table>
+        <div style="text-align:center">
+            <button id="datasource-save-button-<#=key#>">Save</button>
+        </div>        
+    </div>
+    <!--
+    <div id="datasource-security-tab-<#=key#>">
+        <table id="datasource-security-table-<#=key#>"></table>
+    </div>
+    -->
+</div>

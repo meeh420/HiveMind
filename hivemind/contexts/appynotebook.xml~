@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<Configure id="appynotebookApp" class="org.eclipse.jetty.webapp.WebAppContext">  
+  
+  <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/appynotebook.war</Set>
+  <Set name="contextPath">/appynotebook</Set>
+
+  <New id="appynotebookDB" class="org.eclipse.jetty.plus.jndi.Resource">
+    <Arg><Ref id="appynotebookApp"/></Arg>
+    <Arg>java:comp/env/jdbc/appynotebookDB</Arg>
+    <Arg>
+     <New class="org.apache.commons.dbcp.BasicDataSource">
+          <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+          <Set name="url">jdbc:mysql://127.0.0.1:3306/appynotebook?autoReconnect=true</Set>
+          <Set name="username">bitlooter</Set>
+          <Set name="password">bitlooter</Set>
+     </New>
+    </Arg>
+   </New>  
+</Configure>

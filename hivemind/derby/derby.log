@@ -1,0 +1,29 @@
+----------------------------------------------------------------
+Sat May 24 20:32:13 EDT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0146-30ca-a56b-ffff96974395 
+on database directory /home/crudzilla/hivemind-dist/hivemind/derby/crudzilla with class loader startJarLoader@1654886 
+Loaded from file:/home/crudzilla/hivemind-dist/hivemind/lib/ext/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_55-b13
+user.dir=/home/crudzilla/hivemind-dist/hivemind
+os.name=Linux
+os.arch=i386
+os.version=3.8.0-39-generic
+derby.system.home=/home/crudzilla/hivemind-dist/hivemind
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat May 24 20:34:08 EDT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance 953a00d1-0146-30ca-a56b-ffff96974395 
+on database directory /home/crudzilla/hivemind-dist/hivemind/derby/betaApp with class loader startJarLoader@1654886 
+Loaded from file:/home/crudzilla/hivemind-dist/hivemind/lib/ext/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_55-b13
+user.dir=/home/crudzilla/hivemind-dist/hivemind
+os.name=Linux
+os.arch=i386
+os.version=3.8.0-39-generic
+derby.system.home=/home/crudzilla/hivemind-dist/hivemind
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat May 24 20:37:21 EDT 2014:
+Shutting down instance 953a00d1-0146-30ca-a56b-ffff96974395 on database directory /home/crudzilla/hivemind-dist/hivemind/derby/betaApp with class loader startJarLoader@1654886 

@@ -1,0 +1,23 @@
+<div style="padding: 4px">
+    <div id="crud-test-tabs-<#=id#>" class="closable-tabs" style="border-style: none">
+        <ul>
+            <li><a href="#crud-test-tab-<#=id#>">Test Case</a></li>
+        </ul>
+      <div id="crud-test-tab-<#=id#>">
+            Output format
+            <select id="crud-test-output-type-<#=id#>">
+                <option value="json">JSON</option>
+                <option value="html-page">Html Page</option>
+                <option value="text">Text</option>
+            </select>
+            <button id="crud-test-simulate-button-<#=id#>">Simulate</button>
+            <button id="crud-test-argument-button-<#=id#>">Run</button>
+
+        	<br/><br/>
+          	<div style="padding-right:20px">
+            	<table id="crud-test-argument-table-<#=id#>"></table>
+            </div>
+            <!--<iframe id="crud-test-form-iframe-<#=id#>"></iframe> -->       
+        </div>
+    </div>
+</div>

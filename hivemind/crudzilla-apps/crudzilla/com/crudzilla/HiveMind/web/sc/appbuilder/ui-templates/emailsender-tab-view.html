@@ -1,0 +1,52 @@
+<div id="emailsender-info-panel-<#=id#>" style="display:none"></div>
+<div id="emailsender-tabs-<#=id#>" style="border-style: none">
+    <ul>
+        <li><a href="#emailsender-preexecution-handler-tab-<#=id#>">PreExecution</a></li>
+        <li><a href="#emailsender-execution-handler-tab-<#=id#>">Execution</a></li>
+        <li><a href="#emailsender-postexecution-handler-tab-<#=id#>">PostExecution</a></li>
+        <li><a href="#emailsender-security-tab-<#=id#>">Security</a></li>
+        <li style="display:none"><a href="#emailsender-info-panel-bar-<#=id#>"></a><a href="" onclick="return false;" title="Staled references" id="emailsender-info-panel-trigger-<#=id#>" style="display:none;padding: 3px;padding-left: 5px;padding-right: 5px;background-color: #d03838;color:#f69e40;cursor: pointer"></a></li>
+    </ul>
+
+    <div id="emailsender-execution-handler-tab-<#=id#>" style="border-style: none;padding:0;border-top:0"> 
+        <ul>                        
+            <!--<li><a href="#emailsender-template-tab-<#=id#>">Template</a></li>-->
+            <li><a href="#emailsender-execution-parameter-tab-<#=id#>">Parameters & Validation</a></li>
+        </ul>
+		<!--
+        <div id="emailsender-template-tab-<#=id#>">
+
+            <div id="emailsender-template-path-label-drop-<#=id#>" class="ui-widget-header ui-corner-all" style="padding:8px;width:256px;display:inline"><span>Drop reference here.</span></div>
+            <span id="emailsender-template-path-label-<#=id#>"></span>
+            <button  id="emailsender-template-path-button-<#=id#>">Select</button>
+            <button  id="emailsender-template-clear-path-button-<#=id#>">Select</button>
+            <input type="hidden" id="emailsender-template-path-<#=id#>"/>
+
+        </div>
+		-->
+        <div id="emailsender-execution-parameter-tab-<#=id#>"   style="border-style:none;height:100%;padding:0;border-top:0">
+            <div id="emailsender-execution-parameter-definition-tabs-<#=id#>" style="border-style:none;height:100%;padding:0;border-top:0"> 
+              <ul>                        
+                    <li><a href="#emailsender-execution-parameter-definition-tab-<#=id#>">Definitions</a></li>
+              </ul>
+              <div id="emailsender-execution-parameter-definition-tab-<#=id#>" style="overflow:auto;padding-left: 5px;padding-right:20px">
+                  <div class="parameter-view">
+                    <table id="emailsender-execution-parameter-table-<#=id#>"></table>
+                  </div>
+              </div>
+            </div>
+        </div>                 
+    </div> 
+
+    <div id="emailsender-preexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+        <table id="emailsender-preexecution-handler-table-<#=id#>"></table>
+    </div>                 
+    <div id="emailsender-postexecution-handler-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">        
+        <table id="emailsender-postexecution-handler-table-<#=id#>"></table>
+    </div>    
+    <div id="emailsender-security-tab-<#=id#>"  style="padding-left: 5px;padding-right:20px">
+        <input type="checkbox" id="emailsender-security-serverside-<#=id#>" /> Server side only.
+        <input type="checkbox" id="emailsender-security-requireallidentities-<#=id#>" /> Require All Roles.
+        <table id="emailsender-security-table-<#=id#>"></table>
+    </div>
+</div>

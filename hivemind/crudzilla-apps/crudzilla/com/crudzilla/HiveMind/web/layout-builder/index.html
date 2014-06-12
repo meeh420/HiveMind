@@ -1,0 +1,240 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Layout Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+  </style>
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    input[type=text], textarea {
+      -webkit-transition: all 0.30s ease-in-out;
+      -moz-transition: all 0.30s ease-in-out;
+      -ms-transition: all 0.30s ease-in-out;
+      -o-transition: all 0.30s ease-in-out;
+      outline: none;
+      padding: 3px 0px 3px 3px;
+      margin: 5px 1px 3px 0px;
+      border: 1px solid #DDDDDD;
+    }
+     
+    input[type=text]:focus, textarea:focus {
+      box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+      padding: 3px 0px 3px 3px;
+      margin: 5px 1px 3px 0px;
+      border: 1px solid rgba(81, 203, 238, 1);
+    }  
+    .crudzilla-dnd-col-template-style {background-color:#f2f2f2}
+  </style>
+  
+    <script type="text/javascript">window.alert = function(){}
+          document.crudzilla ={
+            part:
+            {
+              "id":"f7767d52-a856-11e3-b1d4-080027ab8d96",
+              external_dependencies:
+              {
+                "https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip":
+                {
+                  "url":"https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip",
+                  "description":"bootstrap CSS framework",
+                  "label":"Bootstrap",
+                  "info_page":"http://getbootstrap.com/",
+                  "local_path":"/path/to/save/in"
+                },
+                "https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist1.zip":
+                {
+                  "url":"https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip",
+                  "description":"bootstrap CSS framework",
+                  "label":"Bootstrap",
+                  "info_page":"http://getbootstrap.com/",
+                  "local_path":"/path/to/save/in"
+                },
+                "https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist2.zip":
+                {
+                  "url":"https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip",
+                  "description":"bootstrap CSS framework",
+                  "label":"Bootstrap",
+                  "info_page":"http://getbootstrap.com/",
+                  "local_path":"/path/to/save/in"
+                },
+                "https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist3.zip":
+                {
+                  "url":"https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip",
+                  "description":"bootstrap CSS framework",
+                  "label":"Bootstrap",
+                  "info_page":"http://getbootstrap.com/",
+                  "local_path":"/path/to/save/in"
+                }                
+              },
+              init:function(){
+                  $("#crudzilla-dnd-layout-col-definition").keyup(function(){
+                    var colType = $("#crudzilla-dnd-layout-col-types").val();
+                    var cols = $(this).val().split(" ");
+                    
+                    $(".crudzilla-dnd-layout-row-template").find(".crudzilla-dnd-layout-row-element").remove();
+                    var extraClass = "";
+                    
+                    for(var i=0;i<cols.length;i++){
+                      var col = cols[i].trim();
+                      if(col.length == 0) continue;
+                      
+                      if(col[0] == '+'){//an offset             
+                        extraClass = " col-"+colType+"-offset-"+col.substring(1);
+                        console.log("offset"+extraClass);
+                      }
+                      else
+                      if(col[0] == '<'){//a pull           
+                        extraClass = " col-"+colType+"-pull-"+col.substring(1);
+                        console.log("pull"+offset);
+                      }  
+                      else
+                      if(col[0] == '>'){//a push            
+                        extraClass = " col-"+colType+"-push-"+col.substring(1);
+                        console.log("push"+offset);
+                      }             
+                      else
+                      {//a column
+                        var c = 'col-'+colType+'-'+col+extraClass;
+                        
+                        console.log("column "+c)
+                        var html = '<div class="'+c+' crudzilla-dnd-layout-row-element crudzilla-dnd-col-template-style"></div>';
+                        var addedNode = $(html).appendTo(".crudzilla-dnd-layout-row-template");
+                        
+                        var mutation = 
+                        {
+                          "node":$(addedNode)[0],
+                          "oldParentNode":$(addedNode)[0].parentNode,
+                          "newParentNode":$(addedNode)[0].parentNode,
+                          "oldPreviousSibling":$(addedNode)[0].previousSibling,
+                          "oldNextSibling":$(addedNode)[0].nextSibling,
+                          "dropNextToNode":"none",
+                          "newPreviousSibling":$(addedNode)[0].previousSibling,
+                          "newNextSibling":$(addedNode)[0].nextSibling,
+                          "type":"added"
+                        };
+                        this.onDocMutation(top.appBuilder.activeDoc,mutation);
+                        extraClass = "";
+                      }
+                    }
+                  });              
+              }
+              ,
+             /*
+              * This interface checks the list of required dependencies and removes the ones that have already
+              * been met so user isn't prompted to install them. It can be implemented to check for dependencies
+              * in the active document in whatever means the developer deems suitable, the implementation below
+              * is just an example.
+              */
+              onCheckDependencies:function(requiredDependencies,activeDoc){
+                
+                //example implementation
+                for(var i=0;i<requiredDependencies.length;i++){
+                  var dependency = this.external_dependencies[requiredDependencies[i]];
+                  if(dependency.label == "jquery"){
+                    if(activeDoc.documentElement.ownerDocument.SomeJQueryVersion){
+                      //remove this dependency as it has been already met
+                      requiredDependencies.splice(i,1);
+                    }
+                  }
+                  else
+                  if(dependency.label == "bootstrap"){
+                    if(activeDoc.documentElement.ownerDocument.SomeBootstrapVersion){
+                      //remove this dependency as it has been already met
+                      requiredDependencies.splice(i,1);
+                    }
+                  }
+                  //...
+                  //...do something similar for other dependencies                  
+                }
+              },
+              onDrop:function(doc,dragElement,dropElement,callBack){
+                //for all mutations to doc, notify platform so mutation is persistent
+                //you may call this interface any time you make a persitent mutation to
+                //document
+                
+                var mutation = 
+                {
+                  "node":nodeAddedRemovedOrReparented,
+                  "oldParentNode":null,
+                  "newParentNode":null,
+                  "oldPreviousSibling":null,
+                  "oldNextSibling":null,
+                  "dropNextToNode":"none | left | right",
+                  "newPreviousSibling": null,
+                  "newNextSibling" : null
+                };                
+                this.onDocMutation(doc,mutation);
+              },
+              onPostDrop:function(doc){
+                
+              },
+              onDocOpen:function(doc){
+                
+              },
+              onDocClose:function(doc){
+                
+              },
+              onDocTabActivate:function(doc){
+                
+              },
+              onDocTabDeactivate:function(doc){
+                
+              }
+            }
+          };  
+      	  if(top.appBuilder) //register this ui part interface implementation
+             top.appBuilder.registerUIPart(document.crudzilla);
+    </script>
+  
+  
+  </head>
+  <body style="margin:10px;margin-left:20px;"> 
+    <h2>Layout Builder</h2>
+    <h3>Container Template</h3>
+    <div class="container crudzilla-dnd-layout-container-element"> 
+    </div>
+    
+    
+    <div style="margin-top:25px;margin-bottom:25px">       
+        <h3>Add Columns To Row Template</h3>            
+        <select id="crudzilla-dnd-layout-col-types"> 
+          <option value="xs">col-xs-*(mobile)</option> 
+          <option value="sm">col-sm-*(tablet)</option> 
+          <option value="md">col-md-*(laptop)</option> 
+          <option value="lg">col-lg-*(desktop)</option> 
+        </select> 
+        <input size="32" id="crudzilla-dnd-layout-col-definition" type="text">  
+        <p>
+          Syntax example: <code>2 2 2 2</code> A space separated list of columns. 
+          Each number represents number of grid columns to span. 
+        </p>
+      
+        <h4>column offsets</h4>
+        <p>
+          A <code>+</code> indicates column offset for the following
+          column. Ex given <code>2 +2 2 2</code>, the <code>+2</code> offsets the <code>2</code> column
+          following it.
+        </p>
+      
+        <h4>column ordering</h4>
+        <p>
+          You can reorder columns with push(<code>&gt;2</code>) and pull(<code>&lt;2</code>) classes.
+          As with offsets, the reordering is applied to the following column.
+        </p>
+    </div>     
+    <h3>Row Template</h3>
+    <div class="row crudzilla-dnd-layout-row-template crudzilla-dnd-layout-row-element"> 
+    </div>
+    
+    <script type="text/javascript">
+      (function ($) {
+
+        
+        
+      })(jQuery);
+    </script> 
+  
+  
+</body></html>
