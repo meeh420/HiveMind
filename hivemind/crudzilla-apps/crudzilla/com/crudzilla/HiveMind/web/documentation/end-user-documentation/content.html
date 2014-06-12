@@ -115,7 +115,7 @@
             
             <li>
               If you only specify a name and no DataSource, the App would be generated without authentication enabled.
-              You'll then need to manually enable authentication via edit of <code>web.xml</code> and <code>cwab-dist/etc/&lt;APP-NAME&gt;.jdbc.properties</code>
+              You'll then need to manually enable authentication via edit of <code>web.xml</code> and <code>hivemind/etc/&lt;APP-NAME&gt;.jdbc.properties</code>
             </li>
           </ul>
        
@@ -1986,7 +1986,7 @@ attachment.
         </ul>
         <p>
         <span class="list-item-header">app-home</span> is set in your application's web.xml file, by default it is
-        a relative path, ie relative to the asset directory which is <code>cwab-dist/crudzilla-apps/crudzilla</code>.
+        a relative path, ie relative to the asset directory which is <code>hivemind/crudzilla-apps/crudzilla</code>.
         </p>
         <p>
 
@@ -2070,10 +2070,10 @@ attachment.
         
         <ul>
             <li>
-              <code>cwab-dist/lib/ext/crudzilla</code> contains all crudzilla dependent jars.
+              <code>hivemind/lib/ext/crudzilla</code> contains all crudzilla dependent jars.
             </li>
             <li>
-              All jars in <code>cwab-dist/lib/ext/crudzilla/core</code> are required to run crud
+              All jars in <code>hivemind/lib/ext/crudzilla/core</code> are required to run crud
               applications except
               <ul>
                 <li><span class="list-item-header">ant.jar</span> - required for development only unless you want to use ant in prod.</li>
@@ -2082,7 +2082,7 @@ attachment.
               </ul>
             </li>
             <li>
-              In <code>cwab-dist/lib/ext/crudzilla/jvm-language-support</code> the required jars are
+              In <code>hivemind/lib/ext/crudzilla/jvm-language-support</code> the required jars are
               <ul>
                 <li><span class="list-item-header">commons-jexl.jar</span> - jexl language support.</li>
                 <li><span class="list-item-header">groovy-all.jar</span> - groovy language support.</li>
@@ -2099,12 +2099,12 @@ attachment.
               </ul>
             </li>          
             <li>
-              jars in <code>cwab-dist/lib/ext/crudzilla/dev-tools</code> are only required during development.
+              jars in <code>hivemind/lib/ext/crudzilla/dev-tools</code> are only required during development.
             </li>
           
             <li>
               <p>
-              Additionally, jars in <code>cwab-dist/lib/ext/mail</code> include the Java mail api and implementation.
+              Additionally, jars in <code>hivemind/lib/ext/mail</code> include the Java mail api and implementation.
               Your production environment may or may not have the required Java mail support.
               </p>
               <p>
@@ -2299,7 +2299,7 @@ attachment.
           environment are stored. This includes all applications.
           </p>
           <p>
-              The actual location of the asset directory is <code>cwab-dist/crudzilla-apps/crudzilla</code>.
+              The actual location of the asset directory is <code>hivemind/crudzilla-apps/crudzilla</code>.
           </p>
                     
           <h6>Various Menu Action</h6>
@@ -2398,7 +2398,7 @@ attachment.
           tab are not on the file system but in a database.
           </p>
           <p>
-            This is an embeded derby database <code>cwab-dist/derby/crudzilla</code>
+            This is an embeded derby database <code>hivemind/derby/crudzilla</code>
           </p>
           
           <h6>Various Menu Action</h6>     

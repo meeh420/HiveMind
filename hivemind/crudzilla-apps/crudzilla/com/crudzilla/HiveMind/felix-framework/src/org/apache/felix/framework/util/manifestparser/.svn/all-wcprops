@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/asf/!svn/ver/1441207/felix/trunk/framework/src/main/java/org/apache/felix/framework/util/manifestparser
+END
+R4LibraryClause.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/repos/asf/!svn/ver/1441169/felix/trunk/framework/src/main/java/org/apache/felix/framework/util/manifestparser/R4LibraryClause.java
+END
+R4Library.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/repos/asf/!svn/ver/1365912/felix/trunk/framework/src/main/java/org/apache/felix/framework/util/manifestparser/R4Library.java
+END
+ManifestParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/repos/asf/!svn/ver/1441207/felix/trunk/framework/src/main/java/org/apache/felix/framework/util/manifestparser/ManifestParser.java
+END
+ParsedHeaderClause.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/repos/asf/!svn/ver/1132743/felix/trunk/framework/src/main/java/org/apache/felix/framework/util/manifestparser/ParsedHeaderClause.java
+END

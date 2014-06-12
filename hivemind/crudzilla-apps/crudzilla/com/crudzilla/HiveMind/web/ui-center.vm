@@ -22,7 +22,7 @@
        </div>
 
        <div class="scroll-buttons todo-list" style="width:48px;float:right;text-align:right;padding-top:2px;padding-right:3px">
-         <button class="scroll-left" style="width:16px;padding:0">Prev</button><button class="scroll-right" style="width:16px;padding:0">Next</button>
+         <button class="scroll-left" style="width:16px;height:22px;padding:0">Prev</button><button class="scroll-right" style="width:16px;height:22px;padding:0">Next</button>
        </div>       
      </div>
      

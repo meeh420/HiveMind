@@ -1370,7 +1370,7 @@ var appBuilder = {
                                                 },
                                                 "editable":{},
                                                 "executable":{
-                                                  name:"Crud",
+                                                  name:"Executable",
                                                   items:{                                     
                                                     "ins":{
                                                       icon:"crud-instantiator",
